@@ -1,16 +1,24 @@
-import React from "react";
-import { useLocation } from "react-router";
+import React, { lazy } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import MainPage from "./pages/Main";
 
-const Router = () => {
-  const location = useLocation();
+interface RouterProps {
+  location?: any;
+}
+
+const MainPage = lazy(() => import("./pages/Main"));
+const SubPage = lazy(() => import("./pages/Sub"));
+
+const Router = (props: RouterProps) => {
   return (
-    <Switch location={location}>
-      <Route path="/" exact render={() => <MainPage />} />
-      <Redirect to="/" />
-    </Switch>
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <Switch location={props.location}>
+        <Route path="/" exact render={() => <MainPage />} />
+        <Route path="/sub" exact render={()=> <SubPage/>}/>
+        <Redirect to="/" />
+      </Switch>
+    </React.Suspense>
   );
 };
+
 
 export default Router;
