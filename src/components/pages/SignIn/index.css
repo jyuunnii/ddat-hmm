@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Roboto+Slab&display=swap');
+
+.sign-in-title {
+    width: 206px;
+    height: 32px;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    position: fixed;
+    top: 160px;
+}
+
+.sign-in-form {
+    width: 248px;
+    height: 104px;
+    position: fixed;
+    top: 252px;
+}
+
+.sign-in-button {
+    position: fixed;
+    top: 404px;
+}
+
+.sign-in-button button{
+    width: 108px;
+    height: 36px;
+    color: #ffffff;
+    background: #191919;
+    border: 1px solid #191919;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.sign-up-link {
+    width: 135px;
+    height: 17px;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Fira Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 17px;
+    position: fixed;
+    top: 468px;
+}
+
+.sign-up-link a{
+    text-decoration: none;
+    color: #029E74;
+}

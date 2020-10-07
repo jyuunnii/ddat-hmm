@@ -18,7 +18,7 @@ const Header = (props: HeaderProps) => {
         <Link to="/" id="home-link">
           <Logo />
         </Link>
-        {props.location.pathname !== "/" && (
+        {props.location.pathname !== "/" && props.location.pathname !== "/login" && (
           <button className="back-button" onClick={() => history.goBack()}>
             <MaterialIcon icon="keyboard_arrow_left" />
           </button>

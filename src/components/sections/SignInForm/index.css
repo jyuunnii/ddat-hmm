@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Roboto+Slab&display=swap');
+
+.input-subtitle {
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.sign-in {
+    width:100%;
+    height: 56px;
+    border-bottom: 1px solid #DBDBDB;
+    position: relative;
+}
+
+.sign-in input {
+    position: absolute;
+    bottom: 11px;
+}
+
+.sign-in-input::placeholder {
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+}

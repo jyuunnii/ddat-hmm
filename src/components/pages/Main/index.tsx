@@ -1,8 +1,11 @@
 import React from 'react'
+import { HomeScale } from '../../../utils';
 
 const MainPage = () => {
     return(
-        <div>This is main page !</div>
+        <HomeScale>
+            <div>This is main page !</div>
+        </HomeScale>
     )
 }
 
