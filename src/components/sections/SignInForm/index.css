@@ -27,3 +27,38 @@
     font-size: 14px;
     line-height: 17px;
 }
+
+.sign-in-button {
+    position: absolute;
+    top: 152px;
+    left: 70px;
+}
+
+.sign-in-button button{
+    width: 108px;
+    height: 36px;
+    color: #ffffff;
+    background: #191919;
+    border: 1px solid #191919;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+.input-error {
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #CC5454;
+}
+
+.caution-icon {
+    font-size: 24px;
+    color: #CC5454;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+}
+
