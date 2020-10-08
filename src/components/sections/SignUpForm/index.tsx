@@ -4,8 +4,8 @@ import './index.css'
 
 type signUpFormProps = {
     onSubmit: (form: { name: string; email: string; password: string }) => void;
-    isEmailValid: boolean;
-    isPasswordValid: boolean;
+    isEmailValid?: boolean;
+    isPasswordValid?: boolean;
 }
 
 const SignUpForm = ({ onSubmit, isEmailValid, isPasswordValid }: signUpFormProps) => {
@@ -44,17 +44,17 @@ const SignUpForm = ({ onSubmit, isEmailValid, isPasswordValid }: signUpFormProps
             </div>
             <div className="sign-up">
                 <div className="input-subtitle" style={{
-                color: isEmailValid? "#000000" : "#CC5454",
+                 color: isEmailValid === undefined? "#000000" : (isEmailValid? "#000000" : "#CC5454"),
             }}>Email</div>
                 <input type="text" name="email" value={email} onChange={onChange} placeholder="Email" className="sign-up-input"/>
                 <span className="material-icons-outlined caution-icon" style={{
-                    display: isEmailValid? "none" : "block",
+                    display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block"),
                 }}>
                     report
                 </span>    
             </div>
             <div className="input-error" style={{
-                display: isEmailValid? "none" : "block",
+                display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block"),
                 color: "#CC5454", 
             }}>Please enter a valid email address.</div>
             <div className="sign-up">

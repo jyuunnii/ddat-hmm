@@ -5,8 +5,8 @@ import SignUpForm from '../../sections/SignUpForm';
 import './index.css'
 
 const SignUp = () => {
-    const [isEmailValid, setEmailValid] = useState<boolean>(true);
-    const [isPasswordValid, setPasswordValid] = useState<boolean>(true);
+    const [isEmailValid, setEmailValid] = useState<boolean>();
+    const [isPasswordValid, setPasswordValid] = useState<boolean>();
     
     const onSubmit = (form: { name: string; email: string; password: string }) => {
         if(form.email.includes("@")){
