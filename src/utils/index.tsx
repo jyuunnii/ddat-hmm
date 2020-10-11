@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+export const serverUrl = "http://localhost:3001";
+
+export type userBasicData = {
+    name: string;
+    email: string;
+    password: string;
+}
+
+
 export const HomeScale = styled.div`
     width: 100vw;
     height: 98vh;
