@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { LoginFormContainer, serverUrl, userBasicData } from '../../../utils';
+import React, { useState } from 'react';
+import { LoginFormContainer, serverUrl } from '../../../utils';
 import './index.css'
  
 const SignUpForm = () => {
-    const [form, setForm] = useState({
+    interface SignUp {
+        name: string
+        email: string
+        password: string
+    }
+
+    const [form, setForm] = useState<SignUp>({
         name: "",
         email: "",
         password: ""
@@ -21,7 +27,8 @@ const SignUpForm = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        onSubmit(form);
+        signup(form);
+        postData(form);
         setForm({
             name: "",
             email: "",
@@ -29,14 +36,12 @@ const SignUpForm = () => {
         }); 
     };
 
-    const [userData, setUserData] = useState<userBasicData>();
     const [isNameValid, setNameValid] = useState<boolean>();
     const [isEmailValid, setEmailValid] = useState<boolean>();
     const [isPasswordValid, setPasswordValid] = useState<boolean>();
 
-    
-    const onSubmit = (form: { name: string; email: string; password: string }) => {
-        
+
+    const signup = (form: SignUp) => {
         if(form.name !== "" && form.name !== " "){
             setNameValid(true);
         }else{
@@ -54,28 +59,22 @@ const SignUpForm = () => {
         }else{
             setPasswordValid(false);
         }
-
-        if(form.name !== "" && form.name !== " " && form.email.includes("@") && form.password !== "" && form.password !== " "){
-            const newUser: userBasicData = {name: "", email:"", password:""};
-            newUser.name = form.name;
-            newUser.email = form.email;
-            newUser.password = form.password;
-            setUserData(newUser); 
-           
-        }
     };
+
  
-    useEffect(() => {
-        async function postData() {
-        await fetch(serverUrl+'/signup', {
+    
+    async function postData(data: { name: string; email: string; password: string } ) {
+        await fetch(serverUrl+'/user/signup', {
+            headers:{
+                "Content-Type": "application/json"
+            },
             method: "POST",
-            body: JSON.stringify(userData)
-        })
-            .then((response) => console.log("Request Success"))
-            .catch((error) => console.log("Error: ", error));
-        }
-        postData();
-    }, [userData]);
+            body: JSON.stringify(data)
+        }).then(response => console.log(response))
+        .catch((error) => console.log("Error: ", error));
+    }
+   
+   
     
 
     return(
