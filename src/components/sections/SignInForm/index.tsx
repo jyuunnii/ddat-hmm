@@ -1,8 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { LoginFormContainer, serverUrl } from '../../../utils';
 import './index.css'
 
-const SignInForm = () => {
+interface UserData {
+    name: string
+    email: string
+    password: string
+}
+
+type SignInFormProps = {
+    setUser : (form: UserData) => void;
+}
+
+const SignInForm = ({setUser}: SignInFormProps) => {
+    const [isEmailValid, setEmailValid] = useState<boolean>();
+    const [isPasswordValid, setPasswordValid] = useState<boolean>();
+    
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -20,17 +33,20 @@ const SignInForm = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        onSubmit(form);
+        signin(form);
+        try{
+            postData(form);
+        }catch(e){
+            console.log(e);
+        }
+        
         setForm({
             email: "",
             password: ""
         }); 
     };
 
-    const [isEmailValid, setEmailValid] = useState<boolean>();
-    const [isPasswordValid, setPasswordValid] = useState<boolean>();
-
-    const onSubmit = (form: { email: string; password: string }) => {
+    const signin = (form: { email: string; password: string }) => {
        if(form.email.includes("@")){
            setEmailValid(true);
        }else{
@@ -43,17 +59,20 @@ const SignInForm = () => {
            setPasswordValid(false);
        }
     };
-    
-    useEffect(() => {
-        async function getData() {
-          await fetch(serverUrl+"/signin")
-            .then((response) => response.json())
-            .then((response) => console.log(response))
-            .catch((error) => console.log("Error: ", error));
-        }
-        getData();
-    }, []);
-      
+
+    async function postData(data: { email: string; password: string } ) {
+        await fetch(serverUrl+'/auth/login', {
+            headers:{
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify(data) 
+        })
+        .then(response => console.log(response))
+        .catch((error) => console.log("Error: ", error));
+    }
+
+
     return(
         <LoginFormContainer>
         <form onSubmit={handleSubmit}>

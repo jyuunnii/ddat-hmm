@@ -3,13 +3,11 @@ import { LoginFormContainer, serverUrl } from '../../../utils';
 import './index.css'
  
 const SignUpForm = () => {
-    interface SignUp {
-        name: string
-        email: string
-        password: string
-    }
+    const [isNameValid, setNameValid] = useState<boolean>();
+    const [isEmailValid, setEmailValid] = useState<boolean>();
+    const [isPasswordValid, setPasswordValid] = useState<boolean>();
 
-    const [form, setForm] = useState<SignUp>({
+    const [form, setForm] = useState({
         name: "",
         email: "",
         password: ""
@@ -27,8 +25,12 @@ const SignUpForm = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        signup(form);
-        postData(form);
+        signup(form); 
+        try{
+            postData(form);
+        } catch(e){
+            console.log(e);
+        }
         setForm({
             name: "",
             email: "",
@@ -36,12 +38,7 @@ const SignUpForm = () => {
         }); 
     };
 
-    const [isNameValid, setNameValid] = useState<boolean>();
-    const [isEmailValid, setEmailValid] = useState<boolean>();
-    const [isPasswordValid, setPasswordValid] = useState<boolean>();
-
-
-    const signup = (form: SignUp) => {
+    const signup = (form: { name: string; email: string; password: string } ) => {
         if(form.name !== "" && form.name !== " "){
             setNameValid(true);
         }else{
@@ -60,11 +57,10 @@ const SignUpForm = () => {
             setPasswordValid(false);
         }
     };
-
  
     
     async function postData(data: { name: string; email: string; password: string } ) {
-        await fetch(serverUrl+'/user/signup', {
+        await fetch(serverUrl+'/user', {
             headers:{
                 "Content-Type": "application/json"
             },
