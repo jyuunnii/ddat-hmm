@@ -54,3 +54,12 @@ select,
 a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
 }
+
+input {
+  width: 100%;
+  border-style: none;
+}
+
+textarea:focus, input:focus, button:focus{
+  outline: none;
+}
