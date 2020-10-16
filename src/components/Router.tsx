@@ -8,6 +8,7 @@ interface RouterProps {
 const MainPage = lazy(() => import("./pages/Main"));
 const SignInPage = lazy(() => import("./pages/SignIn"));
 const SignUpPage = lazy(() => import("./pages/SignUp"));
+const StoragePage = lazy(() => import("./pages/Storage"));
 
 const Router = (props: RouterProps) => {
   return (
@@ -16,6 +17,7 @@ const Router = (props: RouterProps) => {
         <Route path="/" exact render={() => <MainPage />} />
         <Route path="/signin" exact render={()=> <SignInPage/>}/>
         <Route path="/signup" exact render={()=> <SignUpPage/>}/>
+        <Route path="/storage" exact render={()=> <StoragePage/>}/>
         <Redirect to="/" />
       </Switch>
     </React.Suspense>

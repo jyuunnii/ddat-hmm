@@ -23,6 +23,9 @@ const Header = (props: HeaderProps) => {
             <MaterialIcon icon="keyboard_arrow_left" />
           </button>
         )}
+       <button className="menu-button">
+         <MaterialIcon icon="menu" />
+       </button>
       </header>
     );
 }

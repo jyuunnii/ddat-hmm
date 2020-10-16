@@ -1,0 +1,26 @@
+.storage-title {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.storage-subtitle {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.storage-title-wrapper {
+    position: absolute;
+    top: 72px;
+    left: 32px;
+}
+
+.storage-content-wrapper {
+    position: absolute;
+    top: 197px;
+}

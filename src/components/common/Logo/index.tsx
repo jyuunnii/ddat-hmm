@@ -1,8 +1,9 @@
 import React from 'react';
+import './index.css';
 
 const Logo = () => {
 return(
-    <div>Logo</div>
+    <div className="logo">DDAT HMM</div>
 )
 }
 

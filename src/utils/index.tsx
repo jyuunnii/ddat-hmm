@@ -21,3 +21,13 @@ export const LoginFormContainer = styled.div`
     flex-direction: column;
     position: relative;
 `;
+
+export const MainContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
+
+export const MainWrapper = styled.div`
+    width: 100%;
+`;
