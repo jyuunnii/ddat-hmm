@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { LoginFormContainer, serverUrl } from '../../../utils';
+import { LoginFormContainer } from '../../../utils';
+import { login } from '../../api';
 import './index.css'
 
 interface UserData {
@@ -8,11 +9,7 @@ interface UserData {
     password: string
 }
 
-type SignInFormProps = {
-    setUser : (form: UserData) => void;
-}
-
-const SignInForm = ({setUser}: SignInFormProps) => {
+const SignInForm = () => {
     const [isEmailValid, setEmailValid] = useState<boolean>();
     const [isPasswordValid, setPasswordValid] = useState<boolean>();
     
@@ -33,20 +30,16 @@ const SignInForm = ({setUser}: SignInFormProps) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        signin(form);
-        try{
-            postData(form);
-        }catch(e){
-            console.log(e);
-        }
-        
+        signinCssEffect(form);
+        login(form);
+        //TODO: login 완료 후 페이지 전환
         setForm({
             email: "",
             password: ""
         }); 
     };
 
-    const signin = (form: { email: string; password: string }) => {
+    const signinCssEffect = (form: { email: string; password: string }) => {
        if(form.email.includes("@")){
            setEmailValid(true);
        }else{
@@ -60,17 +53,6 @@ const SignInForm = ({setUser}: SignInFormProps) => {
        }
     };
 
-    async function postData(data: { email: string; password: string } ) {
-        await fetch(serverUrl+'/auth/login', {
-            headers:{
-                "Content-Type": "application/json"
-            },
-            method: "POST",
-            body: JSON.stringify(data) 
-        })
-        .then(response => console.log(response))
-        .catch((error) => console.log("Error: ", error));
-    }
 
 
     return(

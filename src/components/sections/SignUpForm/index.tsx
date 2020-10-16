@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { LoginFormContainer, serverUrl } from '../../../utils';
+import { LoginFormContainer } from '../../../utils';
+import { signup } from '../../api';
 import './index.css'
  
 const SignUpForm = () => {
@@ -25,12 +26,8 @@ const SignUpForm = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        signup(form); 
-        try{
-            postData(form);
-        } catch(e){
-            console.log(e);
-        }
+        signupCssEffect(form); 
+        signup(form)
         setForm({
             name: "",
             email: "",
@@ -38,7 +35,7 @@ const SignUpForm = () => {
         }); 
     };
 
-    const signup = (form: { name: string; email: string; password: string } ) => {
+    const signupCssEffect = (form: { name: string; email: string; password: string } ) => {
         if(form.name !== "" && form.name !== " "){
             setNameValid(true);
         }else{
@@ -56,22 +53,7 @@ const SignUpForm = () => {
         }else{
             setPasswordValid(false);
         }
-    };
- 
-    
-    async function postData(data: { name: string; email: string; password: string } ) {
-        await fetch(serverUrl+'/user', {
-            headers:{
-                "Content-Type": "application/json"
-            },
-            method: "POST",
-            body: JSON.stringify(data)
-        }).then(response => console.log(response))
-        .catch((error) => console.log("Error: ", error));
-    }
-   
-   
-    
+    };   
 
     return(
         <LoginFormContainer>
