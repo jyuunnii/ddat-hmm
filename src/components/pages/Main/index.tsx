@@ -1,12 +1,12 @@
 import React from 'react'
-import { HomeScale, MainContainer, MainWrapper } from '../../../utils';
+import { MainScale, MainContainer, MainWrapper } from '../../../utils';
 import MainMessageCreator from '../../sections/MainMessageCreator';
 import MainWhoList from '../../sections/MainWhoList';
 import './index.css';
 
 const MainPage = () => {
     return(
-        <HomeScale>
+        <MainScale>
             <MainContainer style={{position: "relative"}}>
                 <MainWrapper className="main-title-wrapper">
                     <div className="main-title">Quick touch &amp; <br/> send messages </div>
@@ -19,7 +19,7 @@ const MainPage = () => {
                     <MainMessageCreator/>
                 </MainWrapper>
             </MainContainer>
-        </HomeScale>
+        </MainScale>
     )
 }
 

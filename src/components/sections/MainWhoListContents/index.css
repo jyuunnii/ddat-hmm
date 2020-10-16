@@ -1,0 +1,12 @@
+.friend-name {
+    padding: 8px 0px;
+    text-align: center;
+}
+
+.friend-image{
+    width: 90px;
+    height: 90px;
+    border: 1px solid #9ED5E7;
+    background: #FFFFFF;
+    border-radius: 50%;
+}

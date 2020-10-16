@@ -4,7 +4,16 @@ export const serverUrl = "http://localhost:3001";
 
 export const HomeScale = styled.div`
     width: 100vw;
-    height: 98vh;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+`;
+
+export const MainScale = styled.div`
+    width: 100vw;
+    height: 90vh;
+    overflow-x: hidden;
+    overflow-y: auto;
 `;
 
 export const LoginContainer = styled.div`
@@ -23,6 +32,7 @@ export const LoginFormContainer = styled.div`
 `;
 
 export const MainContainer = styled.div`
+    margin-top: 48px;
     display: flex;
     flex-direction: column;
     justify-content: center;

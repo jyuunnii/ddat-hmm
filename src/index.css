@@ -10,10 +10,10 @@ body,
 header {
   position: fixed;
   top: 0;
+  z-index:1;
 }
 
 main {
-  margin-top: 48px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -21,6 +21,7 @@ main {
 footer {
   position: fixed;
   bottom: 0;
+  z-index: 1;
 }
 
 body {

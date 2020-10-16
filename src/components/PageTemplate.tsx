@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router";
 import { animated, useTransition } from "react-spring";
+import Footer from "./common/Footer";
 import Header from "./common/Header";
 import Router from "./Router";
 
@@ -56,7 +57,7 @@ const PageTemplate = () => {
           <main>
             <Router location={item}/>
           </main>
-          <footer></footer>
+          <Footer location={item} />
         </animated.div>
       ))}
     </div>
