@@ -1,23 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainWhoListContents from '../MainWhoListContents';
 import './index.css';
+
 
 const MWLContainer = styled.div`
     display: flex;
+    width: 328px;
+    overflow-y: hidden;
+`;
+
+const MWLCWrapper = styled.div`
+    display: flex;
+    min-width: 50px;
+    min-height: 90px;
+    padding-right: 24px;
     flex-direction: column;
     justify-content: center;
 `;
 
-const testList = ['user1', 'user2', 'user3', 'user4', 'user5'];
 
-const MainWhoList = () => {
+type MainWhoListProps = {
+    friendsList: string[];
+}
+
+const MainWhoList = ({friendsList}: MainWhoListProps) => {
     return(
         <MWLContainer>
-            <div className="who">Who</div>
-            <div>
-                <MainWhoListContents friendsList={testList}/>
-            </div>
+        {friendsList.map((friend, index) => {
+            return(
+            <MWLCWrapper key={index}>
+                <div className="friend-image"></div>
+                <div className="friend-name">{friend}</div>
+            </MWLCWrapper>
+            )
+        })}
         </MWLContainer>
     )
 }
