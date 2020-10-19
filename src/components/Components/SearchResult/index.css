@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+.no-search-result {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+   
+    width: 256px;
+    margin: 0 auto;
+    text-align:center;
+    position: absolute;
+    top: 100px;
+    left: 52px;
+}
+
+.search-result-header {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    color: #292929;
+    padding-bottom: 8px;
+}
+
+.result-user-img {
+    min-width: 64px;
+    min-height: 64px;
+    max-width: 66px;
+    max-height: 66px;
+    border-radius: 50%;
+    background: #FAFAFA;
+    border: 1px solid #DBDBDB;
+    box-sizing: border-box;
+}
+
+.result-user-name {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+    padding-bottom: 8px;
+}
+
+.result-user-comment {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.add-button {
+    width: 58px;
+    height: 28px;
+    background: #FFFFFF;
+    border: 1px solid #9ED5E7;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: #9ED5E7;
+    margin-top: 18px;
+}

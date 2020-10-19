@@ -1,8 +1,8 @@
 import React from 'react'
 import { MainScale, MainContainer, MainWrapper } from '../../../utils';
-import MainMessage from '../../sections/MainMessage';
-import MainTitle from '../../sections/MainTitle';
-import MainWhoList from '../../sections/MainWhoList';
+import MainMessage from '../../Components/MainMessage';
+import MainTitle from '../../Components/MainTitle';
+import MainWhoList from '../../Components/MainWhoList';
 import './index.css';
 
 
@@ -15,7 +15,7 @@ const testUser = {
 const MainPage = () => {
     return(
         <MainScale>
-            <MainContainer style={{position: "relative"}}>
+            <MainContainer>
                 <MainWrapper className="main-title-wrapper">
                     <MainTitle user={testUser}/>
                 </MainWrapper>

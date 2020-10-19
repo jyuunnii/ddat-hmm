@@ -3,24 +3,17 @@
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
-    line-height: 26px;
+    line-height: 20px;
 }
 
 .storage-subtitle {
     font-family: 'Roboto Slab', serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 16px;
+    line-height: 16px;
 }
 
 .storage-title-wrapper {
-    position: absolute;
-    top: 72px;
-    left: 32px;
-}
-
-.storage-content-wrapper {
-    position: absolute;
-    top: 197px;
+    padding: 48px 32px;
 }

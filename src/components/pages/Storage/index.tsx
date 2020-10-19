@@ -1,21 +1,21 @@
 import React from 'react';
-import { HomeScale, MainContainer, MainWrapper } from '../../../utils';
-import Storage from '../../sections/Storage';
+import { MainContainer, MainScale, MainWrapper } from '../../../utils';
+import Storage from '../../Components/Storage';
 import './index.css';
 
 const StoragePage = () => {
     return(
-        <HomeScale>
-            <MainContainer style={{position: "relative"}}>
+        <MainScale>
+            <MainContainer >
                 <MainWrapper className="storage-title-wrapper">
                     <div className="storage-title">My storage</div>
                     <div className="storage-subtitle">touch love make love</div>
                 </MainWrapper>
-                <MainWrapper className="storage-content-wrapper">
+                <MainWrapper>
                     <Storage/>
                 </MainWrapper>
             </MainContainer>
-        </HomeScale>
+        </MainScale>
     )
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HomeScale, LoginContainer } from '../../../utils';
-import SignInForm from '../../sections/SignInForm';
+import { LoginContainer, MainScale } from '../../../utils';
+import SignInForm from '../../Components/SignInForm';
 import './index.css'
 
 interface UserData {
@@ -15,7 +15,7 @@ interface UserData {
 
 const SignIn = () => {
     return(
-        <HomeScale>
+        <MainScale>
             <LoginContainer>
                 <div className="sign-in-title">Ddat Hmm Again!</div>
                 <div className="sign-in-form"><SignInForm /></div>
@@ -23,7 +23,7 @@ const SignIn = () => {
                     <Link to="/signup">create a new account</Link>
                 </div>
             </LoginContainer>
-        </HomeScale>
+        </MainScale>
     )
     
   

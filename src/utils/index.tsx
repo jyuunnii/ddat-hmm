@@ -4,19 +4,13 @@ export const serverUrl = "http://localhost:3001";
 
 export type User = {
     name: string;
-    imageUri: string;
+    imageUri ?: string;
+    comment ?: string;
 }
 
-export const HomeScale = styled.div`
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-`;
-
 export const MainScale = styled.div`
-    width: 100vw;
-    height: 90vh;
+    width: 100%;
+    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
 `;

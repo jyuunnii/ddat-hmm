@@ -10,6 +10,7 @@ const MMCContainer = styled.div`
     width: 328px;
     height: 100%;
     overflow-y: hidden;
+    padding-left: 60px;
 `;
 
 const MMCWrapper = styled.div`
