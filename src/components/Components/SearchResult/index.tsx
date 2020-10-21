@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { User } from '../../../utils';
+import SearchResultOneRow from '../SearchResultOneRow';
 import './index.css';
 
 const SContainer = styled.div`
@@ -8,7 +9,6 @@ const SContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 `;
 
 const SWrapper = styled.div`
@@ -19,49 +19,41 @@ const SWrapper = styled.div`
     padding-bottom: 8px;
 `;
 
-const SBox = styled.div`
-    display: flex;
-    padding-bottom: 12px;
-`;
-
-const STextBox = styled.div`
-    padding-left: 18px;
-    padding-right: 8px; 
-`;
-
 type SearchResultProps  = {
     searchTarget: string;
+    addNewFriends: (user: string) => void;
+    searchResults: User[] | undefined;
 }
 
-const SearchResult = ({searchTarget}: SearchResultProps) => {
-    const searchResults: User[] = [{name: "test1", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
-    {name: "test2", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
-    {name: "test3", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
-    {name: "test4", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
-    {name: "test5", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}]
+const SearchResult = ({searchTarget, addNewFriends, searchResults}: SearchResultProps) => {  
+    if(! Array.isArray(searchResults) || !searchResults.length){
+        return(
+            <SContainer>
+                 <div className="search-result-header">검색결과</div>
+                 <div className="no-search-result">{searchTarget}&nbsp;에 대한 검색결과가 없습니다.</div>
+            </SContainer>    
+        )
+    }
+
+    const addFriend = (userName: string) => {
+        addNewFriends(userName);
+    }
+    const selectUser = (userName: string) => {
+        addFriend(userName);
+    }
 
     return(
         <SContainer>
             <div className="search-result-header">검색결과</div>
             <SWrapper>
-            {searchResults.map((user) => {
-                return(          
-                <SBox>
-                    <div className="result-user-img"></div>
-                    <STextBox>
-                        <div className="result-user-name">{user.name}</div>
-                        <div className="result-user-comment">{user?.comment}</div>
-                    </STextBox>  
-                    <div><button className="add-button">Add</button></div>   
-                </SBox>
+            {searchResults?.map((user)=>{     
+                return(     
+                  <SearchResultOneRow key={user.name} user={user} selectUser={selectUser}/>
                 )
             })}
             </SWrapper> 
         </SContainer>
     )
-    // return(
-    // <div style={{position: "relative"}}><div className="no-search-result">{searchTarget}&nbsp;에 대한 검색결과가 없습니다.</div></div>
-    // )
 }
 
 export default SearchResult;

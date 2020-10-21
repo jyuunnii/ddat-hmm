@@ -8,6 +8,11 @@ export type User = {
     comment ?: string;
 }
 
+export type myFriend = {
+    id?: number,
+    name: string
+}
+
 export const MainScale = styled.div`
     width: 100%;
     height: 100%;
