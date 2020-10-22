@@ -15,16 +15,17 @@ const STextBox = styled.div`
 
 type SearchResultOneRowProps = {
     user: User;
-    selectUser: (userName: string) => void;
+    selectUser: (userName: string, friendstate: boolean) => void;
+    isFriend: boolean;
 }
 
-const SearchResultOneRow = ({user, selectUser}: SearchResultOneRowProps) => {
-    const [isSelected, setIsSelected] = useState<boolean>(false);
-    const changeButtonColor = (current: boolean) => {
-        if(current){
-            setIsSelected(false);
+const SearchResultOneRow = ({user, selectUser, isFriend}: SearchResultOneRowProps) => {
+    const [currentFriendState, setCurrentFriendState] = useState<boolean>(isFriend); // api 에서 불러온 초기 친구상태 : isFriend 
+    const changeFriendState = (friendstate: boolean) => {
+        if(friendstate){
+            setCurrentFriendState(false);
         }else{
-            setIsSelected(true);
+            setCurrentFriendState(true);
         }
     }
 
@@ -35,12 +36,12 @@ const SearchResultOneRow = ({user, selectUser}: SearchResultOneRowProps) => {
             <div className="result-user-name">{user.name}</div>
             <div className="result-user-comment">{user?.comment}</div>
         </STextBox>  
-        <div><input type="button" onClick={()=> {
-                        selectUser(user.name);
-                        changeButtonColor(isSelected);
+        <div><input type="button" onClick={async()=> {
+                    await selectUser(user.name, currentFriendState);     
+                    changeFriendState(currentFriendState);                       
                     }} 
-                    style={{background: isSelected? "#9ED5E7":"#ffffff", border:  isSelected? "1px solid #fefefe":"1px solid #9ED5E7", color:  isSelected? "#fefefe":"#9ED5E7"}} 
-                    value="Add" className="add-button"/>
+                    style={{background: currentFriendState? "#9ED5E7":"#ffffff", border:  currentFriendState? "1px solid #fefefe":"1px solid #9ED5E7", color:  currentFriendState? "#fefefe":"#9ED5E7"}} 
+                    value={currentFriendState? "Delete" : "Add"} className="add-button"/>
         </div>   
         </SBox>
     )

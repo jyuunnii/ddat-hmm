@@ -21,11 +21,12 @@ const SWrapper = styled.div`
 
 type SearchResultProps  = {
     searchTarget: string;
-    addNewFriends: (user: string) => void;
+    updateFriends: (user: string, friendstate: boolean) => void;
     searchResults: User[] | undefined;
+    oldFriendsList: User[];
 }
 
-const SearchResult = ({searchTarget, addNewFriends, searchResults}: SearchResultProps) => {  
+const SearchResult = ({searchTarget, updateFriends, searchResults, oldFriendsList}: SearchResultProps) => {  
     if(! Array.isArray(searchResults) || !searchResults.length){
         return(
             <SContainer>
@@ -35,21 +36,19 @@ const SearchResult = ({searchTarget, addNewFriends, searchResults}: SearchResult
         )
     }
 
-    const addFriend = (userName: string) => {
-        addNewFriends(userName);
-    }
-    const selectUser = (userName: string) => {
-        addFriend(userName);
+    const selectUser = (userName: string, friendstate: boolean) => {
+        updateFriends(userName, friendstate);
     }
 
     return(
         <SContainer>
             <div className="search-result-header">검색결과</div>
             <SWrapper>
+            {oldFriendsList.map((user)=>{
+                return(<SearchResultOneRow key={user.name} user={user} selectUser={selectUser} isFriend={true}/>)
+            })}
             {searchResults?.map((user)=>{     
-                return(     
-                  <SearchResultOneRow key={user.name} user={user} selectUser={selectUser}/>
-                )
+                return(<SearchResultOneRow key={user.name} user={user} selectUser={selectUser} isFriend={false}/>)
             })}
             </SWrapper> 
         </SContainer>
