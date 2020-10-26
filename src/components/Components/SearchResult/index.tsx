@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { User } from '../../../utils';
+import { UserProfile } from '../../../utils';
 import SearchResultOneRow from '../SearchResultOneRow';
 import './index.css';
 
@@ -22,8 +22,8 @@ const SWrapper = styled.div`
 type SearchResultProps  = {
     searchTarget: string;
     updateFriends: (user: string, friendstate: boolean) => void;
-    searchResults: User[] | undefined;
-    oldFriendsList: User[];
+    searchResults: UserProfile[] | undefined;
+    oldFriendsList: UserProfile[];
 }
 
 const SearchResult = ({searchTarget, updateFriends, searchResults, oldFriendsList}: SearchResultProps) => {  

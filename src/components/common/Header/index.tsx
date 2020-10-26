@@ -65,7 +65,7 @@ const Header = (props: HeaderProps) => {
         return(
           <header>
             <Logo pathname={pathname}/>
-            <button className="back-button" style={{color: "#ffffff"}} onClick={() => history.goBack()}>
+            <button className="back-button" style={{color: "#ffffff", backgroundColor:"transparent"}} onClick={() => history.goBack()}>
               <MaterialIcon icon="keyboard_arrow_left" />
             </button>
           </header>

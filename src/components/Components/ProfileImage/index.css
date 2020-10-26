@@ -1,0 +1,11 @@
+.profile-image {
+    margin-top: 92px;
+    text-align: center;
+}
+
+.profile-image img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}

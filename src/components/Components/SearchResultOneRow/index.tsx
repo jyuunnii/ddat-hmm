@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { User } from '../../../utils';
+import { UserProfile } from '../../../utils';
 import './index.css';
 
 const SBox = styled.div`
@@ -14,7 +14,7 @@ const STextBox = styled.div`
 `;
 
 type SearchResultOneRowProps = {
-    user: User;
+    user: UserProfile;
     selectUser: (userName: string, friendstate: boolean) => void;
     isFriend: boolean;
 }

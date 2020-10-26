@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const serverUrl = "http://localhost:3001";
 
-export type User = {
+export type UserProfile = {
     name: string;
     imageUri ?: string;
     comment ?: string;

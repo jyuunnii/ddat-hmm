@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { User } from '../../../utils';
+import { UserProfile } from '../../../utils';
 import MainMessageLove from '../MainMessageLove';
 import MainMessageThanks from '../MainMessageThanks';
 
@@ -24,7 +24,7 @@ const MMCBox = styled.div`
 `;
 
 type MainMessageProps = {
-    user: User;
+    user: UserProfile;
 }
 
 const messageType = ['love', 'thanks'];
