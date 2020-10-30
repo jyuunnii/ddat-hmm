@@ -1,5 +1,5 @@
 import React from 'react'
-import { MainScale, MainContainer, MainWrapper } from '../../../utils';
+import { MainScale, MainContainer, MainWrapper, MessageRecord } from '../../../utils';
 import MainMessage from '../../Components/MainMessage';
 import MainRecords from '../../Components/MainRecords';
 import MainTitle from '../../Components/MainTitle';
@@ -12,6 +12,14 @@ const testUser = {
     name: "Jynn",
     imageUri: "/images/person.png" 
 }
+
+const testMsgRecords: MessageRecord[] = [
+    {user: {name: "user1"}, message:"사랑해", count: 7, type: false},
+    {user: {name: "user2"}, message:"사랑해", count: 10, type: false},
+    {user: {name: "user3"}, message:"고마워ㅓㅓ", count: 3, type: false},
+    {user: {name: "user4"}, message:"사랑해", count: 5, type: true},
+    {user: {name: "user5"}, message:"사랑해", count: 7, type: true}
+]
 
 const MainPage = () => {
     return(
@@ -27,7 +35,7 @@ const MainPage = () => {
                     <MainMessage user={testUser}/>
                 </MainWrapper>
                 <MainWrapper>
-                    <MainRecords/>
+                    <MainRecords records={testMsgRecords}/>
                 </MainWrapper>
             </MainContainer>
         </MainScale>
