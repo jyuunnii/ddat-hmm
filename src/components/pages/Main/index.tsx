@@ -1,6 +1,7 @@
 import React from 'react'
 import { MainScale, MainContainer, MainWrapper } from '../../../utils';
 import MainMessage from '../../Components/MainMessage';
+import MainRecords from '../../Components/MainRecords';
 import MainTitle from '../../Components/MainTitle';
 import MainWhoList from '../../Components/MainWhoList';
 import './index.css';
@@ -24,6 +25,9 @@ const MainPage = () => {
                 </MainWrapper>
                 <MainWrapper className="main-msg-wrapper">
                     <MainMessage user={testUser}/>
+                </MainWrapper>
+                <MainWrapper>
+                    <MainRecords/>
                 </MainWrapper>
             </MainContainer>
         </MainScale>

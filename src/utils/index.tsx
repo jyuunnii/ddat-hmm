@@ -36,7 +36,6 @@ export const LoginFormContainer = styled.div`
 `;
 
 export const MainContainer = styled.div`
-    margin-top: 48px;
     display: flex;
     flex-direction: column;
     justify-content: center;

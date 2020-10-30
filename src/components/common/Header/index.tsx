@@ -17,7 +17,7 @@ const Header = (props: HeaderProps) => {
     switch(pathname){
       case "/":
         return(
-          <header>
+          <header style={{backgroundColor:"#ffffff"}}>
             <Link to="/" id="home-link">
               <Logo pathname={pathname}/>
             </Link>
@@ -63,7 +63,7 @@ const Header = (props: HeaderProps) => {
       
       case "/profile":
         return(
-          <header>
+          <header style={{backgroundColor:"transparent"}}>
             <Logo pathname={pathname}/>
             <button className="back-button" style={{color: "#ffffff", backgroundColor:"transparent"}} onClick={() => history.goBack()}>
               <MaterialIcon icon="keyboard_arrow_left" />
@@ -72,7 +72,7 @@ const Header = (props: HeaderProps) => {
         );
     }
     return (
-      <header>
+      <header style={{backgroundColor:"#ffffff"}}>
         <Link to="/" id="home-link">
           <Logo pathname={pathname}/>
         </Link>

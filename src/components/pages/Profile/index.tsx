@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
-import { MainContainer, MainScale, MainWrapper, UserProfile } from '../../../utils';
+import styled from 'styled-components';
+import { MainContainer, MainWrapper, UserProfile } from '../../../utils';
 import FriendsList from '../../Components/FriendsList';
 import ProfileImage from '../../Components/ProfileImage';
 import ProfileInformation from '../../Components/ProfileInformation';
 import './index.css'
+
+const ProfileScale = styled.div`
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow: hidden;
+`;
 
 // it needs some feedback about componenet structure "form & button"!
 
@@ -46,7 +58,7 @@ const ProfilePage = () => {
     }
 
     return(
-        <MainScale>
+        <ProfileScale>
             <div><img src={bgimages} alt="bg-img" className="profile-bg-img"/></div>
             <div className="profile-bg-cover"></div>
             <MainContainer>
@@ -81,7 +93,7 @@ const ProfilePage = () => {
                         </div>
                     </MainWrapper>
             </MainContainer>
-        </MainScale>
+        </ProfileScale>
     )
 }
 
