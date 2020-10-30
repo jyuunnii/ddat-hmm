@@ -45,3 +45,20 @@ export const MainContainer = styled.div`
 export const MainWrapper = styled.div`
     width: 100%;
 `;
+
+export const UserProfileContainer = styled.div`
+    padding: 12px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
+
+export const UserProfileBox = styled.div`
+    display: flex;
+    padding-bottom: 12px;
+`;
+
+export const UserProfileTextBox = styled.div`
+    padding-left: 18px;
+    padding-right: 8px; 
+`;
