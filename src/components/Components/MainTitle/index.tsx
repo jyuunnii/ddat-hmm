@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { User } from '../../../utils';
+import { UserProfile } from '../../../utils';
 import './index.css';
 
 type MainTitleProps = {
-    user: User;
+    user: UserProfile;
 }
 
 const MainTitle = ({user}: MainTitleProps) => {

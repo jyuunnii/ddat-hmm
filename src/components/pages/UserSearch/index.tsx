@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MainContainer, MainScale, MainWrapper, myFriend, User } from '../../../utils';
+import { MainContainer, MainScale, MainWrapper, myFriend, UserProfile } from '../../../utils';
 import SearchBox from '../../Components/SearchBox';
 import SearchResult from '../../Components/SearchResult';
 import SearchTitle from '../../Components/SearchTitle';
@@ -9,7 +9,7 @@ import './index.css';
 const oldFriendsList: myFriend[] = [{name: "test1", id: 1}, {name: "test2"}];
 
 // 임시 검색 결과 데이터 (전체 유저에서 이름 검색)
-const apiResults: User[] = [{name: "test1", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
+const apiResults: UserProfile[] = [{name: "test1", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
 {name: "test2", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
 {name: "test3", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
 {name: "test4", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
@@ -36,7 +36,7 @@ const UserSearch = () => {
         }
     }
 
-    const filteredResults: User[] | undefined = apiResults.filter(user => !(oldFriendsList.some(friend=> friend.name === user.name)));
+    const filteredResults: UserProfile[] | undefined = apiResults.filter(user => !(oldFriendsList.some(friend=> friend.name === user.name)));
    
     useEffect(()=>{
         //console.log(target);

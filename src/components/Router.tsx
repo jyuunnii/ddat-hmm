@@ -10,6 +10,7 @@ const SignInPage = lazy(() => import("./pages/SignIn"));
 const SignUpPage = lazy(() => import("./pages/SignUp"));
 const StoragePage = lazy(() => import("./pages/Storage"));
 const UserSearchPage = lazy(() => import("./pages/UserSearch"));
+const ProfilePage = lazy(()=> import ("./pages/Profile"));
 
 const Router = (props: RouterProps) => {
   return (
@@ -19,7 +20,8 @@ const Router = (props: RouterProps) => {
         <Route path="/signin" exact render={()=> <SignInPage/>}/>
         <Route path="/signup" exact render={()=> <SignUpPage/>}/>
         <Route path="/storage" exact render={()=> <StoragePage/>}/>
-        <Route pateh="/search" exact render={() => <UserSearchPage/>}/>
+        <Route path="/search" exact render={() => <UserSearchPage/>}/>
+        <Route pathe="/profile" exact render={()=> <ProfilePage/>}/>
         <Redirect to="/" />
       </Switch>
     </React.Suspense>
