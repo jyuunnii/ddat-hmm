@@ -42,7 +42,7 @@ const MainMessageThanks = ({receiver}: MainMessageLoveProps) => {
             <div className="send-count" style={{visibility: count === 1? "hidden" : "visible"}}>{count}</div>
             <form onSubmit={handleSubmit}>
                 <div className="thanks-title-box">
-                <div className="thanks-message"><input type="text" placeholder="사랑해" name="msg" value={msg} onChange={onChange}/></div>
+                <div className="thanks-message"><input type="text" placeholder="" name="msg" value={msg} onChange={onChange}/></div>
                 <div><span className="material-icons-round edit-icon">edit</span></div>
                 </div>
                 <div className="send-round-box">
