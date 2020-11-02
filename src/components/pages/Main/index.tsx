@@ -1,4 +1,5 @@
 import React from 'react'
+import LoginContext from '../../../context';
 import { MainScale, MainContainer, MainWrapper } from '../../../utils';
 import MainMessage from '../../Components/MainMessage';
 import MainTitle from '../../Components/MainTitle';
@@ -14,19 +15,24 @@ const testUser = {
 
 const MainPage = () => {
     return(
-        <MainScale>
-            <MainContainer>
-                <MainWrapper className="main-title-wrapper">
-                    <MainTitle user={testUser}/>
-                </MainWrapper>
-                <MainWrapper className="main-who-wrapper">
-                    <MainWhoList friendsList={testList}/>
-                </MainWrapper>
-                <MainWrapper className="main-msg-wrapper">
-                    <MainMessage user={testUser}/>
-                </MainWrapper>
-            </MainContainer>
-        </MainScale>
+        <LoginContext.Consumer>
+            {loginData => {
+                return(
+                    <MainScale>
+                    <MainContainer>
+                        <MainWrapper className="main-title-wrapper">
+                            <MainTitle user={testUser}/>
+                        </MainWrapper>
+                        <MainWrapper className="main-who-wrapper">
+                            <MainWhoList friendsList={testList}/>
+                        </MainWrapper>
+                        <MainWrapper className="main-msg-wrapper">
+                            <MainMessage user={testUser}/>
+                        </MainWrapper>
+                    </MainContainer>
+                </MainScale>
+                )}}
+        </LoginContext.Consumer>
     )
 }
 

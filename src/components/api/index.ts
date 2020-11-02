@@ -14,7 +14,7 @@ export const accessUserInfo = async(userId: number, token: string) => {
     .catch((error) => console.log("Error: ", error));
 }
 
-export const login = async(data: { email: string; password: string }) => {
+export const login = async(data: { email: string; password: string }, setUser:(user:{id: string, token: string})=>void) => {
     await fetch(serverUrl+'/auth/login', {
         headers:{
             "Content-Type": "application/json"
@@ -22,8 +22,9 @@ export const login = async(data: { email: string; password: string }) => {
         method: "POST",
         body: JSON.stringify(data) 
     })
-    .then(response => {
-        return  response})
+    .then(response => response.json())
+    .then(dataJSON => JSON.stringify(dataJSON))
+    .then(dataStr => setUser(JSON.parse(dataStr)))
     .catch((error) => console.log("Error: ", error));
 }
 
