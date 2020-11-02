@@ -34,7 +34,7 @@ const Header = (props: HeaderProps) => {
               <Logo pathname={pathname}/>
             </Link>
             <button className="back-button" onClick={() => history.goBack()}>
-              <MaterialIcon icon="arrow_back_ios" />
+              <MaterialIcon icon="keyboard_arrow_left"/>
             </button>
           </header>
         );
@@ -46,7 +46,7 @@ const Header = (props: HeaderProps) => {
                 <Logo pathname={pathname}/>
               </Link>
               <button className="back-button" onClick={() => history.goBack()}>
-                <MaterialIcon icon="arrow_back_ios" />
+                <MaterialIcon icon="keyboard_arrow_left" />
               </button>
             </header>
           );
@@ -56,7 +56,7 @@ const Header = (props: HeaderProps) => {
           <header>
             <Logo pathname={pathname}/>
             <button className="back-button" onClick={() => history.goBack()}>
-              <MaterialIcon icon="arrow_back_ios" />
+              <MaterialIcon icon="keyboard_arrow_left"/>
             </button>
           </header>
         );

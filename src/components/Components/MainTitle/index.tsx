@@ -28,8 +28,8 @@ const MainTitle = ({user}: MainTitleProps) => {
 
     return(
         <div>
-            <div className="main-title">{welcomeMessage}, {user.name}</div>
-            <div className="main-subtitle">Quick touch &amp; express your love</div>
+            <h4 className="main-title">{welcomeMessage}, {user.name}</h4>
+            <h6 className="main-subtitle">Quick touch &amp; express your love</h6>
         </div>
     )
 }

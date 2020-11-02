@@ -4,8 +4,10 @@
     min-width: 58px;
     max-width: 60px;
     height: 16px;
+    overflow: hidden;
     padding-top: 10px;
     padding-left: 12px;
+    margin-right: 4px;
 
     font-family: 'Roboto Slab', serif;
     font-style: normal;

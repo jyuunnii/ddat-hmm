@@ -49,7 +49,7 @@ const ProfileInformation = ({editOn, setEditOn, profile, onCreate}: ProfileInfor
             <ProfileContainer>  
                 <form onSubmit={handleSubmit}>
                     <div className="profile-name-edit"  style={{position:"relative"}}>
-                        <input type="text" name="name" value={name} onChange={onChange} placeholder=""/>
+                        <textarea name="name" value={name} onChange={onChange} rows={1} maxLength={20} placeholder=""/>
                         <span className="material-icons-round edit-name">edit</span>
                     </div>
                     <div className="profile-comment-edit"  style={{position:"relative"}}>

@@ -7,14 +7,14 @@ import MainWhoList from '../../Components/MainWhoList';
 import './index.css';
 
 
-const testList = ['user1', 'user2', 'user3', 'user4', 'user5'];
+const testList = ['userefefefefeef1', 'user2', 'user3', 'user4', 'user5'];
 const testUser = {
     name: "Jynn",
     imageUri: "/images/person.png" 
 }
 
 const testMsgRecords: MessageRecord[] = [
-    {user: {name: "user1"}, message:"사랑해", count: 7, type: false},
+    {user: {name: "userdfdfdfdfdf1"}, message:"사랑해", count: 7, type: false},
     {user: {name: "user2"}, message:"사랑해", count: 10, type: false},
     {user: {name: "user3"}, message:"고마워ㅓㅓ", count: 3, type: false},
     {user: {name: "user4"}, message:"사랑해", count: 5, type: true},
