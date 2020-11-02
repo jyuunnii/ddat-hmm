@@ -40,7 +40,7 @@ const UserSearch = () => {
     const filteredResults: UserProfile[] | undefined = apiResults.filter(user => !(oldFriendsList.some(friend=> friend.name === user.name)));
    
     useEffect(()=>{
-        console.log(target);
+        //console.log(target);
         //TODO: fetch POST => target => GET user info
     })
     

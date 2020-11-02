@@ -1,4 +1,5 @@
 import React from 'react'
+import LoginContext from '../../../context';
 import { MainScale, MainContainer, MainWrapper, MessageRecord } from '../../../utils';
 import MainMessage from '../../Components/MainMessage';
 import MainRecords from '../../Components/MainRecords';
@@ -23,22 +24,27 @@ const testMsgRecords: MessageRecord[] = [
 
 const MainPage = () => {
     return(
-        <MainScale>
-            <MainContainer>
-                <MainWrapper className="main-title-wrapper">
-                    <MainTitle user={testUser}/>
-                </MainWrapper>
-                <MainWrapper className="main-who-wrapper">
-                    <MainWhoList friendsList={testList}/>
-                </MainWrapper>
-                <MainWrapper className="main-msg-wrapper">
-                    <MainMessage user={testUser}/>
-                </MainWrapper>
-                <MainWrapper>
+        <LoginContext.Consumer>
+        {loginData => {
+            return(
+                <MainScale>
+                <MainContainer>
+                    <MainWrapper className="main-title-wrapper">
+                        <MainTitle user={testUser}/>
+                    </MainWrapper>
+                    <MainWrapper className="main-who-wrapper">
+                        <MainWhoList friendsList={testList}/>
+                    </MainWrapper>
+                    <MainWrapper className="main-msg-wrapper">
+                        <MainMessage user={testUser}/>
+                    </MainWrapper>
+                    <MainWrapper>
                     <MainRecords records={testMsgRecords}/>
                 </MainWrapper>
-            </MainContainer>
-        </MainScale>
+                </MainContainer>
+            </MainScale>
+            )}}
+    </LoginContext.Consumer>
     )
 }
 

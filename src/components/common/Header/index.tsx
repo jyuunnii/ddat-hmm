@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import LoginContext from '../../../context';
 import Logo from '../Logo';
 import MaterialIcon from '../MaterialIcon';
 import './index.css'
@@ -17,14 +18,39 @@ const Header = (props: HeaderProps) => {
     switch(pathname){
       case "/":
         return(
-          <header style={{backgroundColor:"#ffffff"}}>
-            <Link to="/" id="home-link">
-              <Logo pathname={pathname}/>
-            </Link>
-            <button className="menu-button">
-              <MaterialIcon icon="menu" />
-            </button>
-          </header>
+          <LoginContext.Consumer>
+            {loginUser => {
+              if(loginUser.user.id === ""){
+                return(
+                  <header style={{backgroundColor:"#ffffff"}}>
+                    <Link to="/" id="home-link">
+                      <Logo pathname={pathname}/>
+                    </Link>
+                    <Link to="/signin">
+                      <button className="start-button">
+                      <span>start!</span>
+                      </button>
+                    </Link>
+                  </header>
+                )
+              }else{
+                return(
+                  <header style={{backgroundColor:"#ffffff"}}>
+                    <Link to="/" id="home-link">
+                      <Logo pathname={pathname}/>
+                    </Link>
+                    <Link to="/profile">
+                      <button className="header-profile">
+                      <img src="/images/person.png" alt="profile-img"/>
+                      </button>
+                    </Link>
+                  </header>
+                )
+              }
+            }}
+         
+          </LoginContext.Consumer>
+          
         );
 
       case "/signin":
