@@ -10,6 +10,7 @@ const FWrapper = styled.div`
     overflow-y: auto;
     margin-top: 32px;
     padding-top: 32px;
+    padding-right: 18px;
 `;
 
 type FriendsListProps = {

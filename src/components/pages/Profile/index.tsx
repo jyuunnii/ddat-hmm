@@ -86,7 +86,7 @@ const ProfilePage = () => {
                     <MainWrapper>
                          <div className="friendslist-box" style={{
                              position: "absolute",
-                             bottom: moveUp? "48px" : "-400px"
+                             bottom: moveUp? "32px" : "-440px"
                          }}>
                              <button onClick={()=>showFriendsList(false)} className="friendslist-close-button"><span className="material-icons">cancel</span></button>
                             <FriendsList currentFriendsList={currentFriendsList} updateFriends={updateFriends}/>
