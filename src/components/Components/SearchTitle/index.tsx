@@ -4,8 +4,8 @@ import './index.css';
 const SearchTitle = () => {
     return(
         <div>
-            <div className="search-title">Search Friends</div>
-            <div className="search-subtitle">이름을 검색해서 친구를 추가하세요.</div>
+            <h4 className="search-title">Search Friends</h4>
+            <h6 className="search-subtitle">이름을 검색해서 친구를 추가하세요.</h6>
         </div>
     )
 }

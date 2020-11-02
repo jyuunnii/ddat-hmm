@@ -28,7 +28,9 @@ const FriendsListOneRow = ({user, selectUser, isFriend}: FriendsListOneRowProps)
                     await selectUser(user.name, currentFriendState);     
                     changeFriendState(currentFriendState);                       
                     }} 
-                    style={{background: currentFriendState? "#9ED5E7":"#ffffff", border:  currentFriendState? "1px solid #fefefe":"1px solid #9ED5E7", color:  currentFriendState? "#fefefe":"#9ED5E7"}} 
+                    style={{background: currentFriendState? "#ffffff":"#9ED5E7", 
+                            border:  currentFriendState? "1px solid #9ED5E7":"1px solid #fefefe", 
+                            color:  currentFriendState? "#9ED5E7":"#ffffff"}} 
                     value={currentFriendState? "Delete" : "Add"} className="add-button"/>
             </div>   
        </UserProfileBox>

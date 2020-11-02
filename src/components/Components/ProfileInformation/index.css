@@ -42,6 +42,7 @@
     height: 26px;
     border-bottom: 1px solid #ffffff;
     margin-bottom: 12px;
+    text-align: center;
 }
 
 .profile-comment-edit {
@@ -52,11 +53,9 @@
     text-align: center;
 }
 
-.profile-name-edit input{
-    max-width: 256px;
-    height: 26px;
-    padding: 0px;
+.profile-name-edit textarea{
     background-color: transparent;
+    border-color: transparent;
 
     font-family: 'Roboto', sans-serif;
     font-style: normal;
@@ -80,7 +79,7 @@
     text-align: center;
 }
 
-.profile-name-edit input::placeholder {
+.profile-name-edit textarea::placeholder {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: normal;

@@ -20,7 +20,7 @@ const ProfileScale = styled.div`
 // it needs some feedback about componenet structure "form & button"!
 
 // 임시 친구목록 데이터 (내 정보에서 불러오기) ==> 최상위 컴포넌트로 이동 ==> updateFriends 를 통해 현재 컴포넌트에서 새로운 친구목록 관리 => 상위 컴포넌트에 전달하여 상태관리
-const currentFriendsList: UserProfile[] = [{name: "test1"}, {name: "test2", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
+const currentFriendsList: UserProfile[] = [{name: "testefefeefe1"}, {name: "test2", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
 , {name: "test3", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
 , {name: "test4", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
 , {name: "test5", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}

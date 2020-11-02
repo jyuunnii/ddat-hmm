@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
 
-.friend-name {
+.main-friend-name {
     padding: 8px 0px;
     text-align: center;
+    max-width: 60px;
+    overflow: hidden;
 
     font-family: 'Roboto Slab', serif;
     font-style: normal;
@@ -12,7 +14,7 @@
     line-height: 18px;
 }
 
-.friend-image{
+.main-friend-image{
     width: 48px;
     height: 48px;
     border: 1px solid #9ED5E7;
