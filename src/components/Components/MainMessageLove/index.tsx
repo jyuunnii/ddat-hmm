@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { UserProfile } from '../../../utils';
+import { UserPublic } from '../../../utils';
 import './index.css';
 
 type MainMessageLoveProps = {
-    receiver: UserProfile;
+    receiver: UserPublic;
 }
 
 const MainMessageLove = ({receiver}: MainMessageLoveProps) => {
@@ -35,7 +35,7 @@ const MainMessageLove = ({receiver}: MainMessageLoveProps) => {
     return(
         <div>
             <div className="background-image-box">
-                <img src={receiver.imageUri} className="receiver-img"  alt="receiver-img" style={{width: "240px", height:"240px"}}/>
+                <img src={receiver.profileImageUri} className="receiver-img"  alt="receiver-img" style={{width: "240px", height:"240px"}}/>
             </div>
             <div className="send-count" style={{visibility: count === 1? "hidden" : "visible"}}>{count}</div>
             <form onSubmit={handleSubmit}>

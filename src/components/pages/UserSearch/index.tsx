@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MainContainer, MainScale, MainWrapper, myFriend, UserProfile } from '../../../utils';
+import { MainContainer, MainScale, MainWrapper, Friends, UserPublic } from '../../../utils';
 import SearchBox from '../../Components/SearchBox';
 import SearchResult from '../../Components/SearchResult';
 import SearchTitle from '../../Components/SearchTitle';
@@ -7,14 +7,12 @@ import SearchTitle from '../../Components/SearchTitle';
 import './index.css';
 
 // 임시 친구목록 데이터 (내 정보에서 불러오기) ==> 최상위 컴포넌트로 이동 ==> updateFriends 를 통해 현재 컴포넌트에서 새로운 친구목록 관리 => 상위 컴포넌트에 전달하여 상태관리
-const oldFriendsList: myFriend[] = [{name: "test1", id: 1}, {name: "test2"}];
+const oldFriendsList: Friends = {friends: [{id: 1, name: "test1", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{friends:[]}},
+{id: 2, name: "test2", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{friends:[]}}]};
 
 // 임시 검색 결과 데이터 (전체 유저에서 이름 검색)
-const apiResults: UserProfile[] = [{name: "test1", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
-{name: "test2", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
-{name: "test3", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
-{name: "test4", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"},
-{name: "test5", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}];
+const apiResults: UserPublic[] = [{id: 1, name: "test1", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{friends:[]}},
+{id: 3, name: "test3", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{friends:[]}}];
 
 
 
@@ -37,7 +35,7 @@ const UserSearch = () => {
         }
     }
 
-    const filteredResults: UserProfile[] | undefined = apiResults.filter(user => !(oldFriendsList.some(friend=> friend.name === user.name)));
+    const filteredResults: UserPublic[] | undefined = apiResults.filter(user => !(oldFriendsList.friends.some(friend=> friend.name === user.name)));
    
     useEffect(()=>{
         //console.log(target);

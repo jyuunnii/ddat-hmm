@@ -10,22 +10,25 @@ import './index.css';
 
 const testList = ['userefefefefeef1', 'user2', 'user3', 'user4', 'user5'];
 const testUser = {
+    id: 1,
     name: "Jynn",
-    imageUri: "/images/person.png" 
+    profileImageUri: "/images/person.png",
+    friends:{friends:[]}
 }
 
 const testMsgRecords: MessageRecord[] = [
-    {user: {name: "userdfdfdfdfdf1"}, message:"사랑해", count: 7, type: false},
-    {user: {name: "user2"}, message:"사랑해", count: 10, type: false},
-    {user: {name: "user3"}, message:"고마워ㅓㅓ", count: 3, type: false},
-    {user: {name: "user4"}, message:"사랑해", count: 5, type: true},
-    {user: {name: "user5"}, message:"사랑해", count: 7, type: true}
+    {user: {id: 1, name: "userdfdfdfdfdf1", friends:{friends:[]}}, message:"사랑해", count: 7, type: false},
+    {user: {id: 2, name: "user2", friends:{friends:[]}}, message:"사랑해", count: 10, type: false},
+    {user: {id: 3, name: "user3", friends:{friends:[]}}, message:"고마워ㅓㅓ", count: 3, type: false},
+    {user: {id: 4, name: "user4", friends:{friends:[]}}, message:"사랑해", count: 5, type: true},
+    {user: {id: 5, name: "user5", friends:{friends:[]}}, message:"사랑해", count: 7, type: true}
 ]
 
 const MainPage = () => {
     return(
         <LoginContext.Consumer>
-        {loginData => {
+        {loginData => {    
+
             return(
                 <MainScale>
                 <MainContainer>
@@ -44,7 +47,7 @@ const MainPage = () => {
                 </MainContainer>
             </MainScale>
             )}}
-    </LoginContext.Consumer>
+        </LoginContext.Consumer>
     )
 }
 

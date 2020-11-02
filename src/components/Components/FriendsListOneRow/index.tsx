@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { UserProfile, UserProfileBox, UserProfileTextBox } from '../../../utils';
+import { UserPublic, UserProfileBox, UserProfileTextBox } from '../../../utils';
 import './index.css';
 
 type FriendsListOneRowProps = {
-    user: UserProfile;
+    user: UserPublic;
     selectUser: (userName: string, friendstate: boolean) => void;
     isFriend: boolean;
 }

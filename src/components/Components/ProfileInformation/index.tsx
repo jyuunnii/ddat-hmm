@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { UserProfile } from '../../../utils';
+import { UserPublic } from '../../../utils';
 import './index.css';
 
 const ProfileContainer = styled.div`
@@ -12,14 +12,16 @@ const ProfileContainer = styled.div`
 type ProfileInformationProps = {
     editOn: boolean;
     setEditOn: (mode: boolean) => void;
-    profile: UserProfile;
-    onCreate: (value: UserProfile) => void;
+    profile: UserPublic;
+    onCreate: (value: UserPublic) => void;
 }
 
 const ProfileInformation = ({editOn, setEditOn, profile, onCreate}: ProfileInformationProps) => {
     const [newprofile, setNewProfile] = useState({
+        id: profile.id,
         name: profile.name,
-        comment: profile.comment
+        comment: profile.comment,
+        friends: profile.friends
     });
     const {name, comment} =  newprofile;
 

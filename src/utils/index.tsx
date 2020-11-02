@@ -2,19 +2,29 @@ import styled from "styled-components";
 
 export const serverUrl = "http://localhost:3001";
 
-export type UserProfile = {
+export type UserPrivate = {
+    id: number;
     name: string;
-    imageUri ?: string;
+    profileImageUri ?: string;
+    backgroundImageUri ?: string;
     comment ?: string;
+    friendsList: Friends[];
 }
 
-export type myFriend = {
-    id?: number,
-    name: string
+export type UserPublic = {
+    id: number;
+    name: string;
+    profileImageUri ?: string;
+    comment ?: string;
+    friends: Friends;
+}
+
+export type Friends = {
+    friends: UserPublic[];
 }
 
 export type MessageRecord = {
-    user: UserProfile;
+    user: UserPublic;
     message: string;
     count: number;
     type: boolean; // true: sent <=> false: received

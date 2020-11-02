@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { UserProfile } from '../../../utils';
+import { UserPublic } from '../../../utils';
 import './index.css';
 
 
 type MainMessageLoveProps = {
-    receiver: UserProfile;
+    receiver: UserPublic;
 }
 
 const MainMessageThanks = ({receiver}: MainMessageLoveProps) => {

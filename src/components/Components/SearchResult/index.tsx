@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UserProfile, UserProfileContainer } from '../../../utils';
+import { Friends, UserProfileContainer, UserPublic } from '../../../utils';
 import SearchResultOneRow from '../SearchResultOneRow';
 import './index.css';
 
@@ -16,8 +16,8 @@ const SWrapper = styled.div`
 type SearchResultProps  = {
     searchTarget: string;
     updateFriends: (user: string, friendstate: boolean) => void;
-    searchResults: UserProfile[] | undefined;
-    oldFriendsList: UserProfile[];
+    searchResults: UserPublic[] | undefined;
+    oldFriendsList: Friends;
 }
 
 const SearchResult = ({searchTarget, updateFriends, searchResults, oldFriendsList}: SearchResultProps) => {  
@@ -38,7 +38,7 @@ const SearchResult = ({searchTarget, updateFriends, searchResults, oldFriendsLis
         <UserProfileContainer>
             <div className="search-result-header">검색결과</div>
             <SWrapper>
-            {oldFriendsList.map((user)=>{
+            {oldFriendsList.friends.map((user)=>{
                 return(<SearchResultOneRow key={user.name} user={user} selectUser={selectUser} isFriend={true}/>)
             })}
             {searchResults?.map((user)=>{     
