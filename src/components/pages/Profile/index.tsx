@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
-import { MainContainer, MainScale, MainWrapper, UserProfile } from '../../../utils';
+import styled from 'styled-components';
+import { MainContainer, MainWrapper, UserProfile } from '../../../utils';
 import FriendsList from '../../Components/FriendsList';
 import ProfileImage from '../../Components/ProfileImage';
 import ProfileInformation from '../../Components/ProfileInformation';
 import './index.css'
 
+const ProfileScale = styled.div`
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow: hidden;
+`;
+
 // it needs some feedback about componenet structure "form & button"!
 
 // 임시 친구목록 데이터 (내 정보에서 불러오기) ==> 최상위 컴포넌트로 이동 ==> updateFriends 를 통해 현재 컴포넌트에서 새로운 친구목록 관리 => 상위 컴포넌트에 전달하여 상태관리
-const currentFriendsList: UserProfile[] = [{name: "test1"}, {name: "test2", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
+const currentFriendsList: UserProfile[] = [{name: "testefefeefe1"}, {name: "test2", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
 , {name: "test3", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
 , {name: "test4", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
 , {name: "test5", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
@@ -46,7 +58,7 @@ const ProfilePage = () => {
     }
 
     return(
-        <MainScale>
+        <ProfileScale>
             <div><img src={bgimages} alt="bg-img" className="profile-bg-img"/></div>
             <div className="profile-bg-cover"></div>
             <MainContainer>
@@ -74,14 +86,14 @@ const ProfilePage = () => {
                     <MainWrapper>
                          <div className="friendslist-box" style={{
                              position: "absolute",
-                             bottom: moveUp? "48px" : "-400px"
+                             bottom: moveUp? "32px" : "-440px"
                          }}>
                              <button onClick={()=>showFriendsList(false)} className="friendslist-close-button"><span className="material-icons">cancel</span></button>
                             <FriendsList currentFriendsList={currentFriendsList} updateFriends={updateFriends}/>
                         </div>
                     </MainWrapper>
             </MainContainer>
-        </MainScale>
+        </ProfileScale>
     )
 }
 

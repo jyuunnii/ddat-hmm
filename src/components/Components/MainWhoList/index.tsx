@@ -30,8 +30,8 @@ const MainWhoList = ({friendsList}: MainWhoListProps) => {
         {friendsList.map((friend, index) => {
             return(
             <MWLCWrapper key={index}>
-                <div className="friend-image"></div>
-                <div className="friend-name">{friend}</div>
+                <div className="main-friend-image"></div>
+                <div className="main-friend-name">{friend}</div>
             </MWLCWrapper>
             )
         })}

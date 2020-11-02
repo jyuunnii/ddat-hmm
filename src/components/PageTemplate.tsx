@@ -49,7 +49,6 @@ const PageTemplate = () => {
             left: 0,
             backgroundColor: "#ffffff",
             opacity: 1,
-            transform: "translate(0, 0)",
             ...springProps,
           }}
         >

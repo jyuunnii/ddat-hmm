@@ -13,6 +13,13 @@ export type myFriend = {
     name: string
 }
 
+export type MessageRecord = {
+    user: UserProfile;
+    message: string;
+    count: number;
+    type: boolean; // true: sent <=> false: received
+}
+
 export const MainScale = styled.div`
     width: 100%;
     height: 100%;
@@ -36,7 +43,6 @@ export const LoginFormContainer = styled.div`
 `;
 
 export const MainContainer = styled.div`
-    margin-top: 48px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,4 +67,20 @@ export const UserProfileBox = styled.div`
 export const UserProfileTextBox = styled.div`
     padding-left: 18px;
     padding-right: 8px; 
+`;
+
+export const RecordWrapper = styled.div`
+    padding: 4px 0px;
+`;
+
+export const RecordBox = styled.div`
+    width: 100%;
+    height: 36px;
+    background: #FFFFFF;
+    border: 1px solid rgba(219, 219, 219, 0.5);
+    box-sizing: border-box;
+    border-radius: 4px;
+    position: relative;
+
+    display: flex;
 `;

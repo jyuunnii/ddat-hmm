@@ -3,6 +3,7 @@ import { MainContainer, MainScale, MainWrapper, myFriend, UserProfile } from '..
 import SearchBox from '../../Components/SearchBox';
 import SearchResult from '../../Components/SearchResult';
 import SearchTitle from '../../Components/SearchTitle';
+
 import './index.css';
 
 // 임시 친구목록 데이터 (내 정보에서 불러오기) ==> 최상위 컴포넌트로 이동 ==> updateFriends 를 통해 현재 컴포넌트에서 새로운 친구목록 관리 => 상위 컴포넌트에 전달하여 상태관리
@@ -39,7 +40,7 @@ const UserSearch = () => {
     const filteredResults: UserProfile[] | undefined = apiResults.filter(user => !(oldFriendsList.some(friend=> friend.name === user.name)));
    
     useEffect(()=>{
-        //console.log(target);
+        console.log(target);
         //TODO: fetch POST => target => GET user info
     })
     

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.record-button {
+    text-align: center;
+    padding-top: 32px;
+}
+
+.record-button button{
+    width: 120px;
+    height: 24px;
+    background-color: #FFFFFF;
+    border: 1px solid #DBDBDB;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+    color: #292929;
+}
+
+.sent-button {
+    border-radius: 4px 0px 0px 4px;
+}
+
+.received-button {
+    border-radius: 0px 4px 4px 0px;
+}
+
+.today-date {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    color: #757575;
+
+    padding-top: 12px;
+}
