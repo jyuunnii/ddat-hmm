@@ -1,5 +1,6 @@
 import React, { lazy } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import LoginContext from "../context";
 
 interface RouterProps {
   location?: any;
@@ -13,16 +14,23 @@ const ProfilePage = lazy(()=> import ("./pages/Profile"));
 
 const Router = (props: RouterProps) => {
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
-      <Switch location={props.location}>
-        <Route path="/" exact render={() => <MainPage />} />
-        <Route path="/signin" exact render={()=> <SignInPage/>}/>
-        <Route path="/signup" exact render={()=> <SignUpPage/>}/>
-        <Route path="/search" exact render={() => <UserSearchPage/>}/>
-        <Route pathe="/profile" exact render={()=> <ProfilePage/>}/>
-        <Redirect to="/" />
-      </Switch>
-    </React.Suspense>
+    <LoginContext.Consumer>
+      {loginUser=>{
+        return(
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <Switch location={props.location}>
+              <Route path="/" exact render={() => <MainPage user={loginUser.user} />} />
+              <Route path="/signin" exact render={()=> <SignInPage/>}/>
+              <Route path="/signup" exact render={()=> <SignUpPage/>}/>
+              <Route path="/search" exact render={() => <UserSearchPage/>}/>
+              <Route pathe="/profile" exact render={()=> <ProfilePage/>}/>
+              <Redirect to="/" />
+            </Switch>
+          </React.Suspense>
+        )}
+      }
+    </LoginContext.Consumer>
+    
   );
 };
 

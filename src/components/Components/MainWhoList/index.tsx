@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Friends } from '../../../utils';
 import './index.css';
 
 
@@ -21,13 +22,20 @@ const MWLCWrapper = styled.div`
 
 
 type MainWhoListProps = {
-    friendsList: string[];
+    friendsList: Friends | undefined;
 }
 
 const MainWhoList = ({friendsList}: MainWhoListProps) => {
+    if(! Array.isArray(friendsList?.friends) || !friendsList?.friends.length){
+        return(
+          <MWLContainer>
+             <div>친구를 추가해주세요.</div> 
+          </MWLContainer>
+        )
+    }
     return(
         <MWLContainer>
-        {friendsList.map((friend, index) => {
+        {friendsList?.friends.map((friend, index) => {
             return(
             <MWLCWrapper key={index}>
                 <div className="main-friend-image"></div>

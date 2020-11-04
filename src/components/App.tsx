@@ -6,7 +6,7 @@ import DesktopFallback from './DesktopFallback';
 import PageTemplate from './PageTemplate';
 
 const App = () => {
-  const initialState = {id:"", token:""};
+  const initialState = {id:7438, token:""};
   const [loginUser, setLoginUser] = useState(initialState);
   return(
     <>
@@ -15,7 +15,7 @@ const App = () => {
         <BrowserRouter>
           <LoginContext.Provider value={{
             user: loginUser,
-            loginAccess: (user:{id: string, token: string})=>setLoginUser(user)}}>
+            loginAccess: (user:{id: number, token: string})=>setLoginUser(user)}}>
             <PageTemplate/>
           </LoginContext.Provider>
         </BrowserRouter>

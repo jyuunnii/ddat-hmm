@@ -1,8 +1,8 @@
 import {createContext} from 'react';
 
 const LoginContext = createContext({
-    user: {id:"", token:""},
-    loginAccess:(user: {id:string, token: string})=>{}
+    user: {id:7438, token:""},
+    loginAccess:(user: {id:number, token: string})=>{}
 })
 
 export default LoginContext;

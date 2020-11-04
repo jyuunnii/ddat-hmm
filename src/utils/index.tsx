@@ -5,10 +5,13 @@ export const serverUrl = "http://localhost:3001";
 export type UserPrivate = {
     id: number;
     name: string;
+    email: string;
+    password: string;
     profileImageUri ?: string;
     backgroundImageUri ?: string;
     comment ?: string;
-    friendsList: Friends[];
+    friendsList: Friends;
+    messages: MessageRecord[];
 }
 
 export type UserPublic = {
@@ -24,10 +27,12 @@ export type Friends = {
 }
 
 export type MessageRecord = {
-    user: UserPublic;
-    message: string;
+    receiver: string;
+    sender: string;
+    content: string;
     count: number;
     type: boolean; // true: sent <=> false: received
+    date: Date;
 }
 
 export const MainScale = styled.div`

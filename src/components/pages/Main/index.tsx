@@ -1,54 +1,49 @@
-import React from 'react'
-import LoginContext from '../../../context';
-import { MainScale, MainContainer, MainWrapper, MessageRecord } from '../../../utils';
+import React, { useEffect, useState } from 'react'
+import { MainScale, MainContainer, MainWrapper, MessageRecord, UserPublic } from '../../../utils';
+import { getUserById } from '../../api';
 import MainMessage from '../../Components/MainMessage';
 import MainRecords from '../../Components/MainRecords';
 import MainTitle from '../../Components/MainTitle';
 import MainWhoList from '../../Components/MainWhoList';
 import './index.css';
 
-
-const testList = ['userefefefefeef1', 'user2', 'user3', 'user4', 'user5'];
-const testUser = {
-    id: 1,
-    name: "Jynn",
-    profileImageUri: "/images/person.png",
-    friends:{friends:[]}
+type MainPageProps = {
+    user: {id: number, token: string}
 }
 
-const testMsgRecords: MessageRecord[] = [
-    {user: {id: 1, name: "userdfdfdfdfdf1", friends:{friends:[]}}, message:"사랑해", count: 7, type: false},
-    {user: {id: 2, name: "user2", friends:{friends:[]}}, message:"사랑해", count: 10, type: false},
-    {user: {id: 3, name: "user3", friends:{friends:[]}}, message:"고마워ㅓㅓ", count: 3, type: false},
-    {user: {id: 4, name: "user4", friends:{friends:[]}}, message:"사랑해", count: 5, type: true},
-    {user: {id: 5, name: "user5", friends:{friends:[]}}, message:"사랑해", count: 7, type: true}
-]
+const MainPage = (props: MainPageProps) => {
+    const [userData, setUserData] = useState<UserPublic>();
+    const [userMessages, setUserMessages] = useState<MessageRecord[]>();
 
-const MainPage = () => {
+    useEffect(() => {    
+        getUserById(props.user.id, props.user.token, setUserData, setUserMessages);  
+    }, [props])
+
+    if(userData?.id === undefined){
+        return(
+            <div>로그인이 필요합니다.</div>
+        )
+    }
+        
     return(
-        <LoginContext.Consumer>
-        {loginData => {    
-
-            return(
-                <MainScale>
-                <MainContainer>
-                    <MainWrapper className="main-title-wrapper">
-                        <MainTitle user={testUser}/>
-                    </MainWrapper>
-                    <MainWrapper className="main-who-wrapper">
-                        <MainWhoList friendsList={testList}/>
-                    </MainWrapper>
-                    <MainWrapper className="main-msg-wrapper">
-                        <MainMessage user={testUser}/>
-                    </MainWrapper>
-                    <MainWrapper>
-                    <MainRecords records={testMsgRecords}/>
-                </MainWrapper>
-                </MainContainer>
-            </MainScale>
-            )}}
-        </LoginContext.Consumer>
+        <MainScale>
+        <MainContainer>
+            <MainWrapper className="main-title-wrapper">
+                <MainTitle user={userData}/>
+            </MainWrapper>
+            <MainWrapper className="main-who-wrapper">
+                <MainWhoList friendsList={userData.friends}/>
+            </MainWrapper>
+            <MainWrapper className="main-msg-wrapper">
+                <MainMessage user={userData}/>
+            </MainWrapper>
+            <MainWrapper>
+            <MainRecords records={userMessages}/>
+        </MainWrapper>
+        </MainContainer>
+    </MainScale>
     )
+    
 }
 
 export default MainPage;
