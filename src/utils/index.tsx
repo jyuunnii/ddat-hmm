@@ -10,7 +10,7 @@ export type UserPrivate = {
     profileImageUri ?: string;
     backgroundImageUri ?: string;
     comment ?: string;
-    friendsList: Friends;
+    friends: Friends;
     messages: MessageRecord[];
 }
 
@@ -23,7 +23,8 @@ export type UserPublic = {
 }
 
 export type Friends = {
-    friends: UserPublic[];
+    followed: UserPublic[];
+    follower: UserPublic[];
 }
 
 export type MessageRecord = {

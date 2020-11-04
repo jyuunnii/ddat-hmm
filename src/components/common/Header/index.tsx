@@ -20,7 +20,7 @@ const Header = (props: HeaderProps) => {
         return(
           <LoginContext.Consumer>
             {loginUser => {
-              if(loginUser.user.id === 7438){
+              if(loginUser.user.id === 0){
                 return(
                   <header style={{backgroundColor:"#ffffff"}}>
                     <Link to="/" id="home-link">

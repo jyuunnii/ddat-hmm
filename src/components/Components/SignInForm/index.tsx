@@ -13,7 +13,7 @@ interface UserData {
 const SignInForm = () => {
     const [isEmailValid, setEmailValid] = useState<boolean>();
     const [isPasswordValid, setPasswordValid] = useState<boolean>();
-    const [userLoginInfo, setUserLoginInfo] = useState<{id:number, token: string}>({id:7438, token:""});
+    const [userLoginInfo, setUserLoginInfo] = useState<{id:number, token: string}>({id:0, token:""});
     const {loginAccess} = useContext(LoginContext);
     
     const [form, setForm] = useState({

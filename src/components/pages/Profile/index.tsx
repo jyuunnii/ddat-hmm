@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Friends, MainContainer, MainWrapper, UserPublic } from '../../../utils';
+import { MainContainer, MainWrapper, UserPublic } from '../../../utils';
 import FriendsList from '../../Components/FriendsList';
 import ProfileImage from '../../Components/ProfileImage';
 import ProfileInformation from '../../Components/ProfileInformation';
@@ -20,13 +20,13 @@ const ProfileScale = styled.div`
 // it needs some feedback about componenet structure "form & button"!
 
 // 임시 친구목록 데이터 (내 정보에서 불러오기) ==> 최상위 컴포넌트로 이동 ==> updateFriends 를 통해 현재 컴포넌트에서 새로운 친구목록 관리 => 상위 컴포넌트에 전달하여 상태관리
-const currentFriendsList: Friends = {friends: [{id: 1, name: "testefefeefe1", friends:{friends:[]}}, 
-{id: 2, name: "test2", comment:"안녕하세요:)", friends:{friends:[]}}]};
+const currentFriendsList: UserPublic[] = [{id: 1, name: "testefefeefe1", friends:{follower:[], followed:[]}}, 
+{id: 2, name: "test2", comment:"안녕하세요:)", friends:{follower:[], followed:[]}}];
 
 const ProfilePage = () => {
     const bgimages = "/images/bg.jpeg";
     const [editOn, setEditOn] = useState<boolean>(false);
-    const [profile, setProfile] = useState<UserPublic>({id: 1, name: "Jynn Park", comment: "Hello !", friends: currentFriendsList});
+    const [profile, setProfile] = useState<UserPublic>({id: 1, name: "Jynn Park", comment: "Hello !", friends:{follower: currentFriendsList, followed:[]}});
     const [moveUp, setMoveUp] = useState<boolean>(false);
     const onCreate = async(data: UserPublic) => {
         await setProfile(data);

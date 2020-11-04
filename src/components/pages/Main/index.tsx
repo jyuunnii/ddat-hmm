@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { MainScale, MainContainer, MainWrapper, MessageRecord, UserPublic } from '../../../utils';
+import { MainScale, MainContainer, MainWrapper, MessageRecord, UserPublic, Friends } from '../../../utils';
 import { getUserById } from '../../api';
 import MainMessage from '../../Components/MainMessage';
 import MainRecords from '../../Components/MainRecords';
 import MainTitle from '../../Components/MainTitle';
 import MainWhoList from '../../Components/MainWhoList';
+import Enter from '../Enter';
 import './index.css';
 
 type MainPageProps = {
@@ -12,19 +13,21 @@ type MainPageProps = {
 }
 
 const MainPage = (props: MainPageProps) => {
-    const [userData, setUserData] = useState<UserPublic>();
-    const [userMessages, setUserMessages] = useState<MessageRecord[]>();
+    const [userData, setUserData] = useState<UserPublic>({id:0, name:"", friends:{follower:[], followed:[]}});
+    const [userMessages, setUserMessages] = useState<MessageRecord[]>([]);
+    const [userFriends, setUserFriends] = useState<Friends>({follower: [], followed:[]});
 
     useEffect(() => {    
-        getUserById(props.user.id, props.user.token, setUserData, setUserMessages);  
-    }, [props])
+        if(props.user.id > 0){
+            getUserById(props.user.id, props.user.token, setUserData, setUserMessages, setUserFriends);  
+        }
+    }, [props.user.id, props.user.token])
 
-    if(userData?.id === undefined){
-        return(
-            <div>로그인이 필요합니다.</div>
-        )
+   
+    if(props.user.id === 0 || userData.id === 0){
+        return(<Enter/>)
     }
-        
+
     return(
         <MainScale>
         <MainContainer>
@@ -32,7 +35,7 @@ const MainPage = (props: MainPageProps) => {
                 <MainTitle user={userData}/>
             </MainWrapper>
             <MainWrapper className="main-who-wrapper">
-                <MainWhoList friendsList={userData.friends}/>
+                <MainWhoList friendsList={userFriends}/>
             </MainWrapper>
             <MainWrapper className="main-msg-wrapper">
                 <MainMessage user={userData}/>
@@ -43,7 +46,6 @@ const MainPage = (props: MainPageProps) => {
         </MainContainer>
     </MainScale>
     )
-    
 }
 
 export default MainPage;

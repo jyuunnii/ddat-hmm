@@ -6,7 +6,7 @@ import DesktopFallback from './DesktopFallback';
 import PageTemplate from './PageTemplate';
 
 const App = () => {
-  const initialState = {id:7438, token:""};
+  const initialState = {id: 0, token: ""};
   const [loginUser, setLoginUser] = useState(initialState);
   return(
     <>

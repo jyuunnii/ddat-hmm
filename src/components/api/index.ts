@@ -1,9 +1,10 @@
-import { MessageRecord, serverUrl, UserPublic } from "../../utils";
+import { Friends, MessageRecord, serverUrl, UserPublic } from "../../utils";
 
 
 export const getUserById = async(id: number, token: string, 
                                 setUserData:(user: UserPublic)=>void, 
-                                setUserMessages:(msg: MessageRecord[])=>void) => {
+                                setUserMessages:(msg: MessageRecord[])=>void,
+                                setUserFriends:(friends: Friends)=>void) => {
 
     Promise.all([
         await fetch(serverUrl+`/user/${id}`, {
@@ -14,6 +15,13 @@ export const getUserById = async(id: number, token: string,
             method: "GET"
         }),
         await fetch(serverUrl+`/message/${id}`, {
+            headers:{
+                "Content-Type": "application/json",
+                "x-access-token": token
+            },
+            method: "GET"
+        }),
+        await fetch(serverUrl+`/follow/${id}`, {
             headers:{
                 "Content-Type": "application/json",
                 "x-access-token": token
@@ -31,6 +39,7 @@ export const getUserById = async(id: number, token: string,
     .then(data => {
         setUserData(data[0]);
         setUserMessages(data[1]);
+        setUserFriends(data[2]);
     })
     .catch((error) => console.log("Error: ", error));
 }
