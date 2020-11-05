@@ -82,7 +82,7 @@ const SignInForm = () => {
 
 
             <div className="sign-in">
-                <input type="text" name="password" value={password} onChange={onChange}  placeholder="Password" className="sign-in-input"/>
+                <input type="password" name="password" value={password} onChange={onChange}  placeholder="Password" className="sign-in-input"/>
                 <span className="material-icons-outlined caution-icon" 
                 style={{
                     display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block"),

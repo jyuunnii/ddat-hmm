@@ -14,7 +14,7 @@ const FWrapper = styled.div`
 `;
 
 type FriendsListProps = {
-    currentFriendsList: {following: UserPublic[], follower: UserPublic[]};
+    currentFriendsList: UserPublic[];
     updateFriends: (user: string, friendstate: boolean) => void;
 }
 
@@ -25,7 +25,7 @@ const FriendsList = ({currentFriendsList, updateFriends}: FriendsListProps) => {
     return(
         <UserProfileContainer>
             <FWrapper>
-                {currentFriendsList.following.map((friend)=>{
+                {currentFriendsList.map((friend)=>{
                     return(<FriendsListOneRow key={friend.id} user={friend} selectUser={selectUser} />)
                 })}
             </FWrapper>

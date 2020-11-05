@@ -44,15 +44,30 @@ export const getUserById = async(id: number, token: string,
     .catch((error) => console.log("Error: ", error));
 }
 
-export const updateUserById = async(id: number, token: string, data:{name: string, comment: string|undefined}) => {
+export const updateUserById = async(id: number, token: string, name: string, comment: string|undefined) => {
     await fetch(serverUrl+`/user/${id}`, {
         headers:{
             "Content-Type": "application/json",
             "x-access-token": token
         },
         method: "POST",
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+            name: name,
+            comment: comment
+        })
     }).then(response => console.log(response))
+    .catch((error) => console.log("Error: ", error));
+}
+
+export const getAllUsersByName = async(name: string, setSearchResults: (users: UserPublic[])=>void)=>{
+    await fetch(serverUrl+`/user/name?name=${name}`, {headers:{
+        "Content-Type": "application/json"
+    },
+    method: "GET"
+    }).then(response => response.json())
+    .then(dataJSON => JSON.stringify(dataJSON))
+    .then(dataStr => JSON.parse(dataStr))
+    .then(data => setSearchResults(data))
     .catch((error) => console.log("Error: ", error));
 }
 

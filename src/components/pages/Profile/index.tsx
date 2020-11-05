@@ -39,7 +39,7 @@ const ProfilePage = (props: ProfilePageProps) => {
 
     const onCreate = async(data: UserPublic) => {
         await setProfile(data);
-        await updateUserById(props.user.id, props.user.token, {name: data.name, comment: data.comment});
+        await updateUserById(props.user.id, props.user.token, data.name, data.comment);
     }
 
     const [newFriends, setNewFriends] = useState<string[]>([]);
@@ -100,7 +100,7 @@ const ProfilePage = (props: ProfilePageProps) => {
                              bottom: moveUp? "32px" : "-440px"
                          }}>
                              <button onClick={()=>showFriendsList(false)} className="friendslist-close-button"><span className="material-icons">cancel</span></button>
-                            <FriendsList currentFriendsList={oldFriends} updateFriends={updateFriends}/>
+                            <FriendsList currentFriendsList={oldFriends.following} updateFriends={updateFriends}/>
                         </div>
                     </MainWrapper>
             </MainContainer>

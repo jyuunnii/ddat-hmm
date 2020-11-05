@@ -1,46 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import { MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
+import { Friends, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
+import { followByName, getAllUsersByName, getFriendsById, unfollowByName } from '../../api';
 import SearchBox from '../../Components/SearchBox';
 import SearchResult from '../../Components/SearchResult';
 import SearchTitle from '../../Components/SearchTitle';
-
 import './index.css';
 
-// 임시 친구목록 데이터 (내 정보에서 불러오기) ==> 최상위 컴포넌트로 이동 ==> updateFriends 를 통해 현재 컴포넌트에서 새로운 친구목록 관리 => 상위 컴포넌트에 전달하여 상태관리
-const oldFriendsList: UserPublic[] = [{id: 1, name: "test1", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{follower:[], following:[]}},
-{id: 2, name: "test2", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{follower:[], following:[]}}];
+type SearchPageProps = {
+    user: {id: number, token: string}
+}
 
-// 임시 검색 결과 데이터 (전체 유저에서 이름 검색)
-const apiResults: UserPublic[] = [{id: 1, name: "test1", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{follower:[], following:[]}},
-{id: 3, name: "test3", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{follower:[], following:[]}}];
-
-
-
-const UserSearch = () => {
+const UserSearch = (props: SearchPageProps) => {
+    const [userData, setUserData] = useState<UserPublic>({id:0, name:"", friends:{follower:[], following:[]}});
+    const [searchResults, setSearchResults] = useState<UserPublic[]>([]);
+    const [oldFriends, setOldFriends] = useState<Friends>({following: [], follower:[]});
+    
     const [target, setTarget] = useState<string>("");
     const onCreate = (data: string) => {
         setTarget(data);
     }
 
     const [newfriendsList, setNewFriendsList] = useState<string[]>([]);
-    const updateFriends = (user: string, friendstate: boolean) => {
+    const [deletedFriends, setDeletedFriends] = useState<string[]>([]);
+    const updateFriends = async (userName: string, friendstate: boolean) => {
         if(!friendstate){
             setNewFriendsList([
                 ...newfriendsList,
-                user
-            ]); 
+                userName
+            ]);
+            await followByName(props.user.id, props.user.token, userName)
         }else{
-            const results: string[] = newfriendsList.filter(friend => !(friend === user));
-            setNewFriendsList(results);
+            setDeletedFriends([
+                ...deletedFriends,
+                userName
+            ])
+            await unfollowByName(props.user.id, props.user.token, userName)
         }
     }
 
-    const filteredResults: UserPublic[] | undefined = apiResults.filter(user => !(oldFriendsList.some(friend=> friend.name === user.name)));
+    useEffect(() => {    
+        if(props.user.id > 0){
+            getFriendsById(props.user.id, props.user.token, setUserData, setOldFriends);  
+        }
+        getAllUsersByName(target, setSearchResults);
+    }, [props.user.id, props.user.token, target])
+
+    const targetOldFriends: UserPublic[] = oldFriends.following.filter(user => user.name === target);
+    const filteredResults: UserPublic[] = searchResults.filter(user => (user.name !== userData.name));
    
-    useEffect(()=>{
-        //console.log(target);
-        //TODO: fetch POST => target => GET user info
-    })
     
     return(
         <MainScale>
@@ -52,7 +59,7 @@ const UserSearch = () => {
                     <SearchBox onCreate={onCreate}/>
                 </MainWrapper>
                 <MainWrapper className="search-result-wrapper">
-                    <SearchResult searchTarget={target} updateFriends={updateFriends} searchResults={filteredResults} oldFriendsList={oldFriendsList}/>
+                    <SearchResult searchTarget={target} updateFriends={updateFriends} searchResults={filteredResults} oldFriendsList={targetOldFriends}/>
                 </MainWrapper>
             </MainContainer>
         </MainScale>
