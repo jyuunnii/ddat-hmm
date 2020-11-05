@@ -1,26 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { MessageRecord, RecordBox, RecordWrapper } from '../../../utils';
-import { getReceiverNameById } from '../../api';
+
 import './index.css';
 
 type SentMessageProps = {
     record: MessageRecord;
-    id: number;
-    token: string;
 }
 
-const SentMessage = ({record, id, token}: SentMessageProps) => {
-    const [receiverName, setReceiverName] = useState<string>("");  
-
-    useEffect(() => {
-        getReceiverNameById(id, token, record.receiver, setReceiverName);
-    }, [id, token, record])
-
+const SentMessage = ({record}: SentMessageProps) => {
     return(
         <RecordWrapper>
         <RecordBox>
         <div className="sent-count"><div className="received-count-number">{record.count}</div></div>
-            <div className="receiver">{receiverName}</div>
+            <div className="receiver">{record.receiver}</div>
             <div className="sent-content">{record.content}</div>
         </RecordBox>
         </RecordWrapper>

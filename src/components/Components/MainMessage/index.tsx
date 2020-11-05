@@ -25,11 +25,12 @@ const MMCBox = styled.div`
 
 type MainMessageProps = {
     user: UserPublic;
+    friends: {following: UserPublic[], follower: UserPublic[]};
 }
 
 const messageType = ['love', 'thanks'];
 
-const MainMessage = ({user}: MainMessageProps) => {
+const MainMessage = ({user, friends}: MainMessageProps) => {
     return(
         <MMCContainer>
             {messageType.map((type) => {

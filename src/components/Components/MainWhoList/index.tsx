@@ -22,11 +22,11 @@ const MWLCWrapper = styled.div`
 
 
 type MainWhoListProps = {
-    friendsList: {follower: UserPublic[], followed: UserPublic[]};
+    friends: {following: UserPublic[], follower: UserPublic[]};
 }
 
-const MainWhoList = ({friendsList}: MainWhoListProps) => {
-    if(! Array.isArray(friendsList.follower) || !friendsList.follower.length){
+const MainWhoList = ({friends}: MainWhoListProps) => {
+    if(! Array.isArray(friends.following) || !friends.following.length){
         return(
           <MWLContainer>
              <div>친구를 추가해주세요.</div> 
@@ -35,7 +35,7 @@ const MainWhoList = ({friendsList}: MainWhoListProps) => {
     }
     return(
         <MWLContainer>
-        {friendsList.follower.map((friend) => {
+        {friends.following.map((friend) => {
             return(
             <MWLCWrapper key={friend.id}>
                 <div className="main-friend-image"></div>

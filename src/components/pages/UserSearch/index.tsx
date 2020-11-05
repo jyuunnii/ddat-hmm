@@ -7,12 +7,12 @@ import SearchTitle from '../../Components/SearchTitle';
 import './index.css';
 
 // 임시 친구목록 데이터 (내 정보에서 불러오기) ==> 최상위 컴포넌트로 이동 ==> updateFriends 를 통해 현재 컴포넌트에서 새로운 친구목록 관리 => 상위 컴포넌트에 전달하여 상태관리
-const oldFriendsList: UserPublic[] = [{id: 1, name: "test1", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{follower:[], followed:[]}},
-{id: 2, name: "test2", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{follower:[], followed:[]}}];
+const oldFriendsList: UserPublic[] = [{id: 1, name: "test1", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{follower:[], following:[]}},
+{id: 2, name: "test2", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{follower:[], following:[]}}];
 
 // 임시 검색 결과 데이터 (전체 유저에서 이름 검색)
-const apiResults: UserPublic[] = [{id: 1, name: "test1", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{follower:[], followed:[]}},
-{id: 3, name: "test3", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{follower:[], followed:[]}}];
+const apiResults: UserPublic[] = [{id: 1, name: "test1", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{follower:[], following:[]}},
+{id: 3, name: "test3", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)", friends:{follower:[], following:[]}}];
 
 
 

@@ -12,7 +12,7 @@ const RWrapper = styled.div`
 `;
 
 type MainRecordsProps = {
-    records: MessageRecord[] | undefined;
+    records: {sent: MessageRecord[], received: MessageRecord[]};
 }
 
 const countColors = ["#F5C851", "#9ED5E7", "#FC929E"];
@@ -30,9 +30,16 @@ const MainRecords = ({records}: MainRecordsProps) => {
 
     const calculateCount = (type: boolean) => {
         let totalCount = 0;
-        records?.filter(record=> record.type === type).forEach((record)=>{
-            totalCount += record.count;
-        })
+        if(type){
+            records?.sent.forEach((record)=>{
+                totalCount += record.count;
+            })
+        }else{
+            records?.received.forEach((record)=>{
+                totalCount += record.count;
+            })
+        }
+       
         return totalCount;
     }   
 
@@ -48,17 +55,19 @@ const MainRecords = ({records}: MainRecordsProps) => {
                             Received &nbsp; {calculateCount(false)}</button>
                     </RWrapper>
                     <RWrapper className="today-date">today</RWrapper>
-                    <RWrapper>
-                        {records?.filter(record=> record.type === isSentTab).sort((a,b)=>{
+                    <RWrapper style={{display: isSentTab? "block" : "none"}}>
+                        {records.sent.sort((a,b) => {
                             return a.count > b.count? -1 : a.count < b.count? 1 : 0;
                         }).map((record, index)=>{
-                            if(!isSentTab){
-                                return(<ReceivedMessage key={index} record={record} color={countColors[index]}/>)
-                            }else{
-                                return(<SentMessage key={index} record={record} id={loginUser.user.id} token={loginUser.user.token}/>)
-                            }
-                            })
-                        }
+                            return(<SentMessage key={index} record={record} />);
+                        })}
+                    </RWrapper>
+                    <RWrapper style={{display: isSentTab? "none" : "block"}}>
+                        {records.received.sort((a, b)=>{
+                                return a.count > b.count? -1 : a.count < b.count? 1 : 0;
+                            }).map((record, index)=>{
+                                return(<ReceivedMessage key={index} record={record} color={countColors[index]}/>);
+                        })}
                     </RWrapper>
                 </MainContainer>
                 )

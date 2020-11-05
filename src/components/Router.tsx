@@ -23,7 +23,7 @@ const Router = (props: RouterProps) => {
               <Route path="/signin" exact render={()=> <SignInPage/>}/>
               <Route path="/signup" exact render={()=> <SignUpPage/>}/>
               <Route path="/search" exact render={() => <UserSearchPage/>}/>
-              <Route pathe="/profile" exact render={()=> <ProfilePage/>}/>
+              <Route pathe="/profile" exact render={()=> <ProfilePage user={loginUser.user} />}/>
               <Redirect to="/" />
             </Switch>
           </React.Suspense>
