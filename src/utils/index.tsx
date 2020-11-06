@@ -2,22 +2,41 @@ import styled from "styled-components";
 
 export const serverUrl = "http://localhost:3001";
 
-export type UserProfile = {
+export type UserPrivate = {
+    id: number;
     name: string;
-    imageUri ?: string;
+    email: string;
+    password: string;
+    profileImageUri ?: string;
+    backgroundImageUri ?: string;
     comment ?: string;
+    friends: Friends;
+    messages: {
+        sent: MessageRecord[],
+        received: MessageRecord[]
+    }
 }
 
-export type myFriend = {
-    id?: number,
-    name: string
+export type UserPublic = {
+    id: number;
+    name: string;
+    profileImageUri ?: string;
+    comment ?: string;
+    friends: Friends;
+}
+
+export type Friends = {
+    following: UserPublic[];
+    follower: UserPublic[];
 }
 
 export type MessageRecord = {
-    user: UserProfile;
-    message: string;
+    receiver: string;
+    sender: string;
+    content: string;
     count: number;
     type: boolean; // true: sent <=> false: received
+    date: Date;
 }
 
 export const MainScale = styled.div`

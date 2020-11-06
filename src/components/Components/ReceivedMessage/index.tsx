@@ -13,8 +13,8 @@ const ReceivedMessage = ({record, color}: ReceivedMessageProps) => {
         <RecordWrapper>
         <RecordBox>
             <div className="received-count" style={{backgroundColor:color}}><div className="received-count-number">{record.count}</div></div>
-            <div className="sender">{record.user.name}</div>
-            <div className="received-content">{record.message}</div>
+            <div className="sender">{record.sender}</div>
+            <div className="received-content">{record.content}</div>
         </RecordBox>
         </RecordWrapper>
  

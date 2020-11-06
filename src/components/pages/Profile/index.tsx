@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { MainContainer, MainWrapper, UserProfile } from '../../../utils';
+import { Friends, MainContainer, MainWrapper, UserPublic } from '../../../utils';
+import { followByName, getFriendsById, unfollowByName, updateUserById } from '../../api';
 import FriendsList from '../../Components/FriendsList';
 import ProfileImage from '../../Components/ProfileImage';
 import ProfileInformation from '../../Components/ProfileInformation';
@@ -19,33 +20,43 @@ const ProfileScale = styled.div`
 
 // it needs some feedback about componenet structure "form & button"!
 
-// 임시 친구목록 데이터 (내 정보에서 불러오기) ==> 최상위 컴포넌트로 이동 ==> updateFriends 를 통해 현재 컴포넌트에서 새로운 친구목록 관리 => 상위 컴포넌트에 전달하여 상태관리
-const currentFriendsList: UserProfile[] = [{name: "testefefeefe1"}, {name: "test2", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
-, {name: "test3", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
-, {name: "test4", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
-, {name: "test5", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}
-, {name: "test6", comment:"안녕하세요:)안녕하세요:)안녕하세요:)안녕하세요:)"}];
+type ProfilePageProps = {
+    user: {id: number, token: string};
+}
 
-const ProfilePage = () => {
+const ProfilePage = (props: ProfilePageProps) => {
     const bgimages = "/images/bg.jpeg";
     const [editOn, setEditOn] = useState<boolean>(false);
-    const [profile, setProfile] = useState<UserProfile>({name: "Jynn Park", comment: "Hello !"});
+    const [profile, setProfile] = useState<UserPublic>({id: 0, name: "", friends:{following: [], follower:[]}});
     const [moveUp, setMoveUp] = useState<boolean>(false);
-    const onCreate = async(data: UserProfile) => {
+    const [oldFriends, setOldFriends] = useState<Friends>({follower: [], following:[]});
+
+    useEffect(() => {    
+        if(props.user.id > 0){
+            getFriendsById(props.user.id, props.user.token, setProfile, setOldFriends);  
+        }
+    }, [props.user.id, props.user.token])
+
+    const onCreate = async(data: UserPublic) => {
         await setProfile(data);
-        //console.log("new profile: ",data);
+        await updateUserById(props.user.id, props.user.token, data.name, data.comment);
     }
 
-    const [newfriendsList, setNewFriendsList] = useState<string[]>([]);
-    const updateFriends = (user: string, friendstate: boolean) => {
-        if(friendstate){
-            setNewFriendsList([
-                ...newfriendsList,
-                user
+    const [newFriends, setNewFriends] = useState<string[]>([]);
+    const [deletedFriends, setDeletedFriends] = useState<string[]>([]);
+    const updateFriends = async (userName: string, friendstate: boolean) => {
+        if(!friendstate){
+            setNewFriends([
+                ...newFriends,
+                userName
             ]); 
+            await followByName(props.user.id, props.user.token, userName)
         }else{
-            const results: string[] = newfriendsList.filter(friend => !(friend === user));
-            setNewFriendsList(results);
+            setDeletedFriends([
+                ...deletedFriends,
+                userName
+            ])
+            await unfollowByName(props.user.id, props.user.token, userName)
         }
     }
 
@@ -89,7 +100,7 @@ const ProfilePage = () => {
                              bottom: moveUp? "32px" : "-440px"
                          }}>
                              <button onClick={()=>showFriendsList(false)} className="friendslist-close-button"><span className="material-icons">cancel</span></button>
-                            <FriendsList currentFriendsList={currentFriendsList} updateFriends={updateFriends}/>
+                            <FriendsList currentFriendsList={oldFriends.following} updateFriends={updateFriends}/>
                         </div>
                     </MainWrapper>
             </MainContainer>

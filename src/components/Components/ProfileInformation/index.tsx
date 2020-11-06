@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { UserProfile } from '../../../utils';
+import { UserPublic } from '../../../utils';
 import './index.css';
 
 const ProfileContainer = styled.div`
@@ -12,14 +12,16 @@ const ProfileContainer = styled.div`
 type ProfileInformationProps = {
     editOn: boolean;
     setEditOn: (mode: boolean) => void;
-    profile: UserProfile;
-    onCreate: (value: UserProfile) => void;
+    profile: UserPublic;
+    onCreate: (value: UserPublic) => void;
 }
 
 const ProfileInformation = ({editOn, setEditOn, profile, onCreate}: ProfileInformationProps) => {
     const [newprofile, setNewProfile] = useState({
+        id: profile.id,
         name: profile.name,
-        comment: profile.comment
+        comment: profile.comment,
+        friends: profile.friends
     });
     const {name, comment} =  newprofile;
 
@@ -49,11 +51,11 @@ const ProfileInformation = ({editOn, setEditOn, profile, onCreate}: ProfileInfor
             <ProfileContainer>  
                 <form onSubmit={handleSubmit}>
                     <div className="profile-name-edit"  style={{position:"relative"}}>
-                        <textarea name="name" value={name} onChange={onChange} rows={1} maxLength={20} placeholder=""/>
+                        <textarea name="name" value={name} onChange={onChange} rows={1} maxLength={20} placeholder={profile.name}/>
                         <span className="material-icons-round edit-name">edit</span>
                     </div>
                     <div className="profile-comment-edit"  style={{position:"relative"}}>
-                        <textarea name="comment" value={comment} onChange={onChange} rows={4} maxLength={100} placeholder=""/>
+                        <textarea name="comment" value={comment} onChange={onChange} rows={4} maxLength={100} placeholder={profile.comment}/>
                         <span className="material-icons-round edit-comment">edit</span>
                     </div>
                     <button className="save-button" type="submit">SAVE</button>

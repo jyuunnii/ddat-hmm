@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { UserProfile } from '../../../utils';
+import { UserPublic } from '../../../utils';
 import './index.css';
 
 type MainMessageLoveProps = {
-    receiver: UserProfile;
+    receiver: UserPublic;
 }
 
 const MainMessageLove = ({receiver}: MainMessageLoveProps) => {
     const [message, setMessage] = useState({
-        //receiver_name: receiver.name,
+        receiverName: receiver.name,
         msg: "사랑해",
         count: 1
       });
 
-    const { /*receiver_name,*/ msg, count } = message;
+    const { msg, count } = message;
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -26,7 +26,7 @@ const MainMessageLove = ({receiver}: MainMessageLoveProps) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setMessage({
-            //receiver_name: receiver.name,
+            receiverName: receiver.name,
             msg: msg,
             count: count+1
         }); 
@@ -35,7 +35,8 @@ const MainMessageLove = ({receiver}: MainMessageLoveProps) => {
     return(
         <div>
             <div className="background-image-box">
-                <img src={receiver.imageUri} className="receiver-img"  alt="receiver-img" style={{width: "240px", height:"240px"}}/>
+                <img src={receiver.profileImageUri === null? "/images/person.png" : receiver.profileImageUri} 
+                className="receiver-img"  alt="receiver-img"/>
             </div>
             <div className="send-count" style={{visibility: count === 1? "hidden" : "visible"}}>{count}</div>
             <form onSubmit={handleSubmit}>

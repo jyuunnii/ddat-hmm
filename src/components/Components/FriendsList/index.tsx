@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UserProfile, UserProfileContainer } from '../../../utils';
+import { UserPublic, UserProfileContainer } from '../../../utils';
 import FriendsListOneRow from '../FriendsListOneRow';
 
 
@@ -14,7 +14,7 @@ const FWrapper = styled.div`
 `;
 
 type FriendsListProps = {
-    currentFriendsList: UserProfile[];
+    currentFriendsList: UserPublic[];
     updateFriends: (user: string, friendstate: boolean) => void;
 }
 
@@ -22,12 +22,11 @@ const FriendsList = ({currentFriendsList, updateFriends}: FriendsListProps) => {
     const selectUser = (userName: string, friendstate: boolean) => {
         updateFriends(userName, friendstate);
     }
-
     return(
         <UserProfileContainer>
             <FWrapper>
                 {currentFriendsList.map((friend)=>{
-                    return(<FriendsListOneRow key={friend.name} user={friend} selectUser={selectUser} isFriend={true}/>)
+                    return(<FriendsListOneRow key={friend.id} user={friend} selectUser={selectUser} />)
                 })}
             </FWrapper>
         </UserProfileContainer>

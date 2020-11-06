@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { UserProfile, UserProfileBox, UserProfileTextBox } from '../../../utils';
+import { UserPublic, UserProfileBox, UserProfileTextBox } from '../../../utils';
 import './index.css';
 
 type FriendsListOneRowProps = {
-    user: UserProfile;
+    user: UserPublic;
     selectUser: (userName: string, friendstate: boolean) => void;
-    isFriend: boolean;
 }
 
-const FriendsListOneRow = ({user, selectUser, isFriend}: FriendsListOneRowProps) => {
-    const [currentFriendState, setCurrentFriendState] = useState<boolean>(isFriend); // api 에서 불러온 초기 친구상태 : isFriend 
+const FriendsListOneRow = ({user, selectUser}: FriendsListOneRowProps) => {
+    const [currentFriendState, setCurrentFriendState] = useState<boolean>(true); // api 에서 불러온 초기 친구상태 : isFriend 
     const changeFriendState = (friendstate: boolean) => {
         if(friendstate){
             setCurrentFriendState(false);

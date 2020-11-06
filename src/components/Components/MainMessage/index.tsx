@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UserProfile } from '../../../utils';
+import { UserPublic } from '../../../utils';
 import MainMessageLove from '../MainMessageLove';
 import MainMessageThanks from '../MainMessageThanks';
 
@@ -24,12 +24,13 @@ const MMCBox = styled.div`
 `;
 
 type MainMessageProps = {
-    user: UserProfile;
+    user: UserPublic;
+    friends: {following: UserPublic[], follower: UserPublic[]};
 }
 
 const messageType = ['love', 'thanks'];
 
-const MainMessage = ({user}: MainMessageProps) => {
+const MainMessage = ({user, friends}: MainMessageProps) => {
     return(
         <MMCContainer>
             {messageType.map((type) => {
