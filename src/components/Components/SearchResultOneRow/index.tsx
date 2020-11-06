@@ -33,7 +33,7 @@ const SearchResultOneRow = ({user, selectUser, isFriend}: SearchResultOneRowProp
                     </UserProfileTextBox>  
                     <div><input type="button" onClick={async()=> {
                                 await selectUser(user.name, currentFriendState);     
-                                changeFriendState(currentFriendState);                       
+                                await changeFriendState(currentFriendState);                       
                                 }} 
                                 style={{background: currentFriendState? "#fefefe":"#9ED5E7", 
                                         border:  currentFriendState? "1px solid #9ED5E7":"1px solid #fefefe", 

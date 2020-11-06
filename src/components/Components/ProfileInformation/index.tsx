@@ -26,7 +26,7 @@ const ProfileInformation = ({editOn, setEditOn, profile, onCreate}: ProfileInfor
     const {name, comment} =  newprofile;
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-        const {name, value} = e.target;
+        const {name, value} = e.target; 
         setNewProfile({
             ...newprofile,
             [name]: value
@@ -42,8 +42,8 @@ const ProfileInformation = ({editOn, setEditOn, profile, onCreate}: ProfileInfor
     if(!editOn){
         return(
             <ProfileContainer> 
-                <div className="profile-name">{profile?.name}</div>
-                <div className="profile-comment">{profile?.comment}</div>
+                <div className="profile-name">{profile.name}</div>
+                <div className="profile-comment">{profile.comment}</div>
             </ProfileContainer>
         )
     }else{
@@ -51,11 +51,11 @@ const ProfileInformation = ({editOn, setEditOn, profile, onCreate}: ProfileInfor
             <ProfileContainer>  
                 <form onSubmit={handleSubmit}>
                     <div className="profile-name-edit"  style={{position:"relative"}}>
-                        <textarea name="name" value={name} onChange={onChange} rows={1} maxLength={20} placeholder={profile.name}/>
+                        <textarea name="name" value={name || profile.name} onChange={onChange} rows={1} maxLength={20} />
                         <span className="material-icons-round edit-name">edit</span>
                     </div>
                     <div className="profile-comment-edit"  style={{position:"relative"}}>
-                        <textarea name="comment" value={comment} onChange={onChange} rows={4} maxLength={100} placeholder={profile.comment}/>
+                        <textarea name="comment" value={comment || profile.comment} onChange={onChange} rows={4} maxLength={100} />
                         <span className="material-icons-round edit-comment">edit</span>
                     </div>
                     <button className="save-button" type="submit">SAVE</button>

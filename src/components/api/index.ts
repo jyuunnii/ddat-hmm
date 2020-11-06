@@ -1,5 +1,18 @@
 import { Friends, MessageRecord, serverUrl, UserPublic } from "../../utils";
 
+export const getUserPublicById = async (id: number, token: string, setUserData:(user:UserPublic)=>void)=>{
+    await fetch(serverUrl+`/user/${id}`, {
+        headers:{
+            "Content-Type": "application/json",
+            "x-access-token": token
+        },
+        method: "GET"
+    }).then(response => response.json())
+    .then(dataJSON => JSON.stringify(dataJSON))
+    .then(dataStr => JSON.parse(dataStr))
+    .then(data => setUserData(data))
+    .catch((error) => console.log("Error: ", error));
+}
 
 export const getUserById = async(id: number, token: string, 
                                 setUserData:(user: UserPublic)=>void, 
@@ -50,7 +63,7 @@ export const updateUserById = async(id: number, token: string, name: string, com
             "Content-Type": "application/json",
             "x-access-token": token
         },
-        method: "POST",
+        method: "PATCH",
         body: JSON.stringify({
             name: name,
             comment: comment

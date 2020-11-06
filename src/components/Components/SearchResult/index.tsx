@@ -20,8 +20,12 @@ type SearchResultProps  = {
     oldFriendsList: UserPublic[];
 }
 
+const isNoResult = (s: UserPublic[], o: UserPublic[]) => {
+    return (! Array.isArray(s) || !s.length )&& (! Array.isArray(o) || !o.length)
+}
+
 const SearchResult = ({searchTarget, updateFriends, searchResults, oldFriendsList}: SearchResultProps) => {  
-    if(! Array.isArray(searchResults) || !searchResults.length){
+    if(isNoResult(searchResults, oldFriendsList)){
         return(
             <UserProfileContainer>
                  <div className="search-result-header">검색결과</div>
