@@ -4,6 +4,7 @@ import { followByName, getAllUsersByName, getFriendsById, unfollowByName } from 
 import SearchBox from '../../Components/SearchBox';
 import SearchResult from '../../Components/SearchResult';
 import SearchTitle from '../../Components/SearchTitle';
+
 import './index.css';
 
 type SearchPageProps = {
