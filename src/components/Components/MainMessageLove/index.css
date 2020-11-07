@@ -69,20 +69,6 @@
     border-color: transparent;
 }
 
-.send-count {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background-color: rgb(252, 146, 158);
-    font-size: 10px;
-    text-align: center;
-    color: #ffffff;
-    font-weight: bold;
-    position: absolute;
-    bottom: 40px;
-    right: 6px;
-}
-
 .receiver-img {
     width: 240px;
     height: 240px;

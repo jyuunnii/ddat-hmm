@@ -34,9 +34,7 @@ export type MessageRecord = {
     receiver: string;
     sender: string;
     content: string;
-    count: number;
     type: boolean; // true: sent <=> false: received
-    date: Date;
 }
 
 export const MainScale = styled.div`

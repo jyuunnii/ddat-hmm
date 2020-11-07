@@ -23,9 +23,10 @@ const MWLCWrapper = styled.div`
 
 type MainWhoListProps = {
     friends: {following: UserPublic[], follower: UserPublic[]};
+    setTarget: (user: UserPublic) => void;
 }
 
-const MainWhoList = ({friends}: MainWhoListProps) => {
+const MainWhoList = ({friends, setTarget}: MainWhoListProps) => {
     if(! Array.isArray(friends.following) || !friends.following.length){
         return(
           <MWLContainer>
@@ -37,7 +38,7 @@ const MainWhoList = ({friends}: MainWhoListProps) => {
         <MWLContainer>
         {friends.following.map((friend) => {
             return(
-            <MWLCWrapper key={friend.id}>
+            <MWLCWrapper key={friend.id} onClick={() => setTarget(friend)}>
                 <div className="main-friend-image"></div>
                 <div className="main-friend-name">{friend.name}</div>
             </MWLCWrapper>

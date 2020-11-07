@@ -68,7 +68,7 @@ export const updateUserById = async(id: number, token: string, name: string, com
             name: name,
             comment: comment
         })
-    }).then(response => console.log(response))
+    }).then(response => console.log(response.ok))
     .catch((error) => console.log("Error: ", error));
 }
 
@@ -124,7 +124,7 @@ export const followByName = async(id: number, token: string, name: string) => {
         },
         method: "POST",
         body: JSON.stringify({followingName: name})
-    }).then(response => console.log(response))
+    }).then(response => console.log(response.ok))
     .catch((error) => console.log("Error: ", error));
 }
 
@@ -136,7 +136,22 @@ export const unfollowByName = async(id: number, token: string, name: string) => 
         },
         method: "DELETE",
         body: JSON.stringify({followingName: name})
-    }).then(response => console.log(response))
+    }).then(response => console.log(response.ok))
+    .catch((error) => console.log("Error: ", error));
+}
+
+export const sendMessage = async(id: number, token: string, targetUserId: number, content: string) => {
+    await fetch(serverUrl+`/message/${id}`, {
+        headers:{
+            "Content-Type": "application/json",
+            "x-access-token": token
+        },
+        method: "POST",
+        body: JSON.stringify({
+            targetUserId: targetUserId,
+            content: content
+        }) 
+    }).then(response => console.log(response.ok))
     .catch((error) => console.log("Error: ", error));
 }
 
@@ -161,6 +176,6 @@ export const signup = async (data: { name: string; email: string; password: stri
         },
         method: "POST",
         body: JSON.stringify(data)
-    }).then(response => console.log(response))
+    }).then(response => console.log(response.ok))
     .catch((error) => console.log("Error: ", error));
 }

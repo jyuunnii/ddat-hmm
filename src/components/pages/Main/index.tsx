@@ -16,6 +16,7 @@ const MainPage = (props: MainPageProps) => {
     const [userData, setUserData] = useState<UserPublic>({id:0, name:"", friends:{follower:[], following:[]}});
     const [userMessages, setUserMessages] = useState<{sent: MessageRecord[], received: MessageRecord[]}>({sent: [], received: []});
     const [userFriends, setUserFriends] = useState<Friends>({following: [], follower:[]});
+    const [target, setTarget] = useState<UserPublic>({id: 0, name:"", friends:{following:[], follower:[]}});
 
     useEffect(() => {    
         if(props.user.id > 0){
@@ -35,10 +36,11 @@ const MainPage = (props: MainPageProps) => {
                 <MainTitle user={userData}/>
             </MainWrapper>
             <MainWrapper className="main-who-wrapper">
-                <MainWhoList friends={userFriends}/>
+                <MainWhoList friends={userFriends} setTarget={setTarget}/>
             </MainWrapper>
             <MainWrapper className="main-msg-wrapper">
-                <MainMessage user={userData} friends={userFriends}/>
+                <h6>Dear {target.name}</h6>
+                <MainMessage user={props.user} receiver={target}/>
             </MainWrapper>
             <MainWrapper>
             <MainRecords records={userMessages}/>
