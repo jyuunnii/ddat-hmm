@@ -1,12 +1,14 @@
-.result-user-img {
-    min-width: 64px;
-    min-height: 64px;
-    max-width: 66px;
-    max-height: 66px;
-    border-radius: 50%;
-    background: #FAFAFA;
-    border: 1px solid #DBDBDB;
+.result-user-img { 
+    background: transparent;
     box-sizing: border-box;
+}
+
+.result-user-img img{
+    width: 64px;
+    height: 64px;
+    border: 1px solid #DBDBDB;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .result-user-name {

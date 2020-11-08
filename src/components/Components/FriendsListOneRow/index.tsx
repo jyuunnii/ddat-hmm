@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserPublic, UserProfileBox, UserProfileTextBox } from '../../../utils';
+import { UserPublic, UserProfileBox, UserProfileTextBox, initialProfile } from '../../../utils';
 import './index.css';
 
 type FriendsListOneRowProps = {
@@ -18,7 +18,7 @@ const FriendsListOneRow = ({user, selectUser}: FriendsListOneRowProps) => {
     }
     return(
        <UserProfileBox>
-           <div className="friend-img"></div>
+           <div className="friend-img"><img src={user.profileImageUri === null? initialProfile : user.profileImageUri} alt="profile"/></div>
            <UserProfileTextBox>
             <div className="friend-name">{user.name}</div>
             <div className="friend-comment">{user?.comment}</div>

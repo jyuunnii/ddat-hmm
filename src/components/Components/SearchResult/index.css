@@ -22,3 +22,9 @@
     color: #292929;
     padding-bottom: 8px;
 }
+
+.search-result-header span {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 12px;
+}

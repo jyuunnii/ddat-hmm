@@ -14,10 +14,11 @@
     line-height: 18px;
 }
 
-.main-friend-image{
+.main-friend-image img{
     width: 48px;
     height: 48px;
     border: 1px solid #9ED5E7;
     background: #FFFFFF;
     border-radius: 50%;
+    object-fit: cover;
 }

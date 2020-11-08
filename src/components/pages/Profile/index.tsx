@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LoginContext from '../../../context';
-import { Friends, MainContainer, MainWrapper, UserPublic } from '../../../utils';
+import { Friends, initialFriends, MainContainer, MainWrapper, UserPublic } from '../../../utils';
 import { followByName, getFriendsById, getUserPublicById, unfollowByName, updateUserById } from '../../api';
 import FriendsList from '../../Components/FriendsList';
 import ProfileImage from '../../Components/ProfileImage';
 import ProfileInformation from '../../Components/ProfileInformation';
-import Enter from '../Enter';
 import './index.css'
 
 const ProfileScale = styled.div`
@@ -31,7 +30,7 @@ const ProfilePage = (props: ProfilePageProps) => {
     const [editOn, setEditOn] = useState<boolean>(false);
     const [profile, setProfile] = useState<UserPublic>();
     const [moveUp, setMoveUp] = useState<boolean>(false);
-    const [oldFriends, setOldFriends] = useState<Friends>({follower: [], following:[]});
+    const [oldFriends, setOldFriends] = useState<Friends>(initialFriends);
 
     useEffect(() => {    
         async function fetchData(){
@@ -84,7 +83,7 @@ const ProfilePage = (props: ProfilePageProps) => {
                             <div className="profile-bg-cover"></div>
                             <MainContainer>
                                     <MainWrapper>
-                                        <ProfileImage editOn={editOn}/>
+                                        <ProfileImage profileImage={profile.profileImageUri} editOn={editOn}/>
                                     </MainWrapper>
                                     <MainWrapper>
                                         <ProfileInformation editOn={editOn} setEditOn={setEditOn} profile={profile} onCreate={onCreate}/>
@@ -115,9 +114,7 @@ const ProfilePage = (props: ProfilePageProps) => {
                                     </MainWrapper>
                             </MainContainer>
                         </ProfileScale>
-                    )}else{
-                        return(<Enter/>)
-                    }
+                    )}
             }}
         </LoginContext.Consumer>
     )    

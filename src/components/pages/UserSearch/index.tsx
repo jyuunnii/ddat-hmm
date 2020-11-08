@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Friends, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
+import { Friends, initialFriends, initialUser, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
 import { followByName, getAllUsersByName, getFriendsById, unfollowByName } from '../../api';
 import SearchBox from '../../Components/SearchBox';
 import SearchResult from '../../Components/SearchResult';
@@ -12,9 +12,9 @@ type SearchPageProps = {
 }
 
 const UserSearch = (props: SearchPageProps) => {
-    const [userData, setUserData] = useState<UserPublic>({id:0, name:"", friends:{follower:[], following:[]}});
+    const [userData, setUserData] = useState<UserPublic>(initialUser);
     const [searchResults, setSearchResults] = useState<UserPublic[]>([]);
-    const [oldFriends, setOldFriends] = useState<Friends>({following: [], follower:[]});
+    const [oldFriends, setOldFriends] = useState<Friends>(initialFriends);
     const [target, setTarget] = useState<string>("");
     const [newfriendsList, setNewFriendsList] = useState<string[]>([]);
     const [deletedFriends, setDeletedFriends] = useState<string[]>([]);

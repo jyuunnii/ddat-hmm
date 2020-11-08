@@ -49,19 +49,21 @@ header #home-link {
 }
 
 .header-profile {
-    position: absolute;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    right: 16px;
-    top: 56%;
-    transform: translate(0, -50%);
-    padding: 4px;
-}
-
-.header-profile img{
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    transform: translate(0, -50%);
+    padding: 4px;
+    background-color: #ffffff;
+    
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #292929;
+
+    position: absolute;
+    right: 20px;
+    top: 50%;
 }

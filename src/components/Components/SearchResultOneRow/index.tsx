@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LoginContext from '../../../context';
-import { UserPublic, UserProfileBox, UserProfileTextBox } from '../../../utils';
+import { UserPublic, UserProfileBox, UserProfileTextBox, initialProfile } from '../../../utils';
 import './index.css';
 
 
@@ -26,7 +26,7 @@ const SearchResultOneRow = ({user, selectUser, isFriend}: SearchResultOneRowProp
             if(loginUser.user.id > 0){
                 return(
                     <UserProfileBox>
-                    <div className="result-user-img"></div>
+                    <div className="result-user-img"><img src={user.profileImageUri === null? initialProfile : user.profileImageUri} alt="profile"/></div>
                     <UserProfileTextBox>
                         <div className="result-user-name">{user.name}</div>
                         <div className="result-user-comment">{user?.comment}</div>

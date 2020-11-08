@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { MainScale, MainContainer, MainWrapper, MessageRecord, UserPublic, Friends } from '../../../utils';
+import { MainScale, MainContainer, MainWrapper, MessageRecord, UserPublic, Friends, initialUser, initialFriends, initialTarget, initialMessages } from '../../../utils';
 import { getUserById } from '../../api';
 import MainMessage from '../../Components/MainMessage';
 import MainRecords from '../../Components/MainRecords';
 import MainTitle from '../../Components/MainTitle';
 import MainWhoList from '../../Components/MainWhoList';
-import Enter from '../Enter';
+import Intro from '../Intro';
 import './index.css';
 
 type MainPageProps = {
@@ -13,10 +13,10 @@ type MainPageProps = {
 }
 
 const MainPage = (props: MainPageProps) => {
-    const [userData, setUserData] = useState<UserPublic>({id:0, name:"", friends:{follower:[], following:[]}});
-    const [userMessages, setUserMessages] = useState<{sent: MessageRecord[], received: MessageRecord[]}>({sent: [], received: []});
-    const [userFriends, setUserFriends] = useState<Friends>({following: [], follower:[]});
-    const [target, setTarget] = useState<UserPublic>({id: 0, name:"", friends:{following:[], follower:[]}});
+    const [userData, setUserData] = useState<UserPublic>(initialUser);
+    const [userMessages, setUserMessages] = useState<{sent: MessageRecord[], received: MessageRecord[]}>(initialMessages);
+    const [userFriends, setUserFriends] = useState<Friends>(initialFriends);
+    const [target, setTarget] = useState<UserPublic>(initialTarget);
 
     useEffect(() => {    
         if(props.user.id > 0){
@@ -26,7 +26,7 @@ const MainPage = (props: MainPageProps) => {
 
    
     if(props.user.id === 0 || userData.id === 0){
-        return(<Enter/>)
+        return(<Intro/>)
     }
 
     return(
@@ -46,7 +46,7 @@ const MainPage = (props: MainPageProps) => {
             <MainRecords records={userMessages}/>
         </MainWrapper>
         </MainContainer>
-    </MainScale>
+        </MainScale>
     )
 }
 

@@ -50,6 +50,7 @@
     line-height: 23px;
     color: #ffffff;
     background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .thanks-message input::placeholder {

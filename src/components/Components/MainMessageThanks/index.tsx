@@ -39,7 +39,7 @@ const MainMessageThanks = ({user, receiver}: MainMessageLoveProps) => {
     return(
         <div>
             <div className="background-image-box">
-                <img src={receiver.profileImageUri === undefined || null? "/images/person.png" : receiver.profileImageUri} 
+                <img src={receiver.profileImageUri === undefined || null? "/images/girl1.png" : receiver.profileImageUri} 
                 className="receiver-img" alt="receiver-img"/> 
             </div>
             <form onSubmit={handleSubmit}>

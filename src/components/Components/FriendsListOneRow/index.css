@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
 .friend-img {
-    min-width: 58px;
-    min-height: 58px;
-    max-width: 66px;
-    max-height: 66px;
-    border-radius: 50%;
-    background: #FAFAFA;
-    border: 1px solid #DBDBDB;
+    background: transparent;
     box-sizing: border-box;
+}
+
+.friend-img img{
+    width: 58px;
+    height: 58px;
+    border: 1px solid #DBDBDB;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .friend-name {

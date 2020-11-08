@@ -41,6 +41,9 @@ const MainRecords = ({records}: MainRecordsProps) => {
 
     const calculateCount = (graph: MessageRecord[][] | undefined) => {
         let totalCount = 0;
+        
+        if(graph === undefined) return 0;
+
         graph?.forEach(array => {
             totalCount += array.length;
         })

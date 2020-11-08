@@ -42,6 +42,12 @@
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
+.background-image-box img{
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+}
+
 .love-message input{
     /* font-family: 'Noto Serif KR', serif; */
     font-family: 'Poor Story', cursive;
@@ -51,6 +57,7 @@
     line-height: 23px;
     color: #ffffff;
     background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .love-message input::placeholder {
@@ -67,9 +74,4 @@
     height: 36px;
     background-color: transparent;
     border-color: transparent;
-}
-
-.receiver-img {
-    width: 240px;
-    height: 240px;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UserPublic } from '../../../utils';
+import { initialProfile, UserPublic } from '../../../utils';
 import './index.css';
 
 
@@ -39,7 +39,7 @@ const MainWhoList = ({friends, setTarget}: MainWhoListProps) => {
         {friends.following.map((friend) => {
             return(
             <MWLCWrapper key={friend.id} onClick={() => setTarget(friend)}>
-                <div className="main-friend-image"></div>
+                <div className="main-friend-image"><img src={friend?.profileImageUri === null ? initialProfile :friend.profileImageUri} alt="friend"/></div>
                 <div className="main-friend-name">{friend.name}</div>
             </MWLCWrapper>
             )
