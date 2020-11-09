@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import LoginContext from '../../../context';
 import { UserPublic } from '../../../utils';
 import ProfileHeaderMenu from '../../Components/ProfileHeaderMenu';
 import Logo from '../Logo';
@@ -30,35 +29,28 @@ const Header = (props: HeaderProps) => {
     switch(pathname){
       case "/":
         return(
-          <LoginContext.Consumer>
-            {loginUser => {
-              if(loginUser.user.id === 0){
-                return(
-                  <header style={{backgroundColor:"#ffffff"}}>
-                    <Link to="/" id="home-link">
-                      <Logo pathname={pathname}/>
-                    </Link>
-                    <Link to="/signin">
-                      <button className="start-button">
-                      <span>start!</span>
-                      </button>
-                    </Link>
-                  </header>
-                )
-              }else{
-                return(
-                  <header style={{backgroundColor:"#ffffff"}}>
-                    <Link to="/" id="home-link">
-                      <Logo pathname={pathname}/>
-                    </Link>
-                    <Link to="/profile">
-                    <button className="header-profile">{props.user.name.charAt(0).toUpperCase()}</button>
-                    </Link>
-                  </header>
-                )
-              }
-            }}
-          </LoginContext.Consumer>
+          <header style={{backgroundColor:"#ffffff"}}>
+            <Link to="/" id="home-link">
+              <Logo pathname={pathname}/>
+            </Link>
+            <Link to="/signin">
+              <button className="start-button">
+              <span>start!</span>
+              </button>
+            </Link>
+          </header> 
+        );
+
+      case "/user":
+        return(
+          <header style={{backgroundColor:"#ffffff"}}>
+          <Link to="/" id="home-link">
+            <Logo pathname={pathname}/>
+          </Link>
+          <Link to="/profile">
+          <button className="header-profile">{props.user.name.charAt(0).toUpperCase()}</button>
+          </Link>
+        </header>
         );
 
       case "/signin":

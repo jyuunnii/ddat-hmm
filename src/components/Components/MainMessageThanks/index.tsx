@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserPublic } from '../../../utils';
+import { initialBackground, UserPublic } from '../../../utils';
 import { sendMessage } from '../../api';
 import './index.css';
 
@@ -39,7 +39,7 @@ const MainMessageThanks = ({user, receiver}: MainMessageLoveProps) => {
     return(
         <div>
             <div className="background-image-box">
-                <img src={receiver.profileImageUri === undefined || null? "/images/girl1.png" : receiver.profileImageUri} 
+                <img src={receiver.profileImageUri === null? initialBackground : receiver.profileImageUri} 
                 className="receiver-img" alt="receiver-img"/> 
             </div>
             <form onSubmit={handleSubmit}>

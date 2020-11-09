@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const serverUrl = "http://localhost:3001";
 
-export const initialProfile = "images/person.png"
+export const initialProfile = "/images/person.png";
+export const initialBackground = "/images/couple.png";
 
 export const initialUser: UserPublic = {
     id: 0,
@@ -13,6 +14,7 @@ export const initialUser: UserPublic = {
 export const initialTarget: UserPublic = {
     id: 0,
     name: "my friend",
+    profileImageUri: "/images/couple.png",
     friends: {following:[], follower:[]}
 }
 

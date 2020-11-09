@@ -5,7 +5,6 @@ import MainMessage from '../../Components/MainMessage';
 import MainRecords from '../../Components/MainRecords';
 import MainTitle from '../../Components/MainTitle';
 import MainWhoList from '../../Components/MainWhoList';
-import Intro from '../Intro';
 import './index.css';
 
 type MainPageProps = {
@@ -17,17 +16,11 @@ const MainPage = (props: MainPageProps) => {
     const [userMessages, setUserMessages] = useState<{sent: MessageRecord[], received: MessageRecord[]}>(initialMessages);
     const [userFriends, setUserFriends] = useState<Friends>(initialFriends);
     const [target, setTarget] = useState<UserPublic>(initialTarget);
-
     useEffect(() => {    
         if(props.user.id > 0){
             getUserById(props.user.id, props.user.token, setUserData, setUserMessages, setUserFriends);  
         }
     }, [props.user.id, props.user.token])
-
-   
-    if(props.user.id === 0 || userData.id === 0){
-        return(<Intro/>)
-    }
 
     return(
         <MainScale>

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import LoginContext from '../../../context';
 import { LoginFormContainer } from '../../../utils';
 import { login } from '../../api';
@@ -13,6 +14,7 @@ const SignInForm = (props: SignInFormProps) => {
     const [isPasswordValid, setPasswordValid] = useState<boolean>();
     const [userLoginInfo, setUserLoginInfo] = useState<{id:number, token: string}>({id:0, token:""});
     const {loginAccess} = useContext(LoginContext);
+    const location = useHistory();
 
     useEffect(()=>{  
         async function fetchData(){
@@ -59,7 +61,7 @@ const SignInForm = (props: SignInFormProps) => {
            setPasswordValid(false);
        }
     };
-    
+
     return(
         <LoginFormContainer>
         <form onSubmit={handleSubmit}>
@@ -89,7 +91,7 @@ const SignInForm = (props: SignInFormProps) => {
                      display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block"),
                 }}>Passwords do not match.</div>
 
-            <div className="sign-in-button"><button type="submit">Sign In</button></div>
+            <div className="sign-in-button"><button type="submit" onClick={()=> location.push("/user")}>Sign In</button></div>
         </form>
         </LoginFormContainer>
     )

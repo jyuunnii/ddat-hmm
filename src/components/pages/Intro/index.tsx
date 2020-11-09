@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { initialTarget, initialUser, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
+import {initialTarget, initialUser, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
 import MainMessage from '../../Components/MainMessage';
 import MainRecords from '../../Components/MainRecords';
 import MainTitle from '../../Components/MainTitle';

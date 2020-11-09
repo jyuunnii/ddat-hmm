@@ -6,6 +6,7 @@ interface RouterProps {
   location?: any;
 }
 
+const IntroPage = lazy(()=> import("./pages/Intro"));
 const MainPage = lazy(() => import("./pages/Main"));
 const SignInPage = lazy(() => import("./pages/SignIn"));
 const SignUpPage = lazy(() => import("./pages/SignUp"));
@@ -19,7 +20,8 @@ const Router = (props: RouterProps) => {
         return(
           <React.Suspense fallback={<div>Loading...</div>}>
             <Switch location={props.location}>
-              <Route path="/" exact render={() => <MainPage user={loginUser.user} />} />
+              <Route path="/" exact render={() => <IntroPage/>}/>
+              <Route path="/user" exact render={() => <MainPage user={loginUser.user} />} />
               <Route path="/signin" exact render={()=> <SignInPage/>}/>
               <Route path="/signup" exact render={()=> <SignUpPage/>}/>
               <Route path="/search" exact render={() => <UserSearchPage user={loginUser.user} />}/>
