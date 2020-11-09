@@ -4,18 +4,23 @@ import { LoginFormContainer } from '../../../utils';
 import { login } from '../../api';
 import './index.css'
 
-interface UserData {
-    name: string
-    email: string
-    password: string
+type SignInFormProps = {
+    user: {id: number, token: string}
 }
 
-const SignInForm = () => {
+const SignInForm = (props: SignInFormProps) => { 
     const [isEmailValid, setEmailValid] = useState<boolean>();
     const [isPasswordValid, setPasswordValid] = useState<boolean>();
     const [userLoginInfo, setUserLoginInfo] = useState<{id:number, token: string}>({id:0, token:""});
     const {loginAccess} = useContext(LoginContext);
-    
+
+    useEffect(()=>{  
+        async function fetchData(){
+            await loginAccess(userLoginInfo)
+        }
+        fetchData();
+    })
+
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -31,11 +36,10 @@ const SignInForm = () => {
         });
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         signinCssEffect(form);
-        login(form, setUserLoginInfo);
-        //TODO: login 완료 후 페이지 전환
+        await login(form, setUserLoginInfo);
         setForm({
             email: "",
             password: ""
@@ -55,19 +59,11 @@ const SignInForm = () => {
            setPasswordValid(false);
        }
     };
-
-    useEffect(()=>{
-        loginAccess(userLoginInfo)
-    })
     
-    return(    
+    return(
         <LoginFormContainer>
         <form onSubmit={handleSubmit}>
             <div className="sign-in">
-                <div className="input-subtitle" 
-                style={{
-                    color: isEmailValid === undefined? "#000000" : (isEmailValid? "#000000" : "#CC5454"),
-                }}>Your email</div>
                 <input type="text" name="email" value={email} onChange={onChange} placeholder="Email" className="sign-in-input"/> 
                 <span className="material-icons-outlined caution-icon" 
                 style={{
@@ -92,8 +88,6 @@ const SignInForm = () => {
                 style={{
                      display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block"),
                 }}>Passwords do not match.</div>
-
-
 
             <div className="sign-in-button"><button type="submit">Sign In</button></div>
         </form>

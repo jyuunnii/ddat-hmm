@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import LoginContext from '../../../context';
+import { UserPublic } from '../../../utils';
 import Logo from '../Logo';
 import MaterialIcon from '../MaterialIcon';
 import './index.css'
@@ -9,6 +10,7 @@ interface HeaderProps {
     location: {
       pathname: string;
     };
+    user: UserPublic;
   }
   
 
@@ -40,17 +42,13 @@ const Header = (props: HeaderProps) => {
                       <Logo pathname={pathname}/>
                     </Link>
                     <Link to="/profile">
-                      <button className="header-profile">
-                      <img src="/images/person.png" alt="profile-img"/>
-                      </button>
+                    <button className="header-profile">{props.user.name.charAt(0).toUpperCase()}</button>
                     </Link>
                   </header>
                 )
               }
             }}
-         
           </LoginContext.Consumer>
-          
         );
 
       case "/signin":

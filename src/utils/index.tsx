@@ -2,6 +2,27 @@ import styled from "styled-components";
 
 export const serverUrl = "http://localhost:3001";
 
+export const initialProfile = "images/person.png"
+
+export const initialUser: UserPublic = {
+    id: 0,
+    name: "it's ddat hmm.",
+    friends: {following:[], follower:[]}
+}
+
+export const initialTarget: UserPublic = {
+    id: 0,
+    name: "whom?",
+    friends: {following:[], follower:[]}
+}
+
+export const initialFriends: Friends = {following:[], follower:[]}
+
+export const initialMessages = {
+    sent:[],
+    received:[]
+}
+
 export type UserPrivate = {
     id: number;
     name: string;
@@ -34,9 +55,6 @@ export type MessageRecord = {
     receiver: string;
     sender: string;
     content: string;
-    count: number;
-    type: boolean; // true: sent <=> false: received
-    date: Date;
 }
 
 export const MainScale = styled.div`

@@ -1,16 +1,16 @@
 import React from 'react';
+import { initialProfile } from '../../../utils';
 import './index.css';
 
 type ProfileImageProps = {
     editOn: boolean;
+    profileImage: string | undefined;
 }
 
-const ProfileImage = ({editOn}: ProfileImageProps) => {
-    const profileImageUri = "/images/person.png";
-
+const ProfileImage = ({editOn, profileImage}: ProfileImageProps) => {
     return(
         <div className="profile-image">
-            <img src={profileImageUri} alt="profile-img"/>
+            <img src={profileImage === null? initialProfile : profileImage} alt="profile-img"/>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UserPublic } from '../../../utils';
+import { initialProfile, UserPublic } from '../../../utils';
 import './index.css';
 
 
@@ -23,9 +23,10 @@ const MWLCWrapper = styled.div`
 
 type MainWhoListProps = {
     friends: {following: UserPublic[], follower: UserPublic[]};
+    setTarget: (user: UserPublic) => void;
 }
 
-const MainWhoList = ({friends}: MainWhoListProps) => {
+const MainWhoList = ({friends, setTarget}: MainWhoListProps) => {
     if(! Array.isArray(friends.following) || !friends.following.length){
         return(
           <MWLContainer>
@@ -37,8 +38,8 @@ const MainWhoList = ({friends}: MainWhoListProps) => {
         <MWLContainer>
         {friends.following.map((friend) => {
             return(
-            <MWLCWrapper key={friend.id}>
-                <div className="main-friend-image"></div>
+            <MWLCWrapper key={friend.id} onClick={() => setTarget(friend)}>
+                <div className="main-friend-image"><img src={friend?.profileImageUri === null ? initialProfile :friend.profileImageUri} alt="friend"/></div>
                 <div className="main-friend-name">{friend.name}</div>
             </MWLCWrapper>
             )

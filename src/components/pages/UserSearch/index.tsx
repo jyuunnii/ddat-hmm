@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Friends, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
+import { Friends, initialFriends, initialUser, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
 import { followByName, getAllUsersByName, getFriendsById, unfollowByName } from '../../api';
 import SearchBox from '../../Components/SearchBox';
 import SearchResult from '../../Components/SearchResult';
@@ -12,26 +12,37 @@ type SearchPageProps = {
 }
 
 const UserSearch = (props: SearchPageProps) => {
-    const [userData, setUserData] = useState<UserPublic>({id:0, name:"", friends:{follower:[], following:[]}});
+    const [userData, setUserData] = useState<UserPublic>(initialUser);
     const [searchResults, setSearchResults] = useState<UserPublic[]>([]);
-    const [oldFriends, setOldFriends] = useState<Friends>({following: [], follower:[]});
-    
+    const [oldFriends, setOldFriends] = useState<Friends>(initialFriends);
     const [target, setTarget] = useState<string>("");
-    const onCreate = (data: string) => {
-        setTarget(data);
-    }
-
     const [newfriendsList, setNewFriendsList] = useState<string[]>([]);
     const [deletedFriends, setDeletedFriends] = useState<string[]>([]);
+    
+    useEffect(() => {    
+        async function fetchData(){
+            if(props.user.id > 0){
+                await getFriendsById(props.user.id, props.user.token, setUserData, setOldFriends);  
+            }
+            await getAllUsersByName(target, setSearchResults);
+        }
+        fetchData();
+    }, [props.user.id, props.user.token, target])
+
+   
+    const onCreate = async (data: string) => {
+        await setTarget(data);
+    }
+
     const updateFriends = async (userName: string, friendstate: boolean) => {
         if(!friendstate){
-            setNewFriendsList([
+            await setNewFriendsList([
                 ...newfriendsList,
                 userName
             ]);
             await followByName(props.user.id, props.user.token, userName)
         }else{
-            setDeletedFriends([
+            await setDeletedFriends([
                 ...deletedFriends,
                 userName
             ])
@@ -39,17 +50,9 @@ const UserSearch = (props: SearchPageProps) => {
         }
     }
 
-    useEffect(() => {    
-        if(props.user.id > 0){
-            getFriendsById(props.user.id, props.user.token, setUserData, setOldFriends);  
-        }
-        getAllUsersByName(target, setSearchResults);
-    }, [props.user.id, props.user.token, target])
-
     const targetOldFriends: UserPublic[] = oldFriends.following.filter(user => user.name === target);
-    const filteredResults: UserPublic[] = searchResults.filter(user => (user.name !== userData.name));
-   
-    
+    const filteredResults: UserPublic[] = searchResults.filter(user => (user.name !== userData.name) && !(targetOldFriends.some( f => f.name === user.name)));
+
     return(
         <MainScale>
             <MainContainer>

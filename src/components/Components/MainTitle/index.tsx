@@ -28,7 +28,7 @@ const MainTitle = ({user}: MainTitleProps) => {
 
     return(
         <div>
-            <h4 className="main-title">{welcomeMessage}, {user.name}</h4>
+            <h4 className="main-title">{welcomeMessage}, <div>{user.name}</div></h4>
             <h6 className="main-subtitle">Quick touch &amp; express your love</h6>
         </div>
     )

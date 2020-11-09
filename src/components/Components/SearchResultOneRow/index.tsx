@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LoginContext from '../../../context';
-import { UserPublic, UserProfileBox, UserProfileTextBox } from '../../../utils';
+import { UserPublic, UserProfileBox, UserProfileTextBox, initialProfile } from '../../../utils';
 import './index.css';
 
 
@@ -26,14 +26,14 @@ const SearchResultOneRow = ({user, selectUser, isFriend}: SearchResultOneRowProp
             if(loginUser.user.id > 0){
                 return(
                     <UserProfileBox>
-                    <div className="result-user-img"></div>
+                    <div className="result-user-img"><img src={user.profileImageUri === null? initialProfile : user.profileImageUri} alt="profile"/></div>
                     <UserProfileTextBox>
                         <div className="result-user-name">{user.name}</div>
                         <div className="result-user-comment">{user?.comment}</div>
                     </UserProfileTextBox>  
                     <div><input type="button" onClick={async()=> {
                                 await selectUser(user.name, currentFriendState);     
-                                changeFriendState(currentFriendState);                       
+                                await changeFriendState(currentFriendState);                       
                                 }} 
                                 style={{background: currentFriendState? "#fefefe":"#9ED5E7", 
                                         border:  currentFriendState? "1px solid #9ED5E7":"1px solid #fefefe", 

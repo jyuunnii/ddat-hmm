@@ -5,13 +5,14 @@ import './index.css';
 
 type SentMessageProps = {
     record: MessageRecord;
+    count: number
 }
 
-const SentMessage = ({record}: SentMessageProps) => {
+const SentMessage = ({record, count}: SentMessageProps) => {
     return(
         <RecordWrapper>
         <RecordBox>
-        <div className="sent-count"><div className="received-count-number">{record.count}</div></div>
+            <div className="sent-count"><div className="received-count-number">{count}</div></div>
             <div className="receiver">{record.receiver}</div>
             <div className="sent-content">{record.content}</div>
         </RecordBox>

@@ -5,14 +5,15 @@ import './index.css';
 
 type ReceivedMessageProps = {
     record: MessageRecord;
-    color: string
+    count: number;
+    color: string;
 }
 
-const ReceivedMessage = ({record, color}: ReceivedMessageProps) => {
+const ReceivedMessage = ({record, count, color}: ReceivedMessageProps) => {
     return(
         <RecordWrapper>
         <RecordBox>
-            <div className="received-count" style={{backgroundColor:color}}><div className="received-count-number">{record.count}</div></div>
+            <div className="received-count" style={{backgroundColor:color}}><div className="received-count-number">{count}</div></div>
             <div className="sender">{record.sender}</div>
             <div className="received-content">{record.content}</div>
         </RecordBox>
