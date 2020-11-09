@@ -14,29 +14,31 @@ header #home-link {
 }
   
 .back-button {
-    position: absolute;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
     background-color: transparent;
     border: none;
     outline: none;
-    left: 8px;
-    top: 50%;
     transform: translate(0, -50%);
-    padding: 4px;
-    width: 32px;
-    height: 32px;
+
+    position: absolute;
+    top: 50%;
+    left: 8px;   
 }
 
 .start-button {
-    position: absolute;
+    width: 60px;
+    height: 32px;
+    padding: 4px;
     background-color: transparent;
     border: none;
     outline: none;
-    right: 10px;
-    top: 50%;
     transform: translate(0, -50%);
-    padding: 4px;
-    width: 60px;
-    height: 32px;
+
+    position: absolute;
+    top: 50%;
+    right: 10px;
 }
 
 .start-button span{
@@ -66,4 +68,32 @@ header #home-link {
     position: absolute;
     right: 20px;
     top: 50%;
+}
+
+.profile-menu {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    position: absolute;
+    top: 6px;
+    right: 10px;
+}
+
+.profile-menu span{
+    color: #ffffff;
+}
+
+.profile-menu-box {
+    position: absolute;
+    top: 36px;
+    right: 0px;
+
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    transition: all 0.5s ease 0s;
+    z-index:9;
 }

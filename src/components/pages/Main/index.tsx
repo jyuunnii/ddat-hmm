@@ -39,7 +39,7 @@ const MainPage = (props: MainPageProps) => {
                 <MainWhoList friends={userFriends} setTarget={setTarget}/>
             </MainWrapper>
             <MainWrapper className="main-msg-wrapper">
-                <h6>Dear {target.name}</h6>
+                <h6>Send to {target.name}</h6>
                 <MainMessage user={props.user} receiver={target}/>
             </MainWrapper>
             <MainWrapper>

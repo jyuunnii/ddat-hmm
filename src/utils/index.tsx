@@ -12,7 +12,7 @@ export const initialUser: UserPublic = {
 
 export const initialTarget: UserPublic = {
     id: 0,
-    name: "whom?",
+    name: "my friend",
     friends: {following:[], follower:[]}
 }
 

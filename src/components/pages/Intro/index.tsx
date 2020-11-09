@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { initialTarget, initialUser, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
 import MainMessage from '../../Components/MainMessage';
 import MainRecords from '../../Components/MainRecords';
 import MainTitle from '../../Components/MainTitle';
 import MainWhoList from '../../Components/MainWhoList';
+import './index.css';
 
 const friendsPreview = {
     following:[{id:1, name:"Jynn", profileImageUri:"/images/girl1.png", friends:{following:[],follower:[]}},
@@ -18,7 +20,7 @@ const messagesPreview = {
 }
 
 const Intro = () => {
-    const [enterTarget, setEnterTarget] = useState<UserPublic>(initialTarget);
+    const [introTarget, setIntroTarget] = useState<UserPublic>(initialTarget);
     
     return(
         <MainScale>
@@ -27,11 +29,13 @@ const Intro = () => {
                 <MainTitle user={initialUser}/>
             </MainWrapper>
             <MainWrapper className="main-who-wrapper">
-                <MainWhoList friends={friendsPreview} setTarget={setEnterTarget}/>
+                <MainWhoList friends={friendsPreview} setTarget={setIntroTarget}/>
             </MainWrapper>
             <MainWrapper className="main-msg-wrapper">
-                <h6>Dear {enterTarget.name}</h6>
-                <MainMessage user={{id:0, token:""}} receiver={enterTarget}/>
+                <h6>Send to {introTarget.name}</h6>
+                <Link to="/signin">
+                <MainMessage user={{id:0, token:""}} receiver={introTarget}/>
+                </Link>
             </MainWrapper>
             <MainWrapper>
             <MainRecords records={messagesPreview}/>
