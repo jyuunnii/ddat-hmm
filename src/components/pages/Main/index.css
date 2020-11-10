@@ -30,7 +30,7 @@
     padding-bottom: 10px;
 }
 
-.friend-list-title{
+.main-who-wrapper h6{
     font-family: 'Roboto Slab', serif;
     font-style: normal;
     font-weight: normal;
@@ -38,4 +38,6 @@
     line-height: 16px;
     margin-block-start: 0em;
     margin-block-end: 0em;
+    padding-left: 32px;
+    padding-bottom: 10px;
 }

@@ -1,7 +1,7 @@
-import { Friends, initialProfile, MessageRecord, serverUrl, UserPublic } from "../../utils";
+import { initialProfile, serverUrl } from "../../utils";
 
-export const getUserPublicById = async (id: number, token: string, setUserData:(user:UserPublic)=>void)=>{
-    await fetch(serverUrl+`/user/${id}`, {
+export const getUserPublicById = async (id: number, token: string)=>{
+    let user = await fetch(serverUrl+`/user/${id}`, {
         headers:{
             "Content-Type": "application/json",
             "x-access-token": token
@@ -10,51 +10,51 @@ export const getUserPublicById = async (id: number, token: string, setUserData:(
     }).then(response => response.json())
     .then(dataJSON => JSON.stringify(dataJSON))
     .then(dataStr => JSON.parse(dataStr))
-    .then(data => setUserData(data))
+    .then(data => {return data})
     .catch((error) => console.log("Error: ", error));
+
+    return user;
 }
 
-export const getUserById = async(id: number, token: string, 
-                                setUserData:(user: UserPublic)=>void, 
-                                setUserMessages:(msg: {sent: MessageRecord[], received: MessageRecord[]})=>void,
-                                setUserFriends:(friends: Friends)=>void) => {
-
-    Promise.all([
-        await fetch(serverUrl+`/user/${id}`, {
-            headers:{
-                "Content-Type": "application/json",
-                "x-access-token": token
-            },
-            method: "GET"
-        }),
-        await fetch(serverUrl+`/message/${id}`, {
-            headers:{
-                "Content-Type": "application/json",
-                "x-access-token": token
-            },
-            method: "GET"
-        }),
-        await fetch(serverUrl+`/follow/${id}`, {
-            headers:{
-                "Content-Type": "application/json",
-                "x-access-token": token
-            },
-            method: "GET"
-        })
-    ])
-    .then(responses =>  {
-        return Promise.all(responses.map((response) => {
-            return response.json();
-        }));
-    })
+export const getUserById = async(id: number, token: string) => {
+    let user = await fetch(serverUrl+`/user/${id}`, {
+        headers:{
+            "Content-Type": "application/json",
+            "x-access-token": token
+        },
+        method: "GET"
+    }).then(response => response.json())
     .then(dataJSON => JSON.stringify(dataJSON))
     .then(dataStr => JSON.parse(dataStr))
-    .then(data => {
-        setUserData(data[0]);
-        setUserMessages(data[1]);
-        setUserFriends(data[2]);
-    })
+    .then(data => {return data})
     .catch((error) => console.log("Error: ", error));
+
+    let messages = await fetch(serverUrl+`/message/${id}`, {
+        headers:{
+            "Content-Type": "application/json",
+            "x-access-token": token
+        },
+        method: "GET"
+    }).then(response => response.json())
+    .then(dataJSON => JSON.stringify(dataJSON))
+    .then(dataStr => JSON.parse(dataStr))
+    .then(data => {return data})
+    .catch((error) => console.log("Error: ", error));
+
+    let friends = await fetch(serverUrl+`/follow/${id}`, {
+        headers:{
+            "Content-Type": "application/json",
+            "x-access-token": token
+        },
+        method: "GET"
+    }).then(response => response.json())
+    .then(dataJSON => JSON.stringify(dataJSON))
+    .then(dataStr => JSON.parse(dataStr))
+    .then(data => {return data})
+    .catch((error) => console.log("Error: ", error));
+
+
+    return {user: user, messages: messages, friends: friends};
 }
 
 export const updateUserById = async(id: number, token: string, name: string, comment: string|undefined, profileImageUri: string|undefined) => {
@@ -73,48 +73,46 @@ export const updateUserById = async(id: number, token: string, name: string, com
     .catch((error) => console.log("Error: ", error));
 }
 
-export const getAllUsersByName = async(name: string, setSearchResults: (users: UserPublic[])=>void)=>{
-    await fetch(serverUrl+`/user/name?name=${name}`, {headers:{
+export const getAllUsersByName = async(name: string)=>{
+    let searchResults = await fetch(serverUrl+`/user/name?name=${name}`, {headers:{
         "Content-Type": "application/json"
     },
     method: "GET"
     }).then(response => response.json())
     .then(dataJSON => JSON.stringify(dataJSON))
     .then(dataStr => JSON.parse(dataStr))
-    .then(data => setSearchResults(data))
+    .then(data => {return data})
     .catch((error) => console.log("Error: ", error));
+
+    return searchResults;
 }
 
-export const getFriendsById = async(id: number, token: string, 
-                                setUserData:(user: UserPublic)=>void, 
-                                setUserFriends:(friends: Friends)=>void) => {
-    Promise.all([
-        await fetch(serverUrl+`/user/${id}`, {
-            headers:{
-                "Content-Type": "application/json",
-                "x-access-token": token
-            },
-            method: "GET"
-        }),
-        await fetch(serverUrl+`/follow/${id}`, {
-            headers:{
-                "Content-Type": "application/json",
-                "x-access-token": token
-            },
-            method: "GET"
-        })
-    ]).then(responses =>  {
-        return Promise.all(responses.map((response) => {
-            return response.json();
-        }));
-    })
+export const getFriendsById = async(id: number, token: string) => {
+    let user = await fetch(serverUrl+`/user/${id}`, {
+        headers:{
+            "Content-Type": "application/json",
+            "x-access-token": token
+        },
+        method: "GET"
+    }).then(response => response.json())
     .then(dataJSON => JSON.stringify(dataJSON))
     .then(dataStr => JSON.parse(dataStr))
-    .then(data => {
-        setUserData(data[0]);
-        setUserFriends(data[1]);
-    })
+    .then(data => {return data})
     .catch((error) => console.log("Error: ", error));
+
+    let friends = await fetch(serverUrl+`/follow/${id}`, {
+        headers:{
+            "Content-Type": "application/json",
+            "x-access-token": token
+        },
+        method: "GET"
+    }).then(response => response.json())
+    .then(dataJSON => JSON.stringify(dataJSON))
+    .then(dataStr => JSON.parse(dataStr))
+    .then(data => {return data})
+    .catch((error) => console.log("Error: ", error));
+
+    return {user: user, friends: friends};
 }
 
 export const followByName = async(id: number, token: string, name: string) => {
@@ -156,8 +154,8 @@ export const sendMessage = async(id: number, token: string, targetUserId: number
     .catch((error) => console.log("Error: ", error));
 }
 
-export const login = async(data: { email: string; password: string }, setUser:(user:{id: number, token: string})=>void) => {
-    await fetch(serverUrl+'/auth/login', {
+export const login = async(data: { email: string; password: string }) => {
+    let token = await fetch(serverUrl+'/auth/login', {
         headers:{
             "Content-Type": "application/json"
         },
@@ -166,8 +164,11 @@ export const login = async(data: { email: string; password: string }, setUser:(u
     })
     .then(response => response.json())
     .then(dataJSON => JSON.stringify(dataJSON))
-    .then(dataStr => setUser(JSON.parse(dataStr)))
+    .then(dataStr => JSON.parse(dataStr))
+    .then(data => {return data})
     .catch((error) => console.log("Error: ", error));
+
+    return token;
 }
 
 export const signup = async (data: { name: string; email: string; password: string }) => {

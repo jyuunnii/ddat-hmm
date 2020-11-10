@@ -46,7 +46,7 @@ const SignInForm = (props: SignInFormProps) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if(formValidation(form)){
-            await login(form, setUserLoginInfo);
+           await login(form).then(token => setUserLoginInfo(token));
         }
     };
 

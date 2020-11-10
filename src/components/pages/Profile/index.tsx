@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LoginContext from '../../../context';
 import { Friends, initialFriends, MainContainer, MainWrapper, UserPublic } from '../../../utils';
-import { followByName, getFriendsById, getUserPublicById, unfollowByName, updateUserById } from '../../api';
+import { followByName, getFriendsById, unfollowByName, updateUserById } from '../../api';
 import FriendsList from '../../Components/FriendsList';
 import ProfileImage from '../../Components/ProfileImage';
 import ProfileInformation from '../../Components/ProfileInformation';
@@ -31,10 +31,12 @@ const ProfilePage = (props: ProfilePageProps) => {
     const [oldFriends, setOldFriends] = useState<Friends>(initialFriends);
 
     useEffect(() => {    
-        async function fetchData(){
+        async function fetchData(){ 
             if(props.user.id > 0){
-                await getUserPublicById(props.user.id, props.user.token, setProfile);
-                await getFriendsById(props.user.id, props.user.token, setProfile, setOldFriends);  
+                await getFriendsById(props.user.id, props.user.token).then(data => {
+                    setProfile(data.user);
+                    setOldFriends(data.friends);  
+                }); 
             }
         }
         fetchData();

@@ -11,7 +11,7 @@ const RWrapper = styled.div`
 `;
 
 type MainRecordsProps = {
-    records: {sent: MessageRecord[], received: MessageRecord[]};
+    records: {sent: MessageRecord[], received: MessageRecord[]} | undefined;
 }
 
 const countColors = ["#F5C851", "#9ED5E7", "#FC929E"];
@@ -30,14 +30,20 @@ const MainRecords = ({records}: MainRecordsProps) => {
     }
 
     useEffect(() => {
-      async function classify(){
-        const sent =  await groupBy(records.sent, record => record.receiver);
-        const received =  await groupBy(records.received, record => record.sender);
-        setSentGroupByUser(sent);
-        setReceivedGroupByUser(received);
+        async function classify(){
+            let sent: MessageRecord[][] = [];
+            let received: MessageRecord[][] = [];
+            if(records?.sent !== undefined ){
+                sent =  await groupBy(records?.sent, record => record.receiver);
+            }
+            if(records?.received !== undefined){
+                received =  await groupBy(records?.received, record => record.sender);
+            }
+            setSentGroupByUser(sent);
+            setReceivedGroupByUser(received);
       }
       classify();
-    },[records.sent, records.received])
+    },[records])
 
     const calculateCount = (graph: MessageRecord[][] | undefined) => {
         let totalCount = 0;
