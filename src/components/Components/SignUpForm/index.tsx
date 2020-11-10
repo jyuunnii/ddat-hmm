@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import { LoginFormContainer } from '../../../utils';
 import { signup } from '../../api';
 import './index.css'
@@ -7,6 +8,7 @@ const SignUpForm = () => {
     const [isNameValid, setNameValid] = useState<boolean>();
     const [isEmailValid, setEmailValid] = useState<boolean>();
     const [isPasswordValid, setPasswordValid] = useState<boolean>();
+    const location = useHistory();
 
     const [form, setForm] = useState({
         name: "",
@@ -24,36 +26,61 @@ const SignUpForm = () => {
         });
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        signupCssEffect(form); 
-        signup(form)
-        setForm({
-            name: "",
-            email: "",
-            password: ""
-        }); 
+        if(formValidation(form)){
+            await signup(form)
+        }
     };
 
-    const signupCssEffect = (form: { name: string; email: string; password: string } ) => {
-        if(form.name !== "" && form.name !== " "){
-            setNameValid(true);
-        }else{
+    const formValidation = (form: { name: string; email: string; password: string }) => {
+        let filter = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        let letter = /[a-zA-Z]/;
+        let number = /[0-9]/;
+
+        if(!letter.test(name)){
             setNameValid(false);
+        }else{
+            setNameValid(true);
         }
 
-        if(form.email.includes("@")){
-            setEmailValid(true);
-        }else{
+        if(!filter.test(email)){
             setEmailValid(false);
-        }
- 
-        if(form.password !== "" && form.password !== " "){
-             setPasswordValid(true);
         }else{
-            setPasswordValid(false);
+            setEmailValid(true);
         }
-    };   
+
+        if(password.length < 4 || password.length > 9 || !letter.test(password) || !number.test(password)){
+            setPasswordValid(false);
+        }else{
+            setPasswordValid(true);
+        }
+
+        if(!letter.test(name)){
+            return false;
+        }
+
+        if(!filter.test(email)){
+            return false;
+        }
+
+        if(password.length < 4 || password.length > 9 || !letter.test(password) || !number.test(password)){
+            if(password.length < 4){
+                return false;
+            }
+            if(password.length > 9){
+                return false;
+            }
+            if(!letter.test(password)){
+                return false;
+            }
+            if(!number.test(password)){
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     return(
         <LoginFormContainer>
@@ -111,11 +138,14 @@ const SignUpForm = () => {
             style={{
                 display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block"),
                 color: "#CC5454", 
-            }}>Please enter a valid password.</div>  
+            }}>The password must be 4 to 8 characters long and contain a mix of letters and numbers.</div>  
 
-
-
-            <div className="sign-up-button"><button>Sign Up</button></div>   
+            <div className="sign-up-button"><button type="submit" onClick={() => {
+                if(formValidation(form)){
+                    alert('가입되었습니다.')
+                    location.push("/signin")
+                }
+            }}>Sign Up</button></div>   
             
         </form>
         </LoginFormContainer>

@@ -29,6 +29,7 @@ const Intro = () => {
                 <MainTitle user={initialUser}/>
             </MainWrapper>
             <MainWrapper className="main-who-wrapper">
+                <h6 className="friend-list-title">Friend List</h6>
                 <MainWhoList friends={friendsPreview} setTarget={setIntroTarget}/>
             </MainWrapper>
             <MainWrapper className="main-msg-wrapper">

@@ -19,8 +19,6 @@ const ProfileScale = styled.div`
     overflow: hidden;
 `;
 
-// it needs some feedback about componenet structure "form & button"!
-
 type ProfilePageProps = {
     user: {id: number, token: string};
 }
@@ -43,8 +41,12 @@ const ProfilePage = (props: ProfilePageProps) => {
     }, [props.user.id, props.user.token])
 
     const onCreate = async(data: UserPublic) => {
-        await setProfile(data);
-        await updateUserById(props.user.id, props.user.token, data.name, data.comment);
+        if(formValidation(data)){
+            setProfile(data);
+            await updateUserById(props.user.id, props.user.token, data.name, data.comment, profile?.profileImageUri);
+        }else{
+            setProfile(profile);
+        }
     }
 
     const [newFriends, setNewFriends] = useState<string[]>([]);
@@ -71,6 +73,15 @@ const ProfilePage = (props: ProfilePageProps) => {
         }else{
             setMoveUp(false);
         }
+    }
+
+    const formValidation = (user: UserPublic) => {
+        let letter = /[a-zA-Z]/;
+        if(!letter.test(user.name)){
+            alert("Please enter a valid name")
+            return false;
+        }
+        return true;
     }
 
     return(

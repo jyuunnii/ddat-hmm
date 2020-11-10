@@ -1,4 +1,4 @@
-import { Friends, MessageRecord, serverUrl, UserPublic } from "../../utils";
+import { Friends, initialProfile, MessageRecord, serverUrl, UserPublic } from "../../utils";
 
 export const getUserPublicById = async (id: number, token: string, setUserData:(user:UserPublic)=>void)=>{
     await fetch(serverUrl+`/user/${id}`, {
@@ -57,7 +57,7 @@ export const getUserById = async(id: number, token: string,
     .catch((error) => console.log("Error: ", error));
 }
 
-export const updateUserById = async(id: number, token: string, name: string, comment: string|undefined) => {
+export const updateUserById = async(id: number, token: string, name: string, comment: string|undefined, profileImageUri: string|undefined) => {
     await fetch(serverUrl+`/user/${id}`, {
         headers:{
             "Content-Type": "application/json",
@@ -66,7 +66,8 @@ export const updateUserById = async(id: number, token: string, name: string, com
         method: "PATCH",
         body: JSON.stringify({
             name: name,
-            comment: comment
+            comment: comment,
+            profileImageUri: profileImageUri
         })
     }).then(response => console.log(response.ok))
     .catch((error) => console.log("Error: ", error));
@@ -175,7 +176,12 @@ export const signup = async (data: { name: string; email: string; password: stri
             "Content-Type": "application/json"
         },
         method: "POST",
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            profileImageUri: initialProfile
+        })
     }).then(response => console.log(response.ok))
     .catch((error) => console.log("Error: ", error));
 }

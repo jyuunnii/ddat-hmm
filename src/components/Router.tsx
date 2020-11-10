@@ -21,7 +21,7 @@ const Router = (props: RouterProps) => {
           <React.Suspense fallback={<div>Loading...</div>}>
             <Switch location={props.location}>
               <Route path="/" exact render={() => <IntroPage/>}/>
-              <Route path="/user" exact render={() => <MainPage user={loginUser.user} />} />
+              <Route path="/user/:id" exact render={() => <MainPage user={loginUser.user} />} />
               <Route path="/signin" exact render={()=> <SignInPage/>}/>
               <Route path="/signup" exact render={()=> <SignUpPage/>}/>
               <Route path="/search" exact render={() => <UserSearchPage user={loginUser.user} />}/>

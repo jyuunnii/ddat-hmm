@@ -29,14 +29,10 @@ const MainMessageLove = ({user, receiver}: MainMessageLoveProps) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if(user.id > 0 && receiver.id > 0){
-            await sendMessage(user.id, user.token, message.targetUserId, message.content);
+            await sendMessage(user.id, user.token, receiver.id, message.content);
         }else{
-            window.confirm("Please click a receiver on your friend list");
+            window.confirm("친구목록에서 메세지를 받을 사람을 선택해주세요.");
         }
-        setMessage({
-            targetUserId: receiver.id,
-            content: message.content
-        }); 
     };
 
     return(

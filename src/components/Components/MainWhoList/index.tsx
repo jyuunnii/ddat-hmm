@@ -30,7 +30,7 @@ const MainWhoList = ({friends, setTarget}: MainWhoListProps) => {
     if(! Array.isArray(friends.following) || !friends.following.length){
         return(
           <MWLContainer>
-             <div>친구를 추가해주세요.</div> 
+             <div className="empty-friendlist">검색해서 친구를 추가해주세요.</div> 
           </MWLContainer>
         )
     }

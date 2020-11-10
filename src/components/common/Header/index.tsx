@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { UserPublic } from '../../../utils';
+import LoginContext from '../../../context';
+import { initialUser, UserPublic } from '../../../utils';
 import ProfileHeaderMenu from '../../Components/ProfileHeaderMenu';
 import Logo from '../Logo';
 import MaterialIcon from '../MaterialIcon';
@@ -18,14 +19,20 @@ const Header = (props: HeaderProps) => {
     const history = useHistory();
     const pathname = props.location.pathname;
     const [move, setMove] = useState<boolean>(false);
-    
+    const [user, setUser] = useState<UserPublic>(initialUser);
+  
     const showProfileMenu = (move: boolean) => {
       if(move){
           setMove(false);
       }else{
           setMove(true);
       }
-  }
+    }
+
+    useEffect(()=>{
+      setUser(props.user);
+    },[props.user])
+
     switch(pathname){
       case "/":
         return(
@@ -41,16 +48,36 @@ const Header = (props: HeaderProps) => {
           </header> 
         );
 
-      case "/user":
+      case `/user/${props.user.id}`:
         return(
-          <header style={{backgroundColor:"#ffffff"}}>
-          <Link to="/" id="home-link">
-            <Logo pathname={pathname}/>
-          </Link>
-          <Link to="/profile">
-          <button className="header-profile">{props.user.name.charAt(0).toUpperCase()}</button>
-          </Link>
-        </header>
+          <LoginContext.Consumer>
+            {loginUser => {
+              if(loginUser.user.id > 0){
+                return(
+                  <header style={{backgroundColor:"#ffffff"}}>
+                    <Link to={`/user/${props.user.id}`} id="home-link">
+                      <Logo pathname={pathname}/>
+                    </Link>
+                    <Link to="/profile">
+                    <button className="header-profile">{user.name.charAt(0).toUpperCase()}</button>
+                    </Link>
+                  </header>
+                  );
+              }else{
+                return(
+                  <header>
+                  <Link to="/" id="home-link">
+                    <Logo pathname={pathname}/>
+                  </Link>
+                  <button className="back-button" onClick={() => history.goBack()}>
+                    <MaterialIcon icon="keyboard_arrow_left"/>
+                  </button>
+                </header>
+                );
+              }
+            }}
+          </LoginContext.Consumer>
+        
         );
 
       case "/signin":
