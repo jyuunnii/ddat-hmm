@@ -1,0 +1,51 @@
+.sign-out-button{
+    width: 140px;
+    height: 24px;
+    padding-right: 16px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: right;
+    color: #ffffff;
+}
+
+.sign-out-button i{
+    font-size: 14px;
+    color: #ffffff;
+
+    position: absolute;
+    top: 6px;
+    left: 62px;
+}
+
+.account-button {
+    width: 140px;
+    height: 24px;
+    padding-right: 16px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: right;
+    color: #ffffff;
+}
+
+.account-button i{
+    font-size: 14px;
+    color: #ffffff;
+
+    position: absolute;
+    bottom: 4px;
+    left: 16px;
+}

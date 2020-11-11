@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+/* Edit off */
+.profile-name {
+    width: 256px;
+    height: 26px;
+    padding-top: 1px;
+    margin-bottom: 12px;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.profile-comment{
+    width: 256px;
+    height: 90px;
+    padding-top: 6px;
+    padding-left: 1px;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 18px;
+    color: #ffffff;  
+    text-align: center;
+}
+
+
+
+
+
+/* Edit on */
+.profile-name-edit {
+    width: 256px; 
+    height: 26px;
+    border-bottom: 1px solid #ffffff;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.profile-comment-edit {
+    width: 254px;
+    height: 88px;
+    border-radius: 4px;
+    border: 1px solid #ffffff;
+    text-align: center;
+}
+
+.profile-name-edit input{
+    background-color: transparent;
+    border-color: transparent;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.profile-comment-edit textarea{
+    background-color: transparent;
+    border-color: transparent;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 18px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.profile-name-edit input::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.profile-comment-edit textarea::placeholder{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 18px;
+    color: #ffffff;
+}
+
+.edit-name {
+    font-size: 18px;
+    color: #ffffff;
+    position: absolute;
+    right: 4px;
+    bottom: 0px;
+}
+
+.edit-comment {
+    font-size: 18px;
+    color: #ffffff;
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+}
+
+.save-button {
+    width: 82px;
+    min-height: 22px;
+    background-color: transparent;
+    border-color: transparent;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #ffffff;
+    
+    position: fixed;
+    bottom: 80px;
+    right: 32px;
+    text-align: right;
+}

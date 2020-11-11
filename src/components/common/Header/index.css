@@ -1,9 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap');
+
 header {
     width: 100%;
     height: 48px;
-  
-    background-color: #ffffff;
-  
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -15,14 +14,86 @@ header #home-link {
 }
   
 .back-button {
-    position: absolute;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
     background-color: transparent;
     border: none;
     outline: none;
-    left: 8px;
+    transform: translate(0, -50%);
+
+    position: absolute;
     top: 50%;
+    left: 8px;   
+}
+
+.start-button {
+    width: 60px;
+    height: 32px;
+    padding: 4px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    transform: translate(0, -50%);
+
+    position: absolute;
+    top: 50%;
+    right: 10px;
+}
+
+.start-button span{
+    font-family: 'Zilla Slab', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.header-profile {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.4);
     transform: translate(0, -50%);
     padding: 4px;
+    background-color: #ffffff;
+    
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #292929;
+
+    position: absolute;
+    right: 20px;
+    top: 50%;
+}
+
+.profile-menu {
     width: 32px;
     height: 32px;
+    padding: 4px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    position: absolute;
+    top: 6px;
+    right: 10px;
+}
+
+.profile-menu span{
+    color: #ffffff;
+}
+
+.profile-menu-box {
+    position: absolute;
+    top: 36px;
+    right: 0px;
+
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    transition: all 0.5s ease 0s;
+    z-index:9;
 }

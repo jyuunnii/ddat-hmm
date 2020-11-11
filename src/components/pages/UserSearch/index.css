@@ -1,0 +1,12 @@
+.search-title-wrapper {
+    padding: 24px 32px;
+}
+
+.search-box-wrapper {
+    padding: 8px 32px;
+}
+
+.search-result-wrapper {
+    max-height: 376px;
+    overflow-y: hidden;
+}

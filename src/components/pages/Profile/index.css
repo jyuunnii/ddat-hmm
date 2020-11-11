@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.profile-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right:0;
+    z-index: -2;
+}
+
+.profile-bg-cover {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    position: fixed;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right:0;
+    z-index: -1;
+}
+
+/* Edit off */
+.profile-edit-off button {
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.friend-button {
+    position: fixed;
+    bottom: 84px;
+    left: 32px;
+}
+
+.friend-button span{
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.edit-on-button {
+    position: fixed;
+    bottom: 84px;
+    right: 32px;
+}
+
+.edit-on-button span{
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.edit-on-button-name {
+    text-align: center;
+    padding-top: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 10px;
+    color: #FFFFFF;
+}
+
+.friend-button-name {
+    text-align: center;
+    padding-top: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 10px;
+    color: #FFFFFF;
+}
+
+/* Edit on */
+.profile-edit-on button{
+    width: 82px;
+    min-height: 22px;
+    background-color: transparent;
+    border-color: transparent;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #ffffff;
+}
+
+.cancel-button {
+    position: fixed;
+    bottom: 80px;
+    left: 32px;
+    text-align: left;
+}
+
+.friendslist-box {
+    width: 100%;
+    height: 480px;
+    background: #FFFFFF;
+    border-radius: 30px 30px 0px 0px;
+    transition: all 0.5s ease 0s;
+}
+
+.friendslist-box button {
+    width: 36px;
+    height: 36px;
+    padding: 16px 8px;
+    background-color: transparent;
+    border-color: transparent;
+
+    position: absolute;
+    right: 20px;
+}
+
+.friendslist-close-button span{
+    color: #333333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}

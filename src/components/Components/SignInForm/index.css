@@ -1,28 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Roboto+Slab&display=swap');
 
-.input-subtitle {
-    font-family: Fira Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 10px;
-    line-height: 12px;
-    position: absolute;
-    top: 8px;
-}
-
-.sign-up {
+.sign-in {
     width:100%;
     height: 56px;
     border-bottom: 1px solid #DBDBDB;
     position: relative;
 }
 
-.sign-up input {
+.sign-in input{
     position: absolute;
     bottom: 11px;
 }
 
-.sign-up-input::placeholder {
+.sign-in-input::placeholder {
     font-family: Fira Sans;
     font-style: normal;
     font-weight: normal;
@@ -30,13 +20,12 @@
     line-height: 17px;
 }
 
-.sign-up-button {
-    position: absolute;
-    top: 208px;
-    left: 70px;
+.sign-in-button{
+    padding-top:48px;
+    text-align: center;
 }
 
-.sign-up-button button{
+.sign-in-button button{
     width: 108px;
     height: 36px;
     color: #ffffff;
@@ -51,7 +40,8 @@
     font-style: normal;
     font-weight: normal;
     font-size: 10px;
-    line-height: 12px;  
+    line-height: 12px;
+    color: #CC5454;
 }
 
 .caution-icon {
@@ -61,3 +51,8 @@
     bottom: 8px;
     right: 8px;
 }
+
+.sign-in-form {
+    cursor: pointer;
+}
+

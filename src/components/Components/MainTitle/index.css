@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+.main-title {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 26px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.main-title div{
+    display: inline;
+    max-width: 296px;
+    max-height: 24px;
+    overflow: hidden;
+}
+
+.main-subtitle {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    color: #292929;
+}

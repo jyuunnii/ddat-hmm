@@ -1,6 +1,8 @@
 import React from "react";
 import { useLocation } from "react-router";
 import { animated, useTransition } from "react-spring";
+import { UserPublic } from "../utils";
+import Footer from "./common/Footer";
 import Header from "./common/Header";
 import Router from "./Router";
 
@@ -21,7 +23,12 @@ function getPageTransition(pathname: string){
   };
 }
 
-const PageTemplate = () => {
+type PageTemplateProps = {
+  userToken: {id:number, token: string};
+  user: UserPublic;
+}
+
+const PageTemplate = (props: PageTemplateProps) => {
   const location = useLocation();
   const routeTransition = useTransition(
     location,
@@ -48,15 +55,14 @@ const PageTemplate = () => {
             left: 0,
             backgroundColor: "#ffffff",
             opacity: 1,
-            transform: "translate(0, 0)",
             ...springProps,
           }}
         >
-          <Header location={item} />
+          <Header location={item} token={props.userToken}/>
           <main>
             <Router location={item}/>
           </main>
-          <footer></footer>
+          <Footer location={item} />
         </animated.div>
       ))}
     </div>

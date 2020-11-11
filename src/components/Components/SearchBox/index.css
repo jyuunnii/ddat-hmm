@@ -1,0 +1,22 @@
+.search-value input{
+    width: 296px;
+    height: 40px;
+    border: 2px solid #ECEDEF;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: transparent;
+    
+    padding-left: 54px;
+    font-size: 16px;
+}
+
+.search-value input:focus {
+    outline:1px solid #9ED5E7
+;}
+
+.search-icon {
+    font-size: 18px;
+    position: absolute;
+    top: 11px;
+    left: 18px;
+}

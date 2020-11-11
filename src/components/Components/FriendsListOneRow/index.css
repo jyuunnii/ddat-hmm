@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+.friend-img {
+    background: transparent;
+    box-sizing: border-box;
+}
+
+.friend-img img{
+    width: 58px;
+    height: 58px;
+    border: 1px solid #DBDBDB;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.friend-name {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+    padding-bottom: 8px;
+}
+
+.friend-comment {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    min-width: 154px;
+}
+
+.add-button {
+    width: 58px;
+    height: 28px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-top: 18px;
+    transition: background-color 100ms ease-in;
+}
