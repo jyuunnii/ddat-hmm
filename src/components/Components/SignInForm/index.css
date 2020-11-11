@@ -7,7 +7,7 @@
     position: relative;
 }
 
-.sign-in input {
+.sign-in input{
     position: absolute;
     bottom: 11px;
 }
@@ -20,10 +20,9 @@
     line-height: 17px;
 }
 
-.sign-in-button {
-    position: absolute;
-    top: 152px;
-    left: 70px;
+.sign-in-button{
+    padding-top:48px;
+    text-align: center;
 }
 
 .sign-in-button button{
@@ -34,7 +33,6 @@
     border: 1px solid #191919;
     box-sizing: border-box;
     border-radius: 4px;
-    margin: 0 auto;
 }
 
 .input-error {
@@ -52,5 +50,9 @@
     position: absolute;
     bottom: 8px;
     right: 8px;
+}
+
+.sign-in-form {
+    cursor: pointer;
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { initialBackground, UserPublic } from '../../../utils';
+import { initialBackground, initialProfile, UserPublic } from '../../../utils';
 import { sendMessage } from '../../api';
 import './index.css';
 
@@ -29,7 +29,7 @@ const MainMessageThanks = ({user, receiver}: MainMessageLoveProps) => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await sendMessage(user.id, user.token, message.targetUserId, message.content);
+        await sendMessage(user.id, user.token, receiver.id, message.content);
         setMessage({
             targetUserId: receiver.id,
             content: message.content
@@ -39,7 +39,7 @@ const MainMessageThanks = ({user, receiver}: MainMessageLoveProps) => {
     return(
         <div>
             <div className="background-image-box">
-                <img src={receiver.profileImageUri === null? initialBackground : receiver.profileImageUri} 
+                <img src={receiver.profileImageUri === initialProfile? initialBackground : receiver.profileImageUri} 
                 className="receiver-img" alt="receiver-img"/> 
             </div>
             <form onSubmit={handleSubmit}>

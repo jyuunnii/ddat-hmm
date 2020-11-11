@@ -157,14 +157,12 @@ export const sendMessage = async(id: number, token: string, targetUserId: number
 export const login = async(data: { email: string; password: string }) => {
     let token = await fetch(serverUrl+'/auth/login', {
         headers:{
+            Accept: 'application/json',
             "Content-Type": "application/json"
         },
         method: "POST",
         body: JSON.stringify(data) 
-    })
-    .then(response => response.json())
-    .then(dataJSON => JSON.stringify(dataJSON))
-    .then(dataStr => JSON.parse(dataStr))
+    }).then(response => response.json())
     .then(data => {return data})
     .catch((error) => console.log("Error: ", error));
 
@@ -174,6 +172,7 @@ export const login = async(data: { email: string; password: string }) => {
 export const signup = async (data: { name: string; email: string; password: string }) => {
     await fetch(serverUrl+'/user', {
         headers:{
+            Accept: 'application/json',
             "Content-Type": "application/json"
         },
         method: "POST",
@@ -181,7 +180,8 @@ export const signup = async (data: { name: string; email: string; password: stri
             name: data.name,
             email: data.email,
             password: data.password,
-            profileImageUri: initialProfile
+            profileImageUri: initialProfile,
+            comment: ""
         })
     }).then(response => console.log(response.ok))
     .catch((error) => console.log("Error: ", error));

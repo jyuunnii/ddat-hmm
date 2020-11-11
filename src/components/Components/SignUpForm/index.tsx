@@ -26,11 +26,16 @@ const SignUpForm = () => {
         });
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(formValidation(form)){
-            await signup(form)
+        async function fetch(){
+            if(formValidation(form)){
+                await signup(form);
+                alert("가입되었습니다.");
+                location.push("/signin");
+            }
         }
+        fetch();
     };
 
     const formValidation = (form: { name: string; email: string; password: string }) => {
@@ -78,75 +83,35 @@ const SignUpForm = () => {
                 return false;
             }
         }
-
         return true;
     }
 
     return(
         <LoginFormContainer>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="sign-up-form">
             <div className="sign-up">
-                <div className="input-subtitle" 
-                style={{
-                    color: isNameValid === undefined? "#000000" : (isNameValid? "#000000" : "#CC5454"),
-                }}>Name</div>
+                <div className="input-subtitle" style={{color: isNameValid === undefined? "#000000" : (isNameValid? "#000000" : "#CC5454")}}>Name</div>
                 <input type="text"  name="name" value={name} onChange={onChange} placeholder="Name" className="sign-up-input"/>
-                <span className="material-icons-outlined caution-icon" 
-                style={{
-                    display: isNameValid === undefined? "none" : (isNameValid? "none" : "block"),
-                }}>report</span>    
+                <span className="material-icons-outlined caution-icon" style={{display: isNameValid === undefined? "none" : (isNameValid? "none" : "block")}}>report</span>    
             </div>
-            <div className="input-error" 
-            style={{
-                display: isNameValid === undefined? "none" : (isNameValid? "none" : "block"),
-                color: "#CC5454", 
-            }}>Please enter a valid name.</div>  
-            
-
+            <div className="input-error" style={{display: isNameValid === undefined? "none" : (isNameValid? "none" : "block"), color: "#CC5454"}}>Please enter a valid name.</div>  
             
             <div className="sign-up">
-                <div className="input-subtitle" 
-                style={{
-                    color: isEmailValid === undefined? "#000000" : (isEmailValid? "#000000" : "#CC5454"),
-                }}>Email</div>
+                <div className="input-subtitle" style={{color: isEmailValid === undefined? "#000000" : (isEmailValid? "#000000" : "#CC5454")}}>Email</div>
                 <input type="text" name="email" value={email} onChange={onChange} placeholder="Email" className="sign-up-input"/>
-                <span className="material-icons-outlined caution-icon" 
-                style={{
-                    display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block"),                    
-                }}>report</span>    
+                <span className="material-icons-outlined caution-icon" style={{display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block"),                    }}>report</span>    
             </div>
-            <div className="input-error" 
-            style={{
-                display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block"),
-                color: "#CC5454", 
-            }}>Please enter a valid email address.</div>
-
-
+            <div className="input-error" style={{display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block"), color: "#CC5454"}}>Please enter a valid email address.</div>
 
             <div className="sign-up">
-                <div className="input-subtitle" 
-                style={{
-                    color: isPasswordValid === undefined? "#000000" : (isPasswordValid? "#000000" : "#CC5454"),
-                }}>Password</div>
+                <div className="input-subtitle" style={{color: isPasswordValid === undefined? "#000000" : (isPasswordValid? "#000000" : "#CC5454")}}>Password</div>
                 <input type="text" name="password" value={password} onChange={onChange} placeholder="Password" className="sign-up-input"/>
-                <span className="material-icons-outlined caution-icon" 
-                style={{
-                    display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block"),
-                }}>report</span>    
+                <span className="material-icons-outlined caution-icon" style={{display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block")}}>report</span>    
             </div>
-            <div className="input-error" 
-            style={{
-                display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block"),
-                color: "#CC5454", 
+            <div className="input-error" style={{display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block"), color: "#CC5454"
             }}>The password must be 4 to 8 characters long and contain a mix of letters and numbers.</div>  
 
-            <div className="sign-up-button"><button type="submit" onClick={() => {
-                if(formValidation(form)){
-                    alert('가입되었습니다.')
-                    location.push("/signin")
-                }
-            }}>Sign Up</button></div>   
-            
+            <div className="sign-up-button"><button type="submit">Sign Up</button></div>      
         </form>
         </LoginFormContainer>
     )
