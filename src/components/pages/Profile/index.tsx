@@ -20,7 +20,7 @@ const ProfileScale = styled.div`
 `;
 
 type ProfilePageProps = {
-    user: {id: number, token: string};
+    userToken: {id: number, token: string};
 }
 
 const ProfilePage = (props: ProfilePageProps) => {
@@ -32,20 +32,20 @@ const ProfilePage = (props: ProfilePageProps) => {
 
     useEffect(() => {    
         async function fetchData(){ 
-            if(props.user.id > 0){
-                await getFriendsById(props.user.id, props.user.token).then(data => {
+            if(props.userToken.id > 0){
+                await getFriendsById(props.userToken.id, props.userToken.token).then(data => {
                     setProfile(data.user);
                     setOldFriends(data.friends);  
                 }); 
             }
         }
         fetchData();
-    }, [props.user.id, props.user.token])
+    }, [props.userToken.id, props.userToken.token])
 
     const onCreate = async(data: UserPublic) => {
         if(formValidation(data)){
             setProfile(data);
-            await updateUserById(props.user.id, props.user.token, data.name, data.comment, profile?.profileImageUri);
+            await updateUserById(props.userToken.id, props.userToken.token, data.name, data.comment, profile?.profileImageUri);
         }else{
             setProfile(profile);
         }
@@ -59,13 +59,13 @@ const ProfilePage = (props: ProfilePageProps) => {
                 ...newFriends,
                 userName
             ]); 
-            await followByName(props.user.id, props.user.token, userName)
+            await followByName(props.userToken.id, props.userToken.token, userName)
         }else{
             setDeletedFriends([
                 ...deletedFriends,
                 userName
             ])
-            await unfollowByName(props.user.id, props.user.token, userName)
+            await unfollowByName(props.userToken.id, props.userToken.token, userName)
         }
     }
 
@@ -88,8 +88,8 @@ const ProfilePage = (props: ProfilePageProps) => {
 
     return(
         <LoginContext.Consumer>
-            {loginUser => {
-                if(loginUser.user.id > 0 && profile !== undefined){
+            {token => {
+                if(token.userToken.id > 0 && profile !== undefined){
                     return(
                         <ProfileScale>
                             <div><img src={bgimages} alt="bg-img" className="profile-bg-img"/></div>

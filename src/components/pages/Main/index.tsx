@@ -9,7 +9,7 @@ import MainWhoList from '../../Components/MainWhoList';
 import './index.css';
 
 type MainPageProps = {
-    user: {id: number, token: string}
+    userToken: {id: number, token: string}
 }
 
 const MainPage = (props: MainPageProps) => {
@@ -21,8 +21,8 @@ const MainPage = (props: MainPageProps) => {
 
     useEffect(() => {   
         async function fetchData(){
-            if(props.user.id > 0){
-                await getUserById(props.user.id, props.user.token).then(data =>{
+            if(props.userToken.id > 0){
+                await getUserById(props.userToken.id, props.userToken.token).then(data =>{
                     setUserData(data.user);
                     setUserMessages(data.messages);
                     setUserFriends(data.friends);
@@ -32,7 +32,7 @@ const MainPage = (props: MainPageProps) => {
             }
         } 
         fetchData();
-    }, [props.user.id, props.user.token, location])
+    }, [props.userToken.id, props.userToken.token, location])
 
     return(
         <MainScale>
@@ -46,7 +46,7 @@ const MainPage = (props: MainPageProps) => {
             </MainWrapper>
             <MainWrapper className="main-msg-wrapper">
                 <h6>Send to {target.name}</h6>
-                <MainMessage user={props.user} receiver={target}/>
+                <MainMessage userToken={props.userToken} receiver={target}/>
             </MainWrapper>
             <MainWrapper>
             <MainRecords records={userMessages}/>

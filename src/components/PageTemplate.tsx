@@ -24,6 +24,7 @@ function getPageTransition(pathname: string){
 }
 
 type PageTemplateProps = {
+  userToken: {id:number, token: string};
   user: UserPublic;
 }
 
@@ -57,7 +58,7 @@ const PageTemplate = (props: PageTemplateProps) => {
             ...springProps,
           }}
         >
-          <Header location={item} user={props.user}/>
+          <Header location={item} token={props.userToken}/>
           <main>
             <Router location={item}/>
           </main>

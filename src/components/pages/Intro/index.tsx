@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {initialTarget, initialUser, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
+import {initialTarget, initialToken, initialUser, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
 import MainMessage from '../../Components/MainMessage';
 import MainRecords from '../../Components/MainRecords';
 import MainTitle from '../../Components/MainTitle';
@@ -35,7 +35,7 @@ const Intro = () => {
             <MainWrapper className="main-msg-wrapper">
                 <h6>Send to {introTarget.name}</h6>
                 <Link to="/signin">
-                <MainMessage user={{id:0, token:""}} receiver={introTarget}/>
+                <MainMessage userToken={initialToken} receiver={introTarget}/>
                 </Link>
             </MainWrapper>
             <MainWrapper>

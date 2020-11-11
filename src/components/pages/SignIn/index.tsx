@@ -9,12 +9,12 @@ import './index.css'
 const SignIn = () => {
     return(
         <LoginContext.Consumer>
-        {loginUser => {
+        {token => {
         return(
             <MainScale>
                 <LoginContainer>
                     <div className="sign-in-title">Ddat Hmm Again!</div>
-                    <div className="sign-in-form"><SignInForm user={loginUser.user} /></div>
+                    <div className="sign-in-form"><SignInForm user={token.userToken} /></div>
                     <div className="sign-up-link">
                         <Link to="/signup">create a new account</Link>
                     </div>

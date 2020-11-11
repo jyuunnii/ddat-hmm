@@ -5,13 +5,13 @@ import './index.css';
 
 
 type MainMessageLoveProps = {
-    user: {id: number, token: string}
+    userToken: {id: number, token: string}
     receiver: UserPublic;
 }
 
 const initialMessage = "고마워";
 
-const MainMessageThanks = ({user, receiver}: MainMessageLoveProps) => {
+const MainMessageThanks = ({userToken, receiver}: MainMessageLoveProps) => {
     const [message, setMessage] = useState({
         targetUserId: receiver.id,
         content: initialMessage
@@ -29,7 +29,7 @@ const MainMessageThanks = ({user, receiver}: MainMessageLoveProps) => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await sendMessage(user.id, user.token, receiver.id, message.content);
+        await sendMessage(userToken.id, userToken.token, receiver.id, message.content);
         setMessage({
             targetUserId: receiver.id,
             content: message.content

@@ -8,7 +8,7 @@ import SearchTitle from '../../Components/SearchTitle';
 import './index.css';
 
 type SearchPageProps = {
-    user: {id: number, token: string}
+    userToken: {id: number, token: string}
 }
 
 const UserSearch = (props: SearchPageProps) => {
@@ -21,8 +21,8 @@ const UserSearch = (props: SearchPageProps) => {
     
     useEffect(() => {    
         async function fetchData(){
-            if(props.user.id > 0){
-                await getFriendsById(props.user.id, props.user.token).then(data => {
+            if(props.userToken.id > 0){
+                await getFriendsById(props.userToken.id, props.userToken.token).then(data => {
                     setUserData(data.user);
                     setOldFriends(data.friends);  
                 });  
@@ -30,7 +30,7 @@ const UserSearch = (props: SearchPageProps) => {
             await getAllUsersByName(target).then(data => setSearchResults(data));
         }
         fetchData();
-    }, [props.user.id, props.user.token, target])
+    }, [props.userToken.id, props.userToken.token, target])
 
    
     const onCreate = async (data: string) => {
@@ -43,13 +43,13 @@ const UserSearch = (props: SearchPageProps) => {
                 ...newfriendsList,
                 userName
             ]);
-            await followByName(props.user.id, props.user.token, userName)
+            await followByName(props.userToken.id, props.userToken.token, userName)
         }else{
             await setDeletedFriends([
                 ...deletedFriends,
                 userName
             ])
-            await unfollowByName(props.user.id, props.user.token, userName)
+            await unfollowByName(props.userToken.id, props.userToken.token, userName)
         }
     }
 

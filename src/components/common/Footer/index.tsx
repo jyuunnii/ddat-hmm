@@ -21,8 +21,8 @@ const Footer = (props: FooterProps) => {
   const pathname = props.location.pathname;
   return(
     <LoginContext.Consumer>
-      {loginUser => {
-        if(loginUser === undefined){
+      {token => {
+        if(token === undefined){
           return(
             <footer>
             <Link to="/" style={{color: pathname=== "/"? "#9ED5E7":"#757575"}}>
@@ -34,10 +34,10 @@ const Footer = (props: FooterProps) => {
           </footer>
           );
         }
-        if(loginUser.user.id > 0){
+        if(token.userToken.id > 0){
           return(
             <footer>
-              <Link to={`/user/${loginUser.user.id}`} style={{color: pathname=== "/user"? "#9ED5E7":"#757575"}}>
+              <Link to={`/user/${token.userToken.id}`} style={{color: pathname=== "/user"? "#9ED5E7":"#757575"}}>
                 <IconWrapper><span className="material-icons footer-icon">home</span>Home</IconWrapper></Link>
               <Link to="/search" style={{color: pathname=== "/search"? "#9ED5E7":"#757575"}}>
                 <IconWrapper><span className="material-icons footer-icon">search</span>Search</IconWrapper></Link>

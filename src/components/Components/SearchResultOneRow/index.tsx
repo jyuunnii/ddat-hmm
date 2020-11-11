@@ -22,8 +22,8 @@ const SearchResultOneRow = ({user, selectUser, isFriend}: SearchResultOneRowProp
 
     return(
         <LoginContext.Consumer>
-        {loginUser => {
-            if(loginUser.user.id > 0){
+        {token => {
+            if(token.userToken.id > 0){
                 return(
                     <UserProfileBox>
                     <div className="result-user-img"><img src={user.profileImageUri === null? initialProfile : user.profileImageUri} alt="profile"/></div>

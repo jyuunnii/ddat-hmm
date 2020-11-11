@@ -25,21 +25,21 @@ const MMCBox = styled.div`
 
 type MainMessageProps = {
     receiver: UserPublic;
-    user: {id: number, token: string};
+    userToken: {id: number, token: string};
 }
 
 const messageType = ['love', 'thanks'];
 
-const MainMessage = ({user, receiver}: MainMessageProps) => {
+const MainMessage = ({userToken, receiver}: MainMessageProps) => {
     return(
         <MMCContainer>
             {messageType.map((type) => {
                 switch(type){
                     case 'love':
-                        return <MMCWrapper key={type}><MMCBox><MainMessageLove user={user} receiver={receiver}/></MMCBox></MMCWrapper>
+                        return <MMCWrapper key={type}><MMCBox><MainMessageLove userToken={userToken} receiver={receiver}/></MMCBox></MMCWrapper>
                     
                     case 'thanks':
-                        return <MMCWrapper key={type}><MMCBox><MainMessageThanks user={user} receiver={receiver}/></MMCBox></MMCWrapper>
+                        return <MMCWrapper key={type}><MMCBox><MainMessageThanks userToken={userToken} receiver={receiver}/></MMCBox></MMCWrapper>
                 }
                 return <div></div> ;
             })}

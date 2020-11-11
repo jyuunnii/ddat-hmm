@@ -53,7 +53,7 @@
     text-align: center;
 }
 
-.profile-name-edit textarea{
+.profile-name-edit input{
     background-color: transparent;
     border-color: transparent;
 
@@ -79,7 +79,7 @@
     text-align: center;
 }
 
-.profile-name-edit textarea::placeholder {
+.profile-name-edit input::placeholder {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: normal;

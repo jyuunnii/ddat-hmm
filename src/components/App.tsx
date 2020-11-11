@@ -2,24 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { isBrowser, isMobile } from "react-device-detect";
 import { BrowserRouter } from "react-router-dom";
 import LoginContext from '../context';
-import { initialUser, UserPublic } from '../utils';
+import { initialToken, initialUser, UserPublic } from '../utils';
 import { getUserPublicById } from './api';
 import DesktopFallback from './DesktopFallback';
 import PageTemplate from './PageTemplate';
 
 const App = () => {
-  const initialState = {id: 0, token: ""};
-  const [loginUser, setLoginUser] = useState(initialState);
+  const [userToken, setUserToken] = useState(initialToken);
   const [userData, setUserData] = useState<UserPublic>(initialUser);
 
   useEffect(()=>{
     async function fetchData(){
-      await getUserPublicById(loginUser.id, loginUser.token).then(data => setUserData(data));
+      await getUserPublicById(userToken.id, userToken.token).then(data => setUserData(data));
     }
-    if(loginUser.id > 0){
+    if(userToken.id > 0){
       fetchData();
     }
-  },[loginUser])
+  },[userToken.id, userToken.token])
 
   return(
     <>
@@ -27,9 +26,9 @@ const App = () => {
       {isMobile && (
         <BrowserRouter>
           <LoginContext.Provider value={{
-            user: loginUser,
-            loginAccess: (user:{id: number, token: string})=>setLoginUser(user)}}>
-            <PageTemplate user={userData}/>
+            userToken: userToken,
+            loginAccess: (data:{id: number, token: string})=>setUserToken(data)}}>
+            <PageTemplate userToken={userToken} user={userData}/>
           </LoginContext.Provider>
         </BrowserRouter>
       )}

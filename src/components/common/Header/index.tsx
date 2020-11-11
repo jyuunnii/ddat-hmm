@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import LoginContext from '../../../context';
 import { initialUser, UserPublic } from '../../../utils';
+import { getUserPublicById } from '../../api';
 import ProfileHeaderMenu from '../../Components/ProfileHeaderMenu';
 import Logo from '../Logo';
 import MaterialIcon from '../MaterialIcon';
@@ -11,7 +12,7 @@ interface HeaderProps {
     location: {
       pathname: string;
     };
-    user: UserPublic;
+    token: {id: number, token:string};
   }
   
 
@@ -30,8 +31,20 @@ const Header = (props: HeaderProps) => {
     }
 
     useEffect(()=>{
-      setUser(props.user);
-    },[props.user])
+      let mounted = true;
+      async function fetchData(){
+        if(props.token.id > 0){
+          await getUserPublicById(props.token.id, props.token.token)
+          .then(data => {
+            if(mounted){
+              setUser(data)
+            }
+          })
+        }
+      }
+      fetchData();
+      return (() => {mounted = false});
+    },[props.token.id, props.token.token])
 
     switch(pathname){
       case "/":
@@ -48,14 +61,14 @@ const Header = (props: HeaderProps) => {
           </header> 
         );
 
-      case `/user/${props.user.id}`:
+      case `/user/${user.id}`:
         return(
           <LoginContext.Consumer>
-            {loginUser => {
-              if(loginUser.user.id > 0){
+            {token => {
+              if(token.userToken.id > 0){
                 return(
                   <header style={{backgroundColor:"#ffffff"}}>
-                    <Link to={`/user/${props.user.id}`} id="home-link">
+                    <Link to={`/user/${user.id}`} id="home-link">
                       <Logo pathname={pathname}/>
                     </Link>
                     <Link to="/profile">

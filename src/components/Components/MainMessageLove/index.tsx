@@ -4,13 +4,13 @@ import { sendMessage } from '../../api';
 import './index.css';
 
 type MainMessageLoveProps = {
-    user: {id: number, token: string}
+    userToken: {id: number, token: string}
     receiver: UserPublic;
 }
 
 const initialMessage = "사랑해";
 
-const MainMessageLove = ({user, receiver}: MainMessageLoveProps) => {
+const MainMessageLove = ({userToken, receiver}: MainMessageLoveProps) => {
     const [message, setMessage] = useState({
         targetUserId: receiver.id,
         content: initialMessage
@@ -28,8 +28,8 @@ const MainMessageLove = ({user, receiver}: MainMessageLoveProps) => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(user.id > 0 && receiver.id > 0){
-            await sendMessage(user.id, user.token, receiver.id, message.content);
+        if(userToken.id > 0 && receiver.id > 0){
+            await sendMessage(userToken.id, userToken.token, receiver.id, message.content);
         }else{
             window.confirm("친구목록에서 메세지를 받을 사람을 선택해주세요.");
         }
