@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LoginContext from '../../../context';
 import { Friends, initialFriends, MainContainer, MainWrapper, UserPublic } from '../../../utils';
-import { followByName, getFriendsById, getUserPublicById, unfollowByName, updateUserById } from '../../api';
+import { followByName, getFriendsById, unfollowByName, updateUserById } from '../../api';
 import FriendsList from '../../Components/FriendsList';
 import ProfileImage from '../../Components/ProfileImage';
 import ProfileInformation from '../../Components/ProfileInformation';
@@ -19,8 +19,6 @@ const ProfileScale = styled.div`
     overflow: hidden;
 `;
 
-// it needs some feedback about componenet structure "form & button"!
-
 type ProfilePageProps = {
     user: {id: number, token: string};
 }
@@ -33,18 +31,24 @@ const ProfilePage = (props: ProfilePageProps) => {
     const [oldFriends, setOldFriends] = useState<Friends>(initialFriends);
 
     useEffect(() => {    
-        async function fetchData(){
+        async function fetchData(){ 
             if(props.user.id > 0){
-                await getUserPublicById(props.user.id, props.user.token, setProfile);
-                await getFriendsById(props.user.id, props.user.token, setProfile, setOldFriends);  
+                await getFriendsById(props.user.id, props.user.token).then(data => {
+                    setProfile(data.user);
+                    setOldFriends(data.friends);  
+                }); 
             }
         }
         fetchData();
     }, [props.user.id, props.user.token])
 
     const onCreate = async(data: UserPublic) => {
-        await setProfile(data);
-        await updateUserById(props.user.id, props.user.token, data.name, data.comment);
+        if(formValidation(data)){
+            setProfile(data);
+            await updateUserById(props.user.id, props.user.token, data.name, data.comment, profile?.profileImageUri);
+        }else{
+            setProfile(profile);
+        }
     }
 
     const [newFriends, setNewFriends] = useState<string[]>([]);
@@ -71,6 +75,15 @@ const ProfilePage = (props: ProfilePageProps) => {
         }else{
             setMoveUp(false);
         }
+    }
+
+    const formValidation = (user: UserPublic) => {
+        let letter = /[a-zA-Z]/;
+        if(!letter.test(user.name)){
+            alert("Please enter a valid name")
+            return false;
+        }
+        return true;
     }
 
     return(

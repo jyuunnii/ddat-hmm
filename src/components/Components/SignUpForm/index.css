@@ -30,10 +30,9 @@
     line-height: 17px;
 }
 
-.sign-up-button {
-    position: absolute;
-    top: 208px;
-    left: 70px;
+.sign-up-button{
+    padding-top:48px;
+    text-align: center;
 }
 
 .sign-up-button button{
@@ -61,3 +60,8 @@
     bottom: 8px;
     right: 8px;
 }
+
+.sign-up-form {
+    cursor: pointer;
+}
+

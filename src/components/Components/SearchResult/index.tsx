@@ -43,10 +43,10 @@ const SearchResult = ({searchTarget, updateFriends, searchResults, oldFriendsLis
             <div className="search-result-header">검색결과 <span>{searchResults.length + oldFriendsList.length}</span></div>
             <SWrapper>
             {oldFriendsList.map((user)=>{
-                return(<SearchResultOneRow key={user.name} user={user} selectUser={selectUser} isFriend={true}/>)
+                return(<SearchResultOneRow key={user.id} user={user} selectUser={selectUser} isFriend={true}/>)
             })}
             {searchResults.map((user)=>{     
-                return(<SearchResultOneRow key={user.name} user={user} selectUser={selectUser} isFriend={false}/>)
+                return(<SearchResultOneRow key={user.id} user={user} selectUser={selectUser} isFriend={false}/>)
             })}
             </SWrapper> 
         </UserProfileContainer>

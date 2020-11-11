@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserPublic } from '../../../utils';
+import { initialBackground, initialProfile, UserPublic } from '../../../utils';
 import { sendMessage } from '../../api';
 import './index.css';
 
@@ -28,17 +28,17 @@ const MainMessageLove = ({user, receiver}: MainMessageLoveProps) => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await sendMessage(user.id, user.token, message.targetUserId, message.content);
-        setMessage({
-            targetUserId: receiver.id,
-            content: message.content
-        }); 
+        if(user.id > 0 && receiver.id > 0){
+            await sendMessage(user.id, user.token, receiver.id, message.content);
+        }else{
+            window.confirm("친구목록에서 메세지를 받을 사람을 선택해주세요.");
+        }
     };
 
     return(
         <div>
             <div className="background-image-box">
-                <img src={receiver.profileImageUri === undefined || null? "/images/girl1.png" : receiver.profileImageUri} alt="receiver-img"/>
+                <img src={receiver.profileImageUri === initialProfile? initialBackground : receiver.profileImageUri} alt="receiver-img"/>
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="love-title-box">

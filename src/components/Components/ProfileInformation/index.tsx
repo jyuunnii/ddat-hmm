@@ -21,16 +21,19 @@ const ProfileInformation = ({editOn, setEditOn, profile, onCreate}: ProfileInfor
         id: profile.id,
         name: profile.name,
         comment: profile.comment,
+        profileImageUri: profile.profileImageUri,
         friends: profile.friends
     });
     const {name, comment} =  newprofile;
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         const {name, value} = e.target; 
-        setNewProfile({
-            ...newprofile,
-            [name]: value
-        })
+        if(value !== null){
+            setNewProfile({
+                ...newprofile,
+                [name]: value
+            })
+        }
     }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -51,11 +54,11 @@ const ProfileInformation = ({editOn, setEditOn, profile, onCreate}: ProfileInfor
             <ProfileContainer>  
                 <form onSubmit={handleSubmit}>
                     <div className="profile-name-edit"  style={{position:"relative"}}>
-                        <textarea name="name" value={name || profile.name} onChange={onChange} rows={1} maxLength={20} />
+                        <textarea name="name" value={name} onChange={onChange} rows={1} maxLength={20} />
                         <span className="material-icons-round edit-name">edit</span>
                     </div>
                     <div className="profile-comment-edit"  style={{position:"relative"}}>
-                        <textarea name="comment" value={comment || profile.comment} onChange={onChange} rows={4} maxLength={100} />
+                        <textarea name="comment" value={comment} onChange={onChange} rows={4} maxLength={100} />
                         <span className="material-icons-round edit-comment">edit</span>
                     </div>
                     <button className="save-button" type="submit">SAVE</button>

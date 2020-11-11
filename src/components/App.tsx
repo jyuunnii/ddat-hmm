@@ -14,7 +14,7 @@ const App = () => {
 
   useEffect(()=>{
     async function fetchData(){
-      await getUserPublicById(loginUser.id, loginUser.token, setUserData);
+      await getUserPublicById(loginUser.id, loginUser.token).then(data => setUserData(data));
     }
     if(loginUser.id > 0){
       fetchData();

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { MainScale, MainContainer, MainWrapper, MessageRecord, UserPublic, Friends, initialUser, initialFriends, initialTarget, initialMessages } from '../../../utils';
+import { useHistory } from 'react-router';
+import { MainScale, MainContainer, MainWrapper, MessageRecord, UserPublic, Friends, initialTarget } from '../../../utils';
 import { getUserById } from '../../api';
 import MainMessage from '../../Components/MainMessage';
 import MainRecords from '../../Components/MainRecords';
 import MainTitle from '../../Components/MainTitle';
 import MainWhoList from '../../Components/MainWhoList';
-import Intro from '../Intro';
 import './index.css';
 
 type MainPageProps = {
@@ -13,21 +13,26 @@ type MainPageProps = {
 }
 
 const MainPage = (props: MainPageProps) => {
-    const [userData, setUserData] = useState<UserPublic>(initialUser);
-    const [userMessages, setUserMessages] = useState<{sent: MessageRecord[], received: MessageRecord[]}>(initialMessages);
-    const [userFriends, setUserFriends] = useState<Friends>(initialFriends);
+    const [userData, setUserData] = useState<UserPublic>();
+    const [userMessages, setUserMessages] = useState<{sent: MessageRecord[], received: MessageRecord[]}>();
+    const [userFriends, setUserFriends] = useState<Friends>();
     const [target, setTarget] = useState<UserPublic>(initialTarget);
+    const location = useHistory();
 
-    useEffect(() => {    
-        if(props.user.id > 0){
-            getUserById(props.user.id, props.user.token, setUserData, setUserMessages, setUserFriends);  
-        }
-    }, [props.user.id, props.user.token])
-
-   
-    if(props.user.id === 0 || userData.id === 0){
-        return(<Intro/>)
-    }
+    useEffect(() => {   
+        async function fetchData(){
+            if(props.user.id > 0){
+                await getUserById(props.user.id, props.user.token).then(data =>{
+                    setUserData(data.user);
+                    setUserMessages(data.messages);
+                    setUserFriends(data.friends);
+                });  
+            }else{
+                location.push("/")
+            }
+        } 
+        fetchData();
+    }, [props.user.id, props.user.token, location])
 
     return(
         <MainScale>
@@ -36,10 +41,11 @@ const MainPage = (props: MainPageProps) => {
                 <MainTitle user={userData}/>
             </MainWrapper>
             <MainWrapper className="main-who-wrapper">
+                <h6>Friend List</h6>
                 <MainWhoList friends={userFriends} setTarget={setTarget}/>
             </MainWrapper>
             <MainWrapper className="main-msg-wrapper">
-                <h6>Dear {target.name}</h6>
+                <h6>Send to {target.name}</h6>
                 <MainMessage user={props.user} receiver={target}/>
             </MainWrapper>
             <MainWrapper>

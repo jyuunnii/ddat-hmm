@@ -22,9 +22,12 @@ const UserSearch = (props: SearchPageProps) => {
     useEffect(() => {    
         async function fetchData(){
             if(props.user.id > 0){
-                await getFriendsById(props.user.id, props.user.token, setUserData, setOldFriends);  
+                await getFriendsById(props.user.id, props.user.token).then(data => {
+                    setUserData(data.user);
+                    setOldFriends(data.friends);  
+                });  
             }
-            await getAllUsersByName(target, setSearchResults);
+            await getAllUsersByName(target).then(data => setSearchResults(data));
         }
         fetchData();
     }, [props.user.id, props.user.token, target])

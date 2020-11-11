@@ -22,3 +22,11 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+.empty-friendlist {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+}

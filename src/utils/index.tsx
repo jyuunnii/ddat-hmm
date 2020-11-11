@@ -2,17 +2,25 @@ import styled from "styled-components";
 
 export const serverUrl = "http://localhost:3001";
 
-export const initialProfile = "images/person.png"
+export const initialProfile = "/images/person.png";
+export const initialBackground = "/images/cover1.png";
+
+export const initialToken = {
+    id: 0,
+    token: ""
+}
 
 export const initialUser: UserPublic = {
     id: 0,
     name: "it's ddat hmm.",
+    profileImageUri: initialProfile,
     friends: {following:[], follower:[]}
 }
 
 export const initialTarget: UserPublic = {
     id: 0,
-    name: "whom?",
+    name: "my friend",
+    profileImageUri: "/images/cover1.png",
     friends: {following:[], follower:[]}
 }
 
@@ -28,7 +36,7 @@ export type UserPrivate = {
     name: string;
     email: string;
     password: string;
-    profileImageUri ?: string;
+    profileImageUri : string;
     backgroundImageUri ?: string;
     comment ?: string;
     friends: Friends;
@@ -41,7 +49,7 @@ export type UserPrivate = {
 export type UserPublic = {
     id: number;
     name: string;
-    profileImageUri ?: string;
+    profileImageUri : string;
     comment ?: string;
     friends: Friends;
 }
