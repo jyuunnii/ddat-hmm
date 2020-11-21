@@ -19,6 +19,8 @@ const MainMessageLove = ({userToken, receiver, setClicked}: MainMessageLoveProps
         targetUserId: receiver.id,
         content: initialMessage
       });
+    
+    const [sentCount, setSentCount] = useState<number>(1);
 
     const { content } = message;
 
@@ -33,6 +35,11 @@ const MainMessageLove = ({userToken, receiver, setClicked}: MainMessageLoveProps
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if(userToken.id > 0 && receiver.id > 0){
+            await setSentCount(sentCount+1);
+            if(sentCount > 20){
+                alert("최대 스무개의 메세지를 보낼 수 있어요 :)")
+                return;
+            }
             await sendMessage(userToken.id, userToken.token, receiver.id, message.content);
             setClicked(true);
             setTimeout(() => {

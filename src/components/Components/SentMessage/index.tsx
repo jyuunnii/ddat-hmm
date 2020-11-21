@@ -13,7 +13,7 @@ const SentMessage = ({record, count}: SentMessageProps) => {
     return(
         <RecordWrapper>
         <RecordBox>
-            <div className="sent-count"><div className="received-count-number">{count}</div></div>
+            <div className="sent-count"><div className="sent-count-number">{count > 999? 999 : count}</div></div>
             <div className="receiver">{record.receiver}</div>
             <div className="sent-content">{record.content}</div>
         </RecordBox>
