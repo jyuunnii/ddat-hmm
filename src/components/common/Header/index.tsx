@@ -95,33 +95,13 @@ const Header = (props: HeaderProps) => {
         );
 
       case "/signin":
+      case "/signup":
+      case "/search":
         return(
           <header>
             <Link to="/" id="home-link">
               <Logo pathname={pathname}/>
             </Link>
-            <button className="back-button" onClick={() => history.goBack()}>
-              <MaterialIcon icon="keyboard_arrow_left"/>
-            </button>
-          </header>
-        );
-
-      case "/signup":
-          return(
-            <header>
-              <Link to="/" id="home-link">
-                <Logo pathname={pathname}/>
-              </Link>
-              <button className="back-button" onClick={() => history.goBack()}>
-                <MaterialIcon icon="keyboard_arrow_left" />
-              </button>
-            </header>
-          );
-
-      case "/search":
-        return(
-          <header>
-            <Logo pathname={pathname}/>
             <button className="back-button" onClick={() => history.goBack()}>
               <MaterialIcon icon="keyboard_arrow_left"/>
             </button>
