@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Friends, initialFriends, initialUser, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
+import { MainContainer, MainScale, MainWrapper } from '../../../utils/Styled';
+import { initialUser, initialFriends } from '../../../utils/Const';
 import { followByName, getAllUsersByName, getFriendsById, unfollowByName } from '../../api';
 import SearchBox from '../../Components/SearchBox';
 import SearchResult from '../../Components/SearchResult';
 import SearchTitle from '../../Components/SearchTitle';
 
 import './index.css';
+import { UserPublic, Friends } from '../../../utils/Type';
 
 type SearchPageProps = {
     userToken: {id: number, token: string}
@@ -53,8 +55,8 @@ const UserSearch = (props: SearchPageProps) => {
         }
     }
 
-    const targetOldFriends: UserPublic[] = oldFriends.following.filter(user => user.name === target);
-    const filteredResults: UserPublic[] = searchResults.filter(user => (user.name !== userData.name) && !(targetOldFriends.some( f => f.name === user.name)));
+    const targetOldFriends: UserPublic[] = searchResults.filter(user => (oldFriends.following.some(friend => friend.name === user.name)))
+    const filteredResults: UserPublic[] = searchResults.filter(user => (user.name !== userData.name) && !(targetOldFriends.some(friend => friend.name === user.name)));
 
     return(
         <MainScale>

@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import LoginContext from '../../../context';
-import { initialToken, LoginFormContainer } from '../../../utils';
+import { LoginFormContainer } from '../../../utils/Styled';
+import { initialToken } from '../../../utils/Const';
 import { login } from '../../api';
 import './index.css'
+import { EmailPasswordValidation } from '../../../utils/Function';
 
 type SignInFormProps = {
     user: {id: number, token: string}
@@ -74,25 +76,7 @@ const SignInForm = (props: SignInFormProps) => {
             setPasswordValid(true);
         }
 
-        if(!filter.test(email)){
-            return false;
-        }
-
-        if(password.length < 4 || password.length > 9 || !letter.test(password) || !number.test(password)){
-            if(password.length < 4){
-                return false;
-            }
-            if(password.length > 9){
-                return false;
-            }
-            if(!letter.test(password)){
-                return false;
-            }
-            if(!number.test(password)){
-                return false;
-            }
-        }
-        return true;
+        return EmailPasswordValidation(form);
     }
 
     return(
@@ -100,13 +84,13 @@ const SignInForm = (props: SignInFormProps) => {
         <form onSubmit={handleSubmit} className="sign-in-form">
             <div className="sign-in">
                 <input type="email" name="email" value={email} onChange={handleChange} placeholder="Email" className="sign-in-input"/> 
-                <span className="material-icons-outlined caution-icon" style={{display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block")}}>report</span>    
+                <i className="material-icons-outlined" style={{display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block")}}>report</i>    
             </div>
             <div className="input-error" style={{display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block")}}>Please enter a valid email address.</div>
 
             <div className="sign-in">
                 <input type="password" name="password" value={password} onChange={handleChange}  placeholder="Password" className="sign-in-input"/>
-                <span className="material-icons-outlined caution-icon" style={{display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block")}}>report</span>                               
+                <i className="material-icons-outlined" style={{display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block")}}>report</i>                               
             </div>
             <div className="input-error" style={{display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block")}}>Passwords do not match.</div>
 

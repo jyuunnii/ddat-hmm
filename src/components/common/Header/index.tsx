@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import LoginContext from '../../../context';
-import { initialUser, UserPublic } from '../../../utils';
+import { initialUser } from '../../../utils/Const';
+import { UserPublic } from '../../../utils/Type';
 import { getUserPublicById } from '../../api';
 import ProfileHeaderMenu from '../../Components/ProfileHeaderMenu';
 import Logo from '../Logo';
@@ -94,33 +95,13 @@ const Header = (props: HeaderProps) => {
         );
 
       case "/signin":
+      case "/signup":
+      case "/search":
         return(
           <header>
             <Link to="/" id="home-link">
               <Logo pathname={pathname}/>
             </Link>
-            <button className="back-button" onClick={() => history.goBack()}>
-              <MaterialIcon icon="keyboard_arrow_left"/>
-            </button>
-          </header>
-        );
-
-      case "/signup":
-          return(
-            <header>
-              <Link to="/" id="home-link">
-                <Logo pathname={pathname}/>
-              </Link>
-              <button className="back-button" onClick={() => history.goBack()}>
-                <MaterialIcon icon="keyboard_arrow_left" />
-              </button>
-            </header>
-          );
-
-      case "/search":
-        return(
-          <header>
-            <Logo pathname={pathname}/>
             <button className="back-button" onClick={() => history.goBack()}>
               <MaterialIcon icon="keyboard_arrow_left"/>
             </button>

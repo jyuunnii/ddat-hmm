@@ -29,11 +29,15 @@
     min-width: 148px;
 }
 
-.add-button {
+.add-button input {
     width: 58px;
     height: 28px;
     box-sizing: border-box;
     border-radius: 4px;
     margin-top: 18px;
     transition: background-color 100ms ease-in;
+}
+
+.add-button input[type="button" i] {
+    appearance: none;
 }

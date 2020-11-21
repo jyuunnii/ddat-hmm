@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LoginContainer, MainScale } from '../../../utils';
+import { LoginContainer, MainScale } from '../../../utils/Styled';
 import SignUpForm from '../../Components/SignUpForm';
 import './index.css'
 

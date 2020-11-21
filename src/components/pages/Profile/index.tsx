@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LoginContext from '../../../context';
-import { Friends, initialFriends, MainContainer, MainWrapper, UserPublic } from '../../../utils';
+import { MainContainer, MainWrapper } from '../../../utils/Styled';
+import { initialFriends } from '../../../utils/Const';
 import { followByName, getFriendsById, unfollowByName, updateUserById } from '../../api';
 import FriendsList from '../../Components/FriendsList';
 import ProfileImage from '../../Components/ProfileImage';
 import ProfileInformation from '../../Components/ProfileInformation';
 import './index.css'
+import { UserPublic, Friends } from '../../../utils/Type';
 
 const ProfileScale = styled.div`
     width: 100%;
@@ -104,12 +106,10 @@ const ProfilePage = (props: ProfilePageProps) => {
                                     <MainWrapper>
                                         <div className="profile-edit-off" style={{display: editOn? "none": "block"}}>
                                             <button onClick={()=>showFriendsList(true)} className="friend-button">
-                                                <span className="material-icons">face</span>
-                                                <div className="friend-button-name">friend</div>
+                                                <i className="material-icons">face</i><span className="friend-button-name">friend</span>
                                             </button>
                                             <button onClick={()=>setEditOn(true)} className="edit-on-button">
-                                                <span className="material-icons-round">edit</span>
-                                                <div className="edit-on-button-name">edit</div>
+                                                <i className="material-icons-round">edit</i><span className="edit-on-button-name">edit</span>
                                             </button>
                                         </div>
                                         <div className="profile-edit-on" style={{display: editOn? "block": "none"}}>
@@ -121,7 +121,7 @@ const ProfilePage = (props: ProfilePageProps) => {
                                              position: "absolute",
                                              bottom: moveUp? "32px" : "-440px"
                                          }}>
-                                             <button onClick={()=>showFriendsList(false)} className="friendslist-close-button"><span className="material-icons">cancel</span></button>
+                                             <button onClick={()=>showFriendsList(false)} className="friendslist-close-button"><i className="material-icons">cancel</i></button>
                                             <FriendsList currentFriendsList={oldFriends.following} updateFriends={updateFriends}/>
                                         </div>
                                     </MainWrapper>

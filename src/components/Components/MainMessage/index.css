@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+
+.sent-alert {
+    color:  #9ED5E7;
+    z-index: 10;
+    font-family: 'Poor Story', cursive;
+    font-size: 14px;
+    text-shadow: 1px 1px 1px rgba(84, 197, 234, 0.1);    ;
+    padding-left: 60px;
+}

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {initialTarget, initialToken, initialUser, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
+import { MainContainer, MainScale, MainWrapper } from '../../../utils/Styled';
+import { initialTarget, initialUser, initialToken } from '../../../utils/Const';
 import MainMessage from '../../Components/MainMessage';
 import MainRecords from '../../Components/MainRecords';
 import MainTitle from '../../Components/MainTitle';
 import MainWhoList from '../../Components/MainWhoList';
 import './index.css';
+import { UserPublic } from '../../../utils/Type';
 
 const friendsPreview = {
     following:[{id:1, name:"Jynn", profileImageUri:"/images/girl1.png", friends:{following:[],follower:[]}},

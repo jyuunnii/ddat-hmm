@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router';
-import { MainScale, MainContainer, MainWrapper, MessageRecord, UserPublic, Friends, initialTarget } from '../../../utils';
+import { MainScale, MainContainer, MainWrapper } from '../../../utils/Styled';
+import { initialTarget } from '../../../utils/Const';
 import { getUserById } from '../../api';
 import MainMessage from '../../Components/MainMessage';
 import MainRecords from '../../Components/MainRecords';
 import MainTitle from '../../Components/MainTitle';
 import MainWhoList from '../../Components/MainWhoList';
 import './index.css';
+import { UserPublic, MessageRecord, Friends } from '../../../utils/Type';
 
 type MainPageProps = {
     userToken: {id: number, token: string}

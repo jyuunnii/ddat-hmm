@@ -23,15 +23,14 @@
 }
 
 .sign-up-input::placeholder {
-    font-family: Fira Sans;
+    font-family: 'Fira Sans', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
-    line-height: 17px;
+    line-height: 14px;
 }
 
 .sign-up-button{
-    padding-top:48px;
     text-align: center;
 }
 
@@ -46,14 +45,15 @@
 }
 
 .input-error {
-    font-family: Fira Sans;
+    font-family: 'Fira Sans', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 10px;
     line-height: 12px;  
+    color: #CC5454;
 }
 
-.caution-icon {
+.sign-up i {
     font-size: 24px;
     color: #CC5454;
     position: absolute;
@@ -61,7 +61,7 @@
     right: 8px;
 }
 
-.sign-up-form {
-    cursor: pointer;
+.sign-up-wrapper {
+    padding-bottom: 20px;
 }
 

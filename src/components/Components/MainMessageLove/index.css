@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+
 .edit-icon {
     font-size: 18px;
     color: #ffffff;
@@ -49,7 +49,6 @@
 }
 
 .love-message input{
-    /* font-family: 'Noto Serif KR', serif; */
     font-family: 'Poor Story', cursive;
     font-style: normal;
     font-weight: bold;

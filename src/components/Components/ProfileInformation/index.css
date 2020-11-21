@@ -5,7 +5,7 @@
 .profile-name {
     width: 256px;
     height: 26px;
-    padding-top: 1px;
+    padding-top: 9px;
     margin-bottom: 12px;
 
     font-family: 'Roboto', sans-serif;
@@ -38,11 +38,13 @@
 
 /* Edit on */
 .profile-name-edit {
-    width: 256px; 
+    width: 236px; 
     height: 26px;
     border-bottom: 1px solid #ffffff;
     margin-bottom: 12px;
     text-align: center;
+    padding-bottom: 8px;
+    padding-right: 20px;
 }
 
 .profile-comment-edit {
@@ -98,15 +100,16 @@
     color: #ffffff;
 }
 
-.edit-name {
+.profile-name-edit i{
     font-size: 18px;
     color: #ffffff;
     position: absolute;
     right: 4px;
     bottom: 0px;
+    padding-bottom: 4px;
 }
 
-.edit-comment {
+.profile-comment-edit i{
     font-size: 18px;
     color: #ffffff;
     position: absolute;

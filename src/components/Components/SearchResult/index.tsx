@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UserProfileContainer, UserPublic } from '../../../utils';
+import { UserProfileContainer } from '../../../utils/Styled';
+import { UserPublic } from '../../../utils/Type';
 import SearchResultOneRow from '../SearchResultOneRow';
 import './index.css';
 

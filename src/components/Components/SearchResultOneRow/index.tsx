@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import LoginContext from '../../../context';
-import { UserPublic, UserProfileBox, UserProfileTextBox, initialProfile } from '../../../utils';
+import { UserProfileBox, UserProfileTextBox } from '../../../utils/Styled';
+import { initialProfile } from '../../../utils/Const';
 import './index.css';
+import { UserPublic } from '../../../utils/Type';
 
 
 type SearchResultOneRowProps = {
@@ -31,14 +33,14 @@ const SearchResultOneRow = ({user, selectUser, isFriend}: SearchResultOneRowProp
                         <div className="result-user-name">{user.name}</div>
                         <div className="result-user-comment">{user?.comment}</div>
                     </UserProfileTextBox>  
-                    <div><input type="button" onClick={async()=> {
+                    <div className="add-button"><input type="button" onClick={async()=> {
                                 await selectUser(user.name, currentFriendState);     
                                 await changeFriendState(currentFriendState);                       
                                 }} 
-                                style={{background: currentFriendState? "#fefefe":"#9ED5E7", 
+                                style={{backgroundColor: currentFriendState? "#fefefe":"#9ED5E7", 
                                         border:  currentFriendState? "1px solid #9ED5E7":"1px solid #fefefe", 
                                         color:  currentFriendState? "#9ED5E7":"#ffffff"}} 
-                                value={currentFriendState? "Delete" : "Add"} className="add-button"/>
+                                value={currentFriendState? "Delete" : "Add"}/>
                     </div>   
                     </UserProfileBox>
                 )
