@@ -1,0 +1,20 @@
+name: release-app
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - run: yarn install
+        working-directory: app
+      - run: yarn build
+        working-directory: app
+      - run: ls build/
+        working-directory: app
