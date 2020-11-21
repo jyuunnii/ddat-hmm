@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { initialBackground, initialProfile, UserPublic } from '../../../utils';
+import { initialProfile, initialBackground } from '../../../utils/Const';
+import { UserPublic } from '../../../utils/Type';
 import { sendMessage } from '../../api';
 import './index.css';
 

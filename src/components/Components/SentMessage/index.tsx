@@ -1,5 +1,6 @@
 import React from 'react';
-import { MessageRecord, RecordBox, RecordWrapper } from '../../../utils';
+import { RecordBox, RecordWrapper } from '../../../utils/Styled';
+import { MessageRecord } from '../../../utils/Type';
 
 import './index.css';
 

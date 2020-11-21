@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router";
 import { animated, useTransition } from "react-spring";
-import { UserPublic } from "../utils";
+import { UserPublic } from "../utils/Type";
 import Footer from "./common/Footer";
 import Header from "./common/Header";
 import Router from "./Router";

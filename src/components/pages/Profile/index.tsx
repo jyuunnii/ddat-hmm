@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LoginContext from '../../../context';
-import { Friends, initialFriends, MainContainer, MainWrapper, UserPublic } from '../../../utils';
+import { MainContainer, MainWrapper } from '../../../utils/Styled';
+import { initialFriends } from '../../../utils/Const';
 import { followByName, getFriendsById, unfollowByName, updateUserById } from '../../api';
 import FriendsList from '../../Components/FriendsList';
 import ProfileImage from '../../Components/ProfileImage';
 import ProfileInformation from '../../Components/ProfileInformation';
 import './index.css'
+import { UserPublic, Friends } from '../../../utils/Type';
 
 const ProfileScale = styled.div`
     width: 100%;

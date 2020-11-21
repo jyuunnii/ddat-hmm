@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import LoginContext from '../../../context';
-import { initialUser, UserPublic } from '../../../utils';
+import { initialUser } from '../../../utils/Const';
+import { UserPublic } from '../../../utils/Type';
 import { getUserPublicById } from '../../api';
 import ProfileHeaderMenu from '../../Components/ProfileHeaderMenu';
 import Logo from '../Logo';

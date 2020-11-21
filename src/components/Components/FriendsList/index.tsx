@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UserPublic, UserProfileContainer } from '../../../utils';
+import { UserProfileContainer } from '../../../utils/Styled';
+import { UserPublic } from '../../../utils/Type';
 import FriendsListOneRow from '../FriendsListOneRow';
 
 

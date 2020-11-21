@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { UserPublic } from '../../../utils';
+import { UserPublic } from '../../../utils/Type';
 import './index.css';
 
 const ProfileContainer = styled.div`

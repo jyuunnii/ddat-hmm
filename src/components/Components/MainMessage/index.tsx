@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UserPublic } from '../../../utils';
+import { UserPublic } from '../../../utils/Type';
 import MainMessageLove from '../MainMessageLove';
 import MainMessageThanks from '../MainMessageThanks';
 

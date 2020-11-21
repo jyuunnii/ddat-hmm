@@ -1,5 +1,5 @@
 import React from 'react';
-import { initialProfile } from '../../../utils';
+import { initialProfile } from '../../../utils/Const';
 import './index.css';
 
 type ProfileImageProps = {

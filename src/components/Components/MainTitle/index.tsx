@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { UserPublic } from '../../../utils';
+import { UserPublic } from '../../../utils/Type';
 import './index.css';
 
 type MainTitleProps = {

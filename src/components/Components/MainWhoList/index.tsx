@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { initialProfile, UserPublic } from '../../../utils';
+import { initialProfile } from '../../../utils/Const';
+import { UserPublic } from '../../../utils/Type';
 import './index.css';
 
 

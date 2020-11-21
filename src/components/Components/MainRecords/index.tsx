@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { MainContainer, MessageRecord } from '../../../utils';
+import { MainContainer } from '../../../utils/Styled';
+import { MessageRecord } from '../../../utils/Type';
 import ReceivedMessage from '../ReceivedMessage';
 import SentMessage from '../SentMessage';
 import './index.css';

@@ -1,4 +1,4 @@
-import { initialProfile, serverUrl } from "../../utils";
+import { serverUrl, initialProfile } from "../../utils/Const";
 
 export const getUserPublicById = async (id: number, token: string)=>{
     let user = await fetch(serverUrl+`/user/${id}`, {

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import LoginContext from '../../../context';
-import { UserPublic, UserProfileBox, UserProfileTextBox, initialProfile } from '../../../utils';
+import { UserProfileBox, UserProfileTextBox } from '../../../utils/Styled';
+import { initialProfile } from '../../../utils/Const';
 import './index.css';
+import { UserPublic } from '../../../utils/Type';
 
 
 type SearchResultOneRowProps = {

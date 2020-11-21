@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Friends, initialFriends, initialUser, MainContainer, MainScale, MainWrapper, UserPublic } from '../../../utils';
+import { MainContainer, MainScale, MainWrapper } from '../../../utils/Styled';
+import { initialUser, initialFriends } from '../../../utils/Const';
 import { followByName, getAllUsersByName, getFriendsById, unfollowByName } from '../../api';
 import SearchBox from '../../Components/SearchBox';
 import SearchResult from '../../Components/SearchResult';
 import SearchTitle from '../../Components/SearchTitle';
 
 import './index.css';
+import { UserPublic, Friends } from '../../../utils/Type';
 
 type SearchPageProps = {
     userToken: {id: number, token: string}

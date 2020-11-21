@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginContext from '../../../context';
-import { LoginContainer, MainScale } from '../../../utils';
+import { LoginContainer, MainScale } from '../../../utils/Styled';
 import SignInForm from '../../Components/SignInForm';
 import './index.css'
 
