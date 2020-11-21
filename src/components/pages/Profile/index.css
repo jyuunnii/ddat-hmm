@@ -26,8 +26,8 @@
 
 /* Edit off */
 .profile-edit-off button {
-    width: 36px;
-    height: 36px;
+    width: 54px;
+    height: 54px;
     background-color: transparent;
     border-color: transparent;
 }
@@ -38,7 +38,13 @@
     left: 32px;
 }
 
+.friend-button i{
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
 .friend-button span{
+    display: block;
     color: #ffffff;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
@@ -49,7 +55,13 @@
     right: 32px;
 }
 
+.edit-on-button i{
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
 .edit-on-button span{
+    display: block;
     color: #ffffff;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
@@ -100,7 +112,7 @@
 
 .friendslist-box {
     width: 100%;
-    height: 480px;
+    height: 460px;
     background: #FFFFFF;
     border-radius: 30px 30px 0px 0px;
     transition: all 0.5s ease 0s;
@@ -109,15 +121,15 @@
 .friendslist-box button {
     width: 36px;
     height: 36px;
-    padding: 16px 8px;
     background-color: transparent;
     border-color: transparent;
 
     position: absolute;
+    top: 10px;
     right: 20px;
 }
 
-.friendslist-close-button span{
+.friendslist-close-button i{
     color: #333333;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }

@@ -23,14 +23,14 @@ const FriendsListOneRow = ({user, selectUser}: FriendsListOneRowProps) => {
             <div className="friend-name">{user.name}</div>
             <div className="friend-comment">{user?.comment}</div>
             </UserProfileTextBox>  
-            <div><input type="button" onClick={async()=> {
+            <div className="add-button"><input type="button" onClick={async()=> {
                     await selectUser(user.name, currentFriendState);     
                     changeFriendState(currentFriendState);                       
                     }} 
-                    style={{background: currentFriendState? "#ffffff":"#9ED5E7", 
+                    style={{backgroundColor: currentFriendState? "#ffffff":"#9ED5E7", 
                             border:  currentFriendState? "1px solid #9ED5E7":"1px solid #fefefe", 
                             color:  currentFriendState? "#9ED5E7":"#ffffff"}} 
-                    value={currentFriendState? "Delete" : "Add"} className="add-button"/>
+                    value={currentFriendState? "Delete" : "Add"}/>
             </div>   
        </UserProfileBox>
     )

@@ -94,22 +94,21 @@ const SignUpForm = () => {
                 <input type="text"  name="name" value={name} onChange={onChange} placeholder="Name" className="sign-up-input"/>
                 <span className="material-icons-outlined caution-icon" style={{display: isNameValid === undefined? "none" : (isNameValid? "none" : "block")}}>report</span>    
             </div>
-            <div className="input-error" style={{display: isNameValid === undefined? "none" : (isNameValid? "none" : "block"), color: "#CC5454"}}>Please enter a valid name.</div>  
+            <div className="input-error" style={{display: isNameValid === undefined? "none" : (isNameValid? "none" : "block")}}>Please enter a valid name.</div>  
             
             <div className="sign-up">
                 <div className="input-subtitle" style={{color: isEmailValid === undefined? "#000000" : (isEmailValid? "#000000" : "#CC5454")}}>Email</div>
                 <input type="text" name="email" value={email} onChange={onChange} placeholder="Email" className="sign-up-input"/>
-                <span className="material-icons-outlined caution-icon" style={{display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block"),                    }}>report</span>    
+                <span className="material-icons-outlined caution-icon" style={{display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block")}}>report</span>    
             </div>
-            <div className="input-error" style={{display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block"), color: "#CC5454"}}>Please enter a valid email address.</div>
+            <div className="input-error" style={{display: isEmailValid === undefined? "none" : (isEmailValid? "none" : "block")}}>Please enter a valid email address.</div>
 
             <div className="sign-up">
                 <div className="input-subtitle" style={{color: isPasswordValid === undefined? "#000000" : (isPasswordValid? "#000000" : "#CC5454")}}>Password</div>
                 <input type="text" name="password" value={password} onChange={onChange} placeholder="Password" className="sign-up-input"/>
                 <span className="material-icons-outlined caution-icon" style={{display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block")}}>report</span>    
             </div>
-            <div className="input-error" style={{display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block"), color: "#CC5454"
-            }}>The password must be 4 to 8 characters long and contain a mix of letters and numbers.</div>  
+            <div className="input-error" style={{display: isPasswordValid === undefined? "none" : (isPasswordValid? "none" : "block")}}>The password must be 4 to 8 characters long and contain a mix of letters and numbers.</div>  
 
             <div className="sign-up-button"><button type="submit">Sign Up</button></div>      
         </form>

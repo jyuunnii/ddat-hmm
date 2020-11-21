@@ -53,8 +53,8 @@ const UserSearch = (props: SearchPageProps) => {
         }
     }
 
-    const targetOldFriends: UserPublic[] = oldFriends.following.filter(user => user.name === target);
-    const filteredResults: UserPublic[] = searchResults.filter(user => (user.name !== userData.name) && !(targetOldFriends.some( f => f.name === user.name)));
+    const targetOldFriends: UserPublic[] = searchResults.filter(user => (oldFriends.following.some(friend => friend.name === user.name)))
+    const filteredResults: UserPublic[] = searchResults.filter(user => (user.name !== userData.name) && !(targetOldFriends.some(friend => friend.name === user.name)));
 
     return(
         <MainScale>

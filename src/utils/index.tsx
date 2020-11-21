@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const serverUrl = "http://localhost:3001";
+export const serverUrl = "https://api.ddat-hmm.inhibitor.io";
 
 export const initialProfile = "/images/person.png";
 export const initialBackground = "/images/cover1.png";
