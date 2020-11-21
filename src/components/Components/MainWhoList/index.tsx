@@ -10,6 +10,7 @@ const MWLContainer = styled.div`
     width: 328px;
     overflow-y: hidden;
     padding-left: 32px;
+    margin: 0 auto;
 `;
 
 const MWLCWrapper = styled.div`
