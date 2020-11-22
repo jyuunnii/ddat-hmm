@@ -9,6 +9,7 @@ export const MainScale = styled.div`
 
 export const LoginContainer = styled.div`
     height: 100%;
+    min-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;

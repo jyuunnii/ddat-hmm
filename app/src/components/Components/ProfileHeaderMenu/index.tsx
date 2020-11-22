@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import LoginContext from '../../../context';
 import { initialToken } from '../../../utils/Const';
@@ -11,20 +11,20 @@ const ProfileMenuContainer = styled.div`
 `;
 
 const ProfileHeaderMenu = () => {
+    const location = useHistory();
     const {loginAccess} = useContext(LoginContext);
 
     async function initialization(){
         await loginAccess(initialToken);
+        location.push("/");
     }
 
     
     return(
         <ProfileMenuContainer>
-            <div>
-                <Link to="/">
+            <div>           
                 <button className="sign-out-button" onClick={initialization}>
-                <i className="material-icons">exit_to_app</i>sign out</button>
-                </Link>
+                <i className="material-icons">exit_to_app</i>sign out</button> 
             </div>
             <div><button className="account-button">
                 <i className="material-icons">settings</i>manage account</button></div>
